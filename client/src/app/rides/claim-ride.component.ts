@@ -40,7 +40,7 @@ export class ClaimRideComponent implements OnInit {
               public snackBar: MatSnackBar) {
   }
 
-  addRide(): void {
+  claimRide(): void {
     const newRide: Ride = {
       _id: '',
       user: this.rideUser,
@@ -105,9 +105,20 @@ export class ClaimRideComponent implements OnInit {
     this.rideSeats = 1;
   }
 
+  setRideFields() {
+    this.rideId = this.rideListService.singleRide._id;
+    this.rideUser = this.rideListService.singleRide.user;
+    this.rideUserId = this.rideListService.singleRide.userId;
+    this.rideOrigin = this.rideListService.singleRide.origin;
+    this.rideDestination = this.rideListService.singleRide.destination;
+
+  }
+
 
   ngOnInit() {
     this.validatorService.createForm();
+    this.setRideFields();
+
   }
 
 

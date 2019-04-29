@@ -1,4 +1,4 @@
-# CSCI 3601 Lab #4 - Mongo, Spark and Angular
+# CSCI 3601 Iteration #4 The Goonies
 [![Build Status](https://travis-ci.org/UMM-CSci-3601-S19/iteration-3-toon-squad.svg?branch=droplet-state)](https://travis-ci.org/UMM-CSci-3601-S19/iteration-3-toon-squad)
 ## Setup
 

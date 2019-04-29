@@ -60,6 +60,11 @@
         <mat-radio-button id="isNotDrivingButton" [value] = false (click)="rideDriving = $event.target.value">
           <mat-icon style="color: blue"> transfer_within_a_station </mat-icon> riders
         </mat-radio-button>
+
+          <mat-radio-button id="bothButton" [value] = null (click)="rideDriving = $event.target.value">
+            both
+          </mat-radio-button>
+
       </mat-radio-group>
 
       <!--===========================================================================================-->

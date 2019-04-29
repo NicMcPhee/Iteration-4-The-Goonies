@@ -218,7 +218,9 @@
                       type="button"
                       style="width: 100%"
                       [disabled]="!this.userCanJoinRide(ride)"
-                      (click) = "joinRide(ride._id, this.currUserId, this.currUserFullName)">
+                      (click) = "claimRide(ride._id, this.currUserId, this.currUserFullName)"
+
+              >
                 <mat-icon>add_circle_outline</mat-icon>
                 Claim This Ride
               </button>

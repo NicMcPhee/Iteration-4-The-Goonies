@@ -1,79 +1,79 @@
-import {AfterContentInit, Component, DoCheck, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
 import {Ride} from './ride';
-import {FormControl, Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {RideListService} from "./ride-list.service";
 import {Observable} from "rxjs/Observable";
 import {ValidatorService} from "../validator.service";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
-
 
 @Component({
   selector: 'claim-ride.component',
   templateUrl: 'claim-ride.component.html',
 })
 
-
 export class ClaimRideComponent implements OnInit {
   minDate = new Date();
+
   public rides: Ride[];
+
   private highlightedID: string = '';
 
-  public rideId: string;
+  // public rideUser: string;
   public rideUser = localStorage.getItem("userFullName");
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
-  public rideSeatsAvailable: number;
+  public rideSeats: number;
   public rideOrigin: string;
   public rideDestination: string;
   public rideDepartureDate: string;
   public rideDepartureTime: string;
 
-  public tempBool: boolean = false;
 
   // Please leave as true for now, it's important.
-  public rideIsDriving: boolean = true;
+  public rideDriving: boolean = true;
   public rideRoundTrip: boolean = false;
   public rideNonSmoking: boolean = false;
 
-  constructor(
-    public rideListService : RideListService, private fb: FormBuilder,
-    public validatorService : ValidatorService, public snackBar: MatSnackBar) {
+
+  // Inject the RideListService into this component.
+  constructor(public rideListService: RideListService,
+              public validatorService: ValidatorService,
+              public snackBar: MatSnackBar) {
   }
 
-  editRide(): void {
-
-    const editedRide: Ride = {
-      _id: this.rideId,
+  addRide(): void {
+    const newRide: Ride = {
+      _id: '',
       user: this.rideUser,
       userId: this.rideUserId,
       notes: this.rideNotes,
-      seatsAvailable: this.rideSeatsAvailable,
+      seatsAvailable: this.rideSeats,
       origin: this.rideOrigin,
       destination: this.rideDestination,
       departureDate: this.rideDepartureDate,
       departureTime: this.rideDepartureTime,
-      isDriving: this.rideIsDriving,
       roundTrip: this.rideRoundTrip,
-      nonSmoking: this.rideNonSmoking
+      isDriving: this.rideDriving,
+      nonSmoking: this.rideNonSmoking,
     };
 
-    console.log(" The edited Ride in editRide() is " + JSON.stringify(editedRide));
+    console.log("COMPONENT: The new Ride in addRide() is " + JSON.stringify(newRide));
 
-    if (editedRide != null) {
-      this.rideListService.editRide(editedRide).subscribe(
+    if (newRide != null) {
+      console.log("Is the subscribe the problem??");
+      this.rideListService.addNewRide(newRide).subscribe(
         result => {
           console.log("here it is:" + result);
           this.highlightedID = result;
+          console.log("COMPONENT: The RESULT in addRide() is " + JSON.stringify(result));
         },
         err => {
           // This should probably be turned into some sort of meaningful response.
           console.log('There was an error adding the ride.');
-          console.log('The newRide or dialogResult was ' + editedRide);
+          console.log('The newRide or dialogResult was ' + newRide);
           console.log('The error was ' + JSON.stringify(err));
         });
 
-      this.snackBar.open("Successfully Edited A Ride",'' , <MatSnackBarConfig>{duration: 5000,});
+      this.snackBar.open("Successfully Added A Ride",'' , <MatSnackBarConfig>{duration: 5000,});
 
       this.refreshRides();
     }
@@ -89,6 +89,7 @@ export class ClaimRideComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
+        console.log(" These are the rides getRides got back after addRide called Refresh Ride " + JSON.stringify(this.rides));
       },
       err => {
         console.log(err);
@@ -96,38 +97,21 @@ export class ClaimRideComponent implements OnInit {
     return rides;
   }
 
-  setRideFields() {
-    this.rideId = this.rideListService.singleRide._id;
-    this.rideUser = this.rideListService.singleRide.user;
-    this.rideUserId = this.rideListService.singleRide.userId;
-    this.rideNotes = this.rideListService.singleRide.notes;
-    this.rideSeatsAvailable = this.rideListService.singleRide.seatsAvailable;
-    this.rideOrigin = this.rideListService.singleRide.origin;
-    this.rideDestination = this.rideListService.singleRide.destination;
-    this.rideDepartureDate = this.rideListService.singleRide.departureDate;
-    this.rideDepartureTime = this.rideListService.singleRide.departureTime;
-    this.rideIsDriving = this.rideListService.singleRide.isDriving;
-    this.rideRoundTrip = this.rideListService.singleRide.roundTrip;
-    this.rideNonSmoking = this.rideListService.singleRide.nonSmoking
-  }
-
   // IMPORTANT! This function gets called whenever the user selects 'looking for a ride'.
   //   This is so that form validator doesn't get mad for having an invalid 'rideSeats' value.
   //   Before adding the ride to the DB, the value gets set to 0 (by the ride controller).
   //   Also, ride-list component HTML won't display this number unless it is indeed a User that is driving.
   setRideSeats() {
-    this.rideSeatsAvailable = 1;
+    this.rideSeats = 1;
   }
 
+
   ngOnInit() {
-    this.setRideSeats();
-    this.setRideFields();
     this.validatorService.createForm();
-    if (this.rideIsDriving === false) {
-      this.validatorService.rideForm.removeControl("driving");
-      this.validatorService.rideForm.removeControl("seatsAvailable");
-    }
   }
 
 
 }
+
+
+

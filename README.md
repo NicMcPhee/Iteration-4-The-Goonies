@@ -8,8 +8,7 @@
 ### *~The Management*
 
 
-[![Build Status](https://travis-ci.org/UMM-CSci-3601-S19/iteration-3-toon-squad.svg?branch=droplet-state)](https://travis-ci.org/UMM-CSci-3601-S19/iteration-3-toon-squad)
-## Setup
+[![Build Status](https://travis-ci.org/UMM-CSci-3601-S19/Iteration-4-The-Goonies.svg?branch=droplet-state)](https://travis-ci.org/UMM-CSci-3601-S19/Iteration-4-The-Goonies)## Setup
 
 As in the previous labs, you'll be using IntelliJ. Once you've all joined your
 group using GitHub classroom, you can clone your repository using IntelliJ:

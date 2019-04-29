@@ -211,6 +211,18 @@
           <mat-card-title>
             <div class="departure-time">
 
+              <button mat-raised-button
+                      class="join-ride-button"
+                      id="claim-ride-button"
+                      color="primary"
+                      type="button"
+                      style="width: 100%"
+                      [disabled]="!this.userCanJoinRide(ride)"
+                      (click) = "joinRide(ride._id, this.currUserId, this.currUserFullName)">
+                <mat-icon>add_circle_outline</mat-icon>
+                Join This Ride
+              </button>
+
               <mat-icon style="color: blue"> transfer_within_a_station </mat-icon>
 
               <div *ngIf="!checkImpossibleDate(ride); then possible_date else impossible_date"> </div>

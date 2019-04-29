@@ -283,6 +283,30 @@ export class RideListComponent implements OnInit {
       this.refreshRides();
   };
 
+  claimRide(rideId: string, passengerId: string, passengerName: string): void {
+
+    const joinedRide: joinRideObject = {
+      rideId: rideId,
+      passengerId: passengerId,
+      passengerName: passengerName,
+    };
+
+    this.rideListService.joinRide(joinedRide).subscribe(
+
+      result => {
+        console.log("here it is:" + result);
+        this.highlightedID = result;
+      },
+      err => {
+        // This should probably be turned into some sort of meaningful response.
+        console.log('There was an error adding the ride.');
+        console.log('The newRide or dialogResult was ' );
+        console.log('The error was ' + JSON.stringify(err));
+      });
+
+    this.refreshRides();
+  };
+
   printCurrRide(ride: Ride): void {
     console.log((ride));
   }

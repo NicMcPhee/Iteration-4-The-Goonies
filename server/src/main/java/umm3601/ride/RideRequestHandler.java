@@ -59,9 +59,11 @@ public class RideRequestHandler {
     boolean isDriving = newRide.getBoolean("isDriving");
     boolean roundTrip = newRide.getBoolean("roundTrip");
     boolean nonSmoking = newRide.getBoolean("nonSmoking");
+    boolean eco = newRide.getBoolean("eco");
+    boolean petFriendly = newRide.getBoolean("petFriendly");
 
     return rideController.addNewRide(user, userId, notes, seatsAvailable, origin, destination,
-      departureDate, departureTime, isDriving, roundTrip, nonSmoking);
+      departureDate, departureTime, isDriving, roundTrip, nonSmoking, eco, petFriendly);
 
   }
 

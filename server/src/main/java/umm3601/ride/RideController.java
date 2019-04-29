@@ -108,7 +108,7 @@ public class RideController {
   }
 
   public String addNewRide(String user, String userId, String notes, int seatsAvailable, String origin, String destination,
-                           String departureDate, String departureTime, boolean isDriving, boolean roundTrip, boolean nonSmoking) {
+                           String departureDate, String departureTime, boolean isDriving, boolean roundTrip, boolean nonSmoking, boolean eco, boolean petFriendly) {
 
     // See methods at bottom of RideController
     seatsAvailable = setSeatsForRequestedRide(isDriving, seatsAvailable);
@@ -134,6 +134,8 @@ public class RideController {
     newRide.append("nonSmoking", nonSmoking);
     newRide.append("passengerIds", passengerIds);
     newRide.append("passengerNames", passengerNames);
+    newRide.append("eco", eco);
+    newRide.append("petFriendly", petFriendly);
 
     try {
       rideCollection.insertOne(newRide);
@@ -165,7 +167,7 @@ public class RideController {
   }
 
   boolean editRide(String id, String notes, int seatsAvailable, String origin, String destination,
-                   String departureDate, String departureTime, Boolean isDriving, Boolean roundTrip, Boolean nonSmoking)
+                   String departureDate, String departureTime, Boolean isDriving, Boolean roundTrip, Boolean nonSmoking, Boolean eco, Boolean petFriendly)
   {
 
     // See methods at bottom of RideController
@@ -188,6 +190,8 @@ public class RideController {
     updateFields.append("isDriving", isDriving);
     updateFields.append("roundTrip", roundTrip);
     updateFields.append("nonSmoking", nonSmoking);
+    updateFields.append("eco", eco);
+    updateFields.append("petFriendly", petFriendly);
 
     // A new document with the $set parameter so Mongo can update appropriately, and the values of $set being
     // the document we just made (which contains the fields we would like to update).

@@ -25,6 +25,8 @@ export class RideListComponent implements OnInit {
 
   public rideNonSmoking: boolean = false; // this defaults the box to be unchecked
   public rideRoundTrip: boolean = false;
+  public rideEco: boolean = false;
+  public ridePetFriendly: boolean = false;
 
   private highlightedDestination: string = '';
   private highlightedID: string = '';
@@ -88,11 +90,17 @@ export class RideListComponent implements OnInit {
   public toggleRoundTrip() {
     this.rideRoundTrip = !this.rideRoundTrip;
   }
+  public toggleEco() {
+    this.rideEco= !this.rideEco;
+  }
+  public togglePetFriendly() {
+    this.ridePetFriendly = !this.ridePetFriendly
+  }
 
 
   public filterRides(searchDestination: string, searchOrigin: string,
                      searchIsDriving: boolean, searchNonSmoking: boolean,
-                     searchRoundTrip): Ride[] {
+                     searchRoundTrip: boolean, searchEco: boolean, searchPetFriendly: boolean): Ride[] {
 
     this.filteredRides = this.rides;
 
@@ -136,6 +144,20 @@ export class RideListComponent implements OnInit {
       });
     }
 
+    if (searchEco === true) {
+
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return ride.eco === searchEco;
+      });
+    }
+
+    if (searchPetFriendly === true) {
+
+      this.filteredRides = this.filteredRides.filter(ride => {
+        return ride.petFriendly === searchPetFriendly;
+      });
+    }
+
     return this.filteredRides;
   }
 
@@ -155,7 +177,7 @@ export class RideListComponent implements OnInit {
       rides => {
         this.rides = rides;
         this.filterRides(this.rideDestination, this.rideOrigin, this.rideDriving,
-          this.rideNonSmoking, this.rideRoundTrip);
+          this.rideNonSmoking, this.rideRoundTrip, this.rideEco, this.ridePetFriendly);
       },
       err => {
         console.log(err);

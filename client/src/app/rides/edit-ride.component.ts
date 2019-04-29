@@ -35,6 +35,8 @@ export class EditRideComponent implements OnInit {
   public rideIsDriving: boolean = true;
   public rideRoundTrip: boolean = false;
   public rideNonSmoking: boolean = false;
+  public rideEco: boolean = false;
+  public ridePetFriendly: boolean = false;
 
   constructor(
     public rideListService : RideListService, private fb: FormBuilder,
@@ -55,7 +57,9 @@ export class EditRideComponent implements OnInit {
       departureTime: this.rideDepartureTime,
       isDriving: this.rideIsDriving,
       roundTrip: this.rideRoundTrip,
-      nonSmoking: this.rideNonSmoking
+      nonSmoking: this.rideNonSmoking,
+      eco: this.rideEco,
+      petFriendly: this.ridePetFriendly,
     };
 
     console.log(" The edited Ride in editRide() is " + JSON.stringify(editedRide));
@@ -108,7 +112,9 @@ export class EditRideComponent implements OnInit {
     this.rideDepartureTime = this.rideListService.singleRide.departureTime;
     this.rideIsDriving = this.rideListService.singleRide.isDriving;
     this.rideRoundTrip = this.rideListService.singleRide.roundTrip;
-    this.rideNonSmoking = this.rideListService.singleRide.nonSmoking
+    this.rideNonSmoking = this.rideListService.singleRide.nonSmoking;
+    this.rideEco = this.rideListService.singleRide.eco;
+    this.ridePetFriendly = this.rideListService.singleRide.petFriendly
   }
 
   // IMPORTANT! This function gets called whenever the user selects 'looking for a ride'.

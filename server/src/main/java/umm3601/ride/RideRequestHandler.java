@@ -59,9 +59,11 @@ public class RideRequestHandler {
     boolean isDriving = newRide.getBoolean("isDriving");
     boolean roundTrip = newRide.getBoolean("roundTrip");
     boolean nonSmoking = newRide.getBoolean("nonSmoking");
+    boolean eco = newRide.getBoolean("eco");
+    boolean petFriendly = newRide.getBoolean("petFriendly");
 
     return rideController.addNewRide(user, userId, notes, seatsAvailable, origin, destination,
-      departureDate, departureTime, isDriving, roundTrip, nonSmoking);
+      departureDate, departureTime, isDriving, roundTrip, nonSmoking, eco, petFriendly);
 
   }
 
@@ -97,9 +99,11 @@ public class RideRequestHandler {
     Boolean isDriving = editRide.getBoolean("isDriving");
     Boolean roundTrip = editRide.getBoolean("roundTrip");
     Boolean nonSmoking = editRide.getBoolean("nonSmoking");
+    Boolean eco = editRide.getBoolean("eco");
+    Boolean petFriendly = editRide.getBoolean("petFriendly");
 
     return rideController.editRide(id, notes, seatsAvailable, origin, destination,
-      departureDate, departureTime, isDriving, roundTrip, nonSmoking);
+      departureDate, departureTime, isDriving, roundTrip, nonSmoking, eco, petFriendly);
   }
 
   public boolean joinRide(Request req, Response res) {

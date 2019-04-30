@@ -1,6 +1,6 @@
 <title>MoRide - Upcoming Rides</title>
 
-<chat-component></chat-component>
+<!--<chat-component></chat-component>-->
 
 <div layout-gt-sm="row">
   <div flex-gt-sm="50" flex-offset-gt-sm="25">
@@ -201,7 +201,7 @@
               </button>
 
 
-              <button mat-menu-item (click)="openDeleteDialog(ride._id)" id="deleteDialogOpen2">
+              <button mat-menu-item (click)="openDeleteDialog(ride._id)" id="deleteDialogOpen">
                 <span>Delete Ride</span>
               </button>
 
@@ -267,12 +267,7 @@
             <div>{{ride.notes}}</div>
           </div>
 
-          <!--======================================================================================-->
-          <!-- the following is the chat code section -->
-
-          <!--<chat-component>-->
-
-          <!--</chat-component>-->
+        </mat-card-content>
 
         <!--======================================================================================-->
 

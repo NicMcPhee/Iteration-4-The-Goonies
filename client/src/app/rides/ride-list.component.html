@@ -218,6 +218,7 @@
                       class="join-ride-button"
                       id="claim-ride-button"
                       color="primary"
+                      [disabled]="userOwnsThisRide(ride)"
                       type="button"
                       style="width: 100%"
                       (click) = "giveRideToService(ride)"
@@ -229,6 +230,10 @@
                 <mat-icon>add_circle_outline</mat-icon>
                 Claim This Ride
               </button>
+
+              <div *ngIf="userOwnsThisRide(ride)" style="font-weight: bold; color: rgba(255,0,0,0.75)">
+                This is your ride posting.
+              </div>
 
               <br>
 

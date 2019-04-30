@@ -259,7 +259,7 @@ export class RideListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteRideComponent, {
       width: '500px',
       data: {id: currentId}
-    })
+    });
 
     dialogRef.afterClosed().subscribe(deletedRideId => {
       if (deletedRideId != null) {

@@ -75,6 +75,12 @@ export class ClaimRideComponent implements OnInit {
           console.log('The error was ' + JSON.stringify(err));
         });
 
+      // this.rideUser = this.rideListService.singleRide.user;
+      // this.rideUserId = this.rideListService.singleRide.userId;
+
+
+
+
       this.snackBar.open("Successfully Added A Ride",'' , <MatSnackBarConfig>{duration: 5000,});
 
       this.refreshRides();
@@ -110,8 +116,10 @@ export class ClaimRideComponent implements OnInit {
   setRideFields() {
     this.rideOrigin = this.rideListService.singleRide.origin;
     this.rideDestination = this.rideListService.singleRide.destination;
-
+    this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
   }
+
+
 
 
   ngOnInit() {

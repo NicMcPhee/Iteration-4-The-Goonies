@@ -102,13 +102,13 @@
           <div class="menu_spacer"> </div>
 
           <button mat-icon-button [matMenuTriggerFor]="menu" id="settingsDriving" class="card-top-right-button">
-            <mat-icon class="dots">more_vert</mat-icon>
+            <mat-icon class="dots" *ngIf="userOwnsThisRide(ride)" >more_vert</mat-icon>
           </button>
 
           <!--=========================================-->
 
           <mat-menu #menu="matMenu">
-            <div *ngIf="userOwnsThisRide(ride)">
+            <div>
 
               <button mat-menu-item (click) = "giveRideToService(ride)" id="editDialogOpen"
                       routerLink="/editride">
@@ -188,13 +188,13 @@
           <div class = "menu_spacer"> </div>
 
           <button mat-icon-button [matMenuTriggerFor]="menu" id="settingsNotDriving" class="card-top-right-button">
-            <mat-icon class="dots">more_vert</mat-icon>
+            <mat-icon class="dots" *ngIf="this.userOwnsThisRide(ride)" >more_vert</mat-icon>
           </button>
 
           <!--=========================================-->
 
           <mat-menu #menu="matMenu">
-            <div *ngIf="this.userOwnsThisRide(ride)">
+            <div>
 
               <button mat-menu-item (click) = "giveRideToService(ride)"
                       routerLink="/editride">

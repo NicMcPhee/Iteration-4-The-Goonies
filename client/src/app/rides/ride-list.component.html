@@ -54,15 +54,15 @@
       <mat-radio-group class="radioGroup" [(ngModel)] = "rideDriving">
         I am looking for...
         <mat-radio-button id="isDrivingButton" [value] = true (click)="rideDriving = $event.target.value">
-          <mat-icon style="color:#007900"> drive_eta</mat-icon> drivers
+          <mat-icon style="color:#007900"> drive_eta</mat-icon> Drivers
         </mat-radio-button>
 
         <mat-radio-button id="isNotDrivingButton" [value] = false (click)="rideDriving = $event.target.value">
-          <mat-icon style="color: blue"> transfer_within_a_station </mat-icon> riders
+          <mat-icon style="color: blue"> transfer_within_a_station </mat-icon> Riders
         </mat-radio-button>
 
           <mat-radio-button id="bothButton" [value] = null (click)="rideDriving = $event.target.value">
-            both
+            All
           </mat-radio-button>
 
       </mat-radio-group>

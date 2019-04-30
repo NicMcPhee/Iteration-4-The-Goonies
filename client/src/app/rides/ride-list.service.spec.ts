@@ -20,6 +20,10 @@ describe('Ride list service: ', () => {
       departureTime: '10:00:00',
       isDriving: true,
       nonSmoking: true,
+      passengerIds: [],
+      passengerNames: [],
+      eco: true,
+      petFriendly: true
     },
     {
       _id: 'dennis_id',
@@ -33,6 +37,10 @@ describe('Ride list service: ', () => {
       departureTime: '11:30:00',
       isDriving: true,
       nonSmoking: true,
+      passengerIds: [],
+      passengerNames: [],
+      eco: false,
+      petFriendly: true
     },
     {
       _id: 'agatha_id',
@@ -46,6 +54,10 @@ describe('Ride list service: ', () => {
       departureTime: '16:30:00',
       isDriving: true,
       nonSmoking: false,
+      passengerIds: [],
+      passengerNames: [],
+      eco: true,
+      petFriendly: false
     }
   ];
 
@@ -110,6 +122,10 @@ describe('Ride list service: ', () => {
       notes: 'I hope you brought warm clothes',
       isDriving: true,
       nonSmoking: true,
+      passengerIds: [],
+      passengerNames: [],
+      eco: true,
+      petFriendly: true
     };
 
     rideListService.addNewRide(newRide).subscribe(
@@ -144,6 +160,10 @@ describe('Ride list service: ', () => {
       notes: 'I hope you brought warm clothes',
       isDriving: true,
       nonSmoking: true,
+      passengerIds: [],
+      passengerNames: [],
+      eco: false,
+      petFriendly: true
     };
 
     editedRide.origin = 'South Pole';
@@ -167,6 +187,6 @@ describe('Ride list service: ', () => {
     req.flush(editedRide.origin);
   });
 
-})
+});
 
 

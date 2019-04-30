@@ -58,6 +58,8 @@ public class RideControllerSpec {
       "                    nonSmoking: true,\n" +
       "                    passengerIds: [],\n" +
       "                    passengerNames: [],\n" +
+      "                    eco: true,\n" +
+      "                    petFriendly: true,\n" +
       "                }"));
     testRides.add(Document.parse("{\n" +
       "                    user: \"Avery\",\n" +
@@ -72,6 +74,8 @@ public class RideControllerSpec {
       "                    nonSmoking: true,\n" +
       "                    passengerIds: [],\n" +
       "                    passengerNames: [],\n" +
+      "                    eco: false,\n" +
+      "                    petFriendly: true,\n" +
       "                }"));
     testRides.add(Document.parse("{\n" +
       "                    user: \"Michael\",\n" +
@@ -86,6 +90,8 @@ public class RideControllerSpec {
       "                    nonSmoking: false,\n" +
       "                    passengerIds: [],\n" +
       "                    passengerNames: [],\n" +
+      "                    eco: true,\n" +
+      "                    petFriendly: false,\n" +
       "                }"));
 
     ellisRideId = new ObjectId();
@@ -103,7 +109,9 @@ public class RideControllerSpec {
       .append("roundTrip", true)
       .append("nonSmoking", true)
       .append("passengerIds", new String[] {"123", "abc"} )
-      .append("passengerNames", new String[] {"Bob Dylan", "Dave Mira"});
+      .append("passengerNames", new String[] {"Bob Dylan", "Dave Mira"})
+      .append("eco", true)
+      .append("petFriendly", true);
 
 
     rideDocuments.insertMany(testRides);
@@ -143,7 +151,7 @@ public class RideControllerSpec {
 
     String newId = rideController.addNewRide("Dave Roberts", "005","I talk a lot about math",
       2, "Shopko", "UMM Science Building Parking Lot", "5/13/19","5PM",
-      false,true,true);
+      false,true,true, true, true);
 
     // NOTE: While there are 2 seats for this 'requested ride', the controller SHOULD change it to 0
     // if it is working correctly
@@ -173,7 +181,7 @@ public class RideControllerSpec {
 
 
     String newId = rideController.addNewRide("Nate Foss", "006","Good morning! How are you? ...Good.", 1, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
-      false, true,true);
+      false, true,true, true, true);
 
     Map<String, String[]> emptyMap = new HashMap<>();
     String jsonResult = rideController.getRides(emptyMap);
@@ -216,7 +224,7 @@ public class RideControllerSpec {
     // Since rideController.editRide() returns true when a ride was modified, we should store the boolean
     // and test it later. First we store it...
     Boolean someRideWasModified = rideController.editRide(ellisRideIdToString, "", 1,
-      "Pizza Hut", "Perkin's", "","", false, false, false);
+      "Pizza Hut", "Perkin's", "","", false, false, false, true, true);
 
     // ...and now we test it.
     assertTrue(someRideWasModified);
@@ -246,11 +254,14 @@ public class RideControllerSpec {
     assertTrue(ride.toString().contains("\"nonSmoking\": false"));   // Should contain the new nonSmoking
     assertTrue(ride.toString().contains("\"roundTrip\": false"));   // Should contain the new roundTrip
 
+
     // We should check the old values as well, since they should not be changed
     assertTrue(ride.toString().contains("\"notes\": \"\""));   // Should contain the old notes
     assertTrue(ride.toString().contains("\"destination\": \"Perkin's\""));   // Should contain old destination
     assertTrue(ride.toString().contains("\"passengerIds\": [\"123\", \"abc\"]"));  // contains old passenger ids
     assertTrue(ride.toString().contains("\"passengerNames\": [\"Bob Dylan\", \"Dave Mira\"]"));  // old names
+    assertTrue(ride.toString().contains("\"eco\": true")); // Should contain the new eco
+    assertTrue(ride.toString().contains("\"petFriendly\": true")); // Should contain the old petFriendly
 
   }
 

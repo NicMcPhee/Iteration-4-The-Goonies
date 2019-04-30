@@ -18,6 +18,8 @@ export class ClaimRideComponent implements OnInit {
   private highlightedID: string = '';
 
   // public rideUser: string;
+
+
   public rideUser = localStorage.getItem("userFullName");
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
@@ -106,9 +108,6 @@ export class ClaimRideComponent implements OnInit {
   }
 
   setRideFields() {
-    this.rideId = this.rideListService.singleRide._id;
-    this.rideUser = this.rideListService.singleRide.user;
-    this.rideUserId = this.rideListService.singleRide.userId;
     this.rideOrigin = this.rideListService.singleRide.origin;
     this.rideDestination = this.rideListService.singleRide.destination;
 

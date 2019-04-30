@@ -19,7 +19,8 @@
             routerLink="/addride"
             color="primary"
             type="button"
-            style="width: 100%">
+            style="width: 100%"
+    >
 
       <mat-icon>add_circle_outline</mat-icon>
       Create a Ride
@@ -126,6 +127,7 @@
           <mat-card-title>
 
             <div>
+              <div>
               <button mat-raised-button
                       class="join-ride-button"
                       id="join-ride-button"
@@ -137,6 +139,7 @@
                 <mat-icon>add_circle_outline</mat-icon>
                 Join This Ride
               </button>
+              </div>
 
               <br>
 
@@ -220,7 +223,6 @@
                       (click) = "giveRideToService(ride)"
                       routerLink="/claimride"
               >
-                      <!--(click) = "claimRide(ride._id, this.currUserId, this.currUserFullName)"-->
 
 
 

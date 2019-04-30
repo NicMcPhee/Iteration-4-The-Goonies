@@ -50,7 +50,7 @@
 
           <mat-form-field>
             <input class="inputRideInfo" matInput #input id="originField" placeholder="Origin"
-                   required [(ngModel)]="rideOrigin" formControlName="origin">
+                   required [(ngModel)]="rideOrigin" formControlName="origin" readonly>
             <mat-error *ngFor="let validation of this.validatorService.ride_validation_messages.origin">
               <mat-error class="error-message"
                          *ngIf="validatorService.rideForm.get('origin').hasError(validation.type) &&
@@ -64,7 +64,7 @@
 
           <mat-form-field>
             <input class="inputRideInfo" matInput #input id="destinationField" placeholder="Destination"
-                   required [(ngModel)]="rideDestination" formControlName="destination">
+                   required [(ngModel)]="rideDestination" formControlName="destination" readonly>
             <mat-error *ngFor="let validation of this.validatorService.ride_validation_messages.destination">
               <mat-error class="error-message"
                          *ngIf="validatorService.rideForm.get('destination').hasError(validation.type) &&
@@ -117,7 +117,7 @@
 
         <mat-card-actions layout="row">
           <button class="addRideButton" mat-raised-button id="confirmAddRideButton"  type="button" color="primary"
-                  (click)="addRide()" routerLink="/rides" [disabled]="!validatorService.rideForm.valid">Claim Ride
+                  (click)="claimRide()" routerLink="/rides" [disabled]="!validatorService.rideForm.valid">Claim Ride
           </button>
           <button class="cancelRideButton" mat-button id="exitWithoutAddingButton" routerLink="/rides"  type="button">Cancel</button>
         </mat-card-actions>

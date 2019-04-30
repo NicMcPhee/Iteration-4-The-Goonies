@@ -33,6 +33,8 @@ import {ProfileComponent} from "./users/profile.component";
 import {RouterLinkDirectiveStub} from "./rides/router-link-directive-stub";
 import {PhoneMaskDirective} from "./users/phone-mask.directive";
 
+import {AgmCoreModule, MapsAPILoader} from "@agm/core";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -43,7 +45,11 @@ import {PhoneMaskDirective} from "./users/phone-mask.directive";
     MatDatepickerModule,
     MatRadioModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyC0iaWrh4KXrN5Y06g0e3aj3QHmgXIaVJg",
+      libraries: ["places"]
+    })
   ],
   declarations: [
     AppComponent,

@@ -185,10 +185,19 @@
 
             </div>
 
-            <div class="seats-left">
+            <div class="seats-left" [ngClass]="{
+              'test' : ride.seatsAvailable == 12,
+              'test1' : ride.seatsAvailable == 10,
+              'test2' : ride.seatsAvailable == 9,
+              'test3' : ride.seatsAvailable == 1,
+              'test4' : ride.seatsAvailable == 0
+
+
+              }"> {{number}}
               <small *ngIf="ride.seatsAvailable === 1"> {{ride.seatsAvailable}} SEAT LEFT </small>
               <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} SEATS LEFT </small>
             </div>
+
 
           </mat-card-title>
         </mat-card-header>

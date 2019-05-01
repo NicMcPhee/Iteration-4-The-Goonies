@@ -186,14 +186,14 @@
             </div>
 
             <div class="seats-left" [ngClass]="{
-              'test' : ride.seatsAvailable == 12,
-              'test1' : ride.seatsAvailable == 10,
-              'test2' : ride.seatsAvailable == 9,
-              'test3' : ride.seatsAvailable == 1,
-              'test4' : ride.seatsAvailable == 0
+              'tenToTwelve' : ride.seatsAvailable <= 10, and: ride.seatsAvailable >= 12,
+              'sevenToNine' : ride.seatsAvailable <= 9, and: ride.seatsAvailable >= 7,
+              'fourToSix': ride.seatsAvailable <= 6, and: ride.seatsAvailable >= 4,
+              'oneToThree' : ride.seatsAvailable <= 3, and: ride.seatsAvailable >= 1,
+              'None' : ride.seatsAvailable == 0
 
 
-              }"> {{number}}
+              }">
               <small *ngIf="ride.seatsAvailable === 1"> {{ride.seatsAvailable}} SEAT LEFT </small>
               <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} SEATS LEFT </small>
             </div>

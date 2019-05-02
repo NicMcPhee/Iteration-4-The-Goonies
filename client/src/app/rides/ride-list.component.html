@@ -1,6 +1,6 @@
 <title>MoRide - Upcoming Rides</title>
 
-<!--<chat-component></chat-component>-->
+<chat-component></chat-component>
 
 <div layout-gt-sm="row">
   <div flex-gt-sm="50" flex-offset-gt-sm="25">
@@ -284,6 +284,10 @@
           <div  *ngIf="ride.notes" class="ride-info notes">
             <small>NOTES:</small>
             <div>{{ride.notes}}</div>
+          </div>
+
+          <div>
+            <chat-component> you should not see this text</chat-component>
           </div>
 
         </mat-card-content>

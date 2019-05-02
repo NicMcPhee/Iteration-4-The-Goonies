@@ -16,6 +16,10 @@ export class ChatComponent implements OnInit {
 
   }
 
+  sendChat(): void{
+
+  }
+
   ngOnInit(){
 
   }

@@ -116,7 +116,10 @@ export class ClaimRideComponent implements OnInit {
   setRideFields() {
     this.rideOrigin = this.rideListService.singleRide.origin;
     this.rideDestination = this.rideListService.singleRide.destination;
-    this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
+    this.rideDepartureDate = this.rideListService.singleRide.departureDate;
+    this.rideDepartureTime = this.rideListService.singleRide.departureTime;
+
+      this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
   }
 
 

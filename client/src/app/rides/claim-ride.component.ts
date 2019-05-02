@@ -118,7 +118,9 @@ export class ClaimRideComponent implements OnInit {
     this.rideDestination = this.rideListService.singleRide.destination;
     this.rideDepartureDate = this.rideListService.singleRide.departureDate;
     this.rideDepartureTime = this.rideListService.singleRide.departureTime;
-
+    this.rideNonSmoking = this.rideListService.singleRide.nonSmoking;
+    this.rideRoundTrip = this.rideListService.singleRide.roundTrip;
+    
       this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
   }
 

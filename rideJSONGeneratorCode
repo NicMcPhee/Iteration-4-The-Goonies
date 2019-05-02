@@ -25,6 +25,7 @@ CODE
     isDriving: '{{bool()}}',
     roundTrip: '{{bool()}}',
     nonSmoking: '{{bool()}}',
+    petFriendly: '{{bool()}}',
     eco: '{{bool()}}',
     passengerIds: [],
     passengerNames: []

@@ -51,6 +51,7 @@ export class EditRideComponent implements OnInit {
       userId: this.rideUserId,
       notes: this.rideNotes,
       seatsAvailable: this.rideSeatsAvailable,
+      seatsTotal: this.rideSeatsAvailable,
       origin: this.rideOrigin,
       destination: this.rideDestination,
       departureDate: this.rideDepartureDate,

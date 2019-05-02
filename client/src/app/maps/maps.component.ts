@@ -22,6 +22,8 @@ export class MapsComponent implements OnInit{
     document.getElementById("maps").style.height = this.mapHeight + "vh";
   }
 
-  
+  filledMarkers(): Marker[] {
+    return this.markers.filter(x => (x['longitude'] && (x['latitude'])));
+  }
 
 }

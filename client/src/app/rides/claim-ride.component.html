@@ -113,6 +113,14 @@
 
           <mat-checkbox class="checkboxNonSmoking" id="checkboxNonSmoking" [(ngModel)]="rideNonSmoking"
                         [ngModelOptions]="{standalone: true}">Non-smoking</mat-checkbox>
+          <br/>
+
+          <mat-checkbox class="checkboxEco" id="ecoCheckBox" [(ngModel)]="rideEco"
+                        [ngModelOptions]="{standalone: true}">Eco Friendly</mat-checkbox>
+          <br/>
+
+          <mat-checkbox class="checkboxPetFriendly" id="checkboxPetFriendly" [(ngModel)]="ridePetFriendly"
+                        [ngModelOptions]="{standalone: true}">Pet Friendly</mat-checkbox>
         </mat-card-content>
 
         <mat-card-actions layout="row">

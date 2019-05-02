@@ -34,6 +34,8 @@ export class ClaimRideComponent implements OnInit {
   public rideDriving: boolean = true;
   public rideRoundTrip: boolean = false;
   public rideNonSmoking: boolean = false;
+  public rideEco: boolean = false;
+  public ridePetFriendly = false;
 
 
   // Inject the RideListService into this component.
@@ -49,6 +51,7 @@ export class ClaimRideComponent implements OnInit {
       userId: this.rideUserId,
       notes: this.rideNotes,
       seatsAvailable: this.rideSeats,
+      seatsTotal: this.rideSeats,
       origin: this.rideOrigin,
       destination: this.rideDestination,
       departureDate: this.rideDepartureDate,
@@ -56,6 +59,9 @@ export class ClaimRideComponent implements OnInit {
       roundTrip: this.rideRoundTrip,
       isDriving: this.rideDriving,
       nonSmoking: this.rideNonSmoking,
+      eco: this.rideEco,
+      petFriendly: this.ridePetFriendly,
+
     };
 
     console.log("COMPONENT: The new Ride in addRide() is " + JSON.stringify(newRide));
@@ -120,8 +126,11 @@ export class ClaimRideComponent implements OnInit {
     this.rideDepartureTime = this.rideListService.singleRide.departureTime;
     this.rideNonSmoking = this.rideListService.singleRide.nonSmoking;
     this.rideRoundTrip = this.rideListService.singleRide.roundTrip;
+    this.rideEco = this.rideListService.singleRide.eco;
+    this.ridePetFriendly = this.rideListService.singleRide.petFriendly;
 
-      this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
+
+    this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
   }
 
 

@@ -23,6 +23,7 @@ export class EditRideComponent implements OnInit {
   public rideUser = localStorage.getItem("userFullName");
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
+  public rideSeats: number;
   public rideSeatsAvailable: number;
   public rideOrigin: string;
   public rideDestination: string;
@@ -51,6 +52,7 @@ export class EditRideComponent implements OnInit {
       userId: this.rideUserId,
       notes: this.rideNotes,
       seatsAvailable: this.rideSeatsAvailable,
+      seatsTotal: this.rideSeats,
       origin: this.rideOrigin,
       destination: this.rideDestination,
       departureDate: this.rideDepartureDate,
@@ -76,6 +78,7 @@ export class EditRideComponent implements OnInit {
           console.log('The newRide or dialogResult was ' + editedRide);
           console.log('The error was ' + JSON.stringify(err));
         });
+      seatsTotal: this.rideSeats,
 
       this.snackBar.open("Successfully Edited A Ride",'' , <MatSnackBarConfig>{duration: 5000,});
 

@@ -184,12 +184,12 @@
               <ng-template #impossible_time> unspecified time </ng-template>
 
             </div>
-
+            <!--'tenToTwelve' : ride.seatsAvailable <= 10, and: ride.seatsAvailable >= 12,-->
             <div class="seats-left" [ngClass]="{
-              'tenToTwelve' : ride.seatsAvailable <= 10, and: ride.seatsAvailable >= 12,
-              'sevenToNine' : ride.seatsAvailable <= 9, and: ride.seatsAvailable >= 7,
-              'fourToSix': ride.seatsAvailable <= 6, and: ride.seatsAvailable >= 4,
-              'oneToThree' : ride.seatsAvailable <= 3, and: ride.seatsAvailable >= 1,
+              'Above80p' : ride.seatsAvailable/ride.seatsTotal <= 1.0, and: ride.seatsAvailable/ride.seatsTotal >= 0.8,
+              'Above60p' : ride.seatsAvailable/ride.seatsTotal < 0.8, and: ride.seatsAvailable/ride.seatsTotal >= 0.6,
+              'Above40p': ride.seatsAvailable/ride.seatsTotal < 0.6, and: ride.seatsAvailable/ride.seatsTotal >= 0.4,
+              'Above20p' : ride.seatsAvailable/ride.seatsTotal < 0.4, and: ride.seatsAvailable/ride.seatsTotal >= 0.2,
               'None' : ride.seatsAvailable == 0
 
 

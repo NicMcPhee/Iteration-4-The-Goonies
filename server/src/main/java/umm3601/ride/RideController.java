@@ -184,7 +184,7 @@ public class RideController {
     Document updateFields = new Document();
     updateFields.append("notes", notes);
     updateFields.append("seatsAvailable", seatsAvailable);
-    updateFields.append("seatsTotal", seatsAvailable);
+    updateFields.append("seatsTotal", seatsTotal);
     updateFields.append("origin", origin);
     updateFields.append("destination", destination);
     updateFields.append("departureDate", departureDate);

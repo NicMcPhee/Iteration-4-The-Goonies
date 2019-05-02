@@ -52,7 +52,7 @@ public class RideRequestHandler {
     String userId = newRide.getString("userId");
     String notes = newRide.getString("notes");
     int seatsAvailable = newRide.getInteger("seatsAvailable");
-    int seatsTotal = newRide.getInteger("seatsAvailable");
+    int seatsTotal = newRide.getInteger("seatsTotal");
     String origin = newRide.getString("origin");
     String destination = newRide.getString("destination");
     String departureDate = newRide.getString("departureDate");
@@ -93,7 +93,7 @@ public class RideRequestHandler {
 //    String userId = editRide.getString("userId");
     String notes = editRide.getString("notes");
     int seatsAvailable = editRide.getInteger("seatsAvailable");
-    int seatsTotal = editRide.getInteger("seatsAvailable");
+    int seatsTotal = editRide.getInteger("seatsTotal");
     String origin = editRide.getString("origin");
     String destination = editRide.getString("destination");
     String departureDate = editRide.getString("departureDate");

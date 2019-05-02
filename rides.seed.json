@@ -7,6 +7,7 @@
     "userId": "655477182929676100000",
     "notes": "Eiusmod laboris commodo sint cupidatat pariatur proident qui dolor cillum sit adipisicing veniam. Cupidatat mollit et anim ut labore tempor quis.",
     "seatsAvailable": 4,
+    "seatsTotal": 8,
     "origin": "2046 Neptune Court, Wright, IA 64892",
     "destination": "9782 Henry Street, Hannasville, IA 20609",
     "departureDate": "2019-05-11T05:00:00.000Z",
@@ -26,6 +27,7 @@
     "userId": "342389477594424000000",
     "notes": "Occaecat reprehenderit do exercitation laborum. Dolore culpa ut veniam ipsum fugiat voluptate excepteur labore laborum ad Lorem sint aute.",
     "seatsAvailable": 1,
+    "seatsTotal": 8,
     "origin": "8631 Hudson Avenue, Crayne, IA 98438",
     "destination": "1660 Judge Street, Winston, SD 44478",
     "departureDate": "2019-05-11T05:00:00.000Z",
@@ -44,7 +46,8 @@
     "user": "Harry Potter",
     "userId": "245390728780678040000",
     "notes": "Occaecat reprehenderit do exercitation laborum. Dolore culpa ut veniam ipsum fugiat voluptate excepteur labore laborum ad Lorem sint aute.",
-    "seatsAvailable": -1,
+    "seatsAvailable": 1,
+    "seatsTotal": 1,
     "origin": "8631 Hudson Avenue, Crayne, IA 98438",
     "destination": "1660 Judge Street, Winston, SD 44478",
     "departureDate": "2019-05-10T05:00:00.000Z",
@@ -64,6 +67,7 @@
     "userId": "537114095323778200000",
     "notes": "Anim irure incididunt est aliquip duis elit. Nulla non aliqua sit ut labore qui id eiusmod laboris adipisicing deserunt aliquip.",
     "seatsAvailable": 1,
+    "seatsTotal": 8,
     "origin": "7726 Franklin Street, Stewartville, SD 44780",
     "destination": "7989 Sheffield Avenue, Frystown, IA 51752",
     "departureDate": "2019-05-11T05:00:00.000Z",
@@ -82,7 +86,8 @@
     "user": "Imogene Swanson",
     "userId": "655477182929676100000",
     "notes": "Aliqua sint ut dolor sint irure do. Duis labore esse duis ullamco in est irure magna do cillum exercitation eu.",
-    "seatsAvailable": -1,
+    "seatsAvailable": 1,
+    "seatsTotal": 1,
     "origin": "881 Boardwalk , Waumandee, SD 97192",
     "destination": "8974 Cyrus Avenue, Joes, SD 96915",
     "departureDate": "2019-08-14T05:00:00.000Z",
@@ -102,6 +107,7 @@
     "userId": "245390728780678040000",
     "notes": "Aliqua sint ut dolor sint irure do. Duis labore esse duis ullamco in est irure magna do cillum exercitation eu.",
     "seatsAvailable": 0,
+    "seatsTotal": 8,
     "origin": "881 Boardwalk , Waumandee, SD 97192",
     "destination": "8974 Cyrus Avenue, Joes, SD 96915",
     "departureDate": "2019-09-14T05:00:00.000Z",
@@ -121,6 +127,7 @@
     "userId": "832471086850197300000",
     "notes": "Aliqua sint ut dolor sint irure do. Duis labore esse duis ullamco in est irure magna do cillum exercitation eu.",
     "seatsAvailable": 2,
+    "seatsTotal": 8,
     "origin": "881 Boardwalk , Waumandee, SD 97192",
     "destination": "8974 Cyrus Avenue, Joes, SD 96915",
     "departureDate": "2019-08-14T05:00:00.000Z",
@@ -140,6 +147,7 @@
     "userId": "537114095323778200000",
     "notes": "Aliqua sint ut dolor sint irure do. Duis labore esse duis ullamco in est irure magna do cillum exercitation eu.",
     "seatsAvailable": 0,
+    "seatsTotal": 1,
     "origin": "881 Boardwalk , Waumandee, SD 97192",
     "destination": "8974 Cyrus Avenue, Joes, SD 96915",
     "departureDate": "2019-03-14T05:00:00.000Z",
@@ -149,6 +157,610 @@
     "nonSmoking": true,
     "passengerIds": [],
     "passengerNames": []
-  }
+  },
+
+
+
+
+    {
+      "_id": {
+        "$oid": "5ccb42c18ffda38150964724"
+      },
+      "user": "Mccoy Cantu",
+      "userID": "\"808539637861338300000\"",
+      "notes": "Consectetur veniam cillum eu nisi nostrud amet do qui ipsum dolore eiusmod sint ut. Excepteur dolore culpa duis duis exercitation. Laborum esse officia fugiat eiusmod elit occaecat ad ea laboris eu ea.",
+      "seatsAvailable": 2,
+      "seatsTotal": 12,
+      "origin": "Wyckoff Street,Drytown,Rhode Island,54393",
+      "destination": "Alexandria",
+      "departureDate": "2019-09-24T05:00:00.000Z",
+      "departureTime": "19:41",
+      "isDriving": true,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c13aa309b307153e21"
+      },
+      "user": "Valencia Dalton",
+      "userID": "\"10999529503099191000\"",
+      "notes": "Pariatur nulla magna nulla officia aute. In eu velit mollit veniam commodo anim sit aliquip ea laborum ad. Irure excepteur eu deserunt adipisicing mollit elit.",
+      "seatsAvailable": 4,
+      "seatsTotal": 10,
+      "origin": "Barwell Terrace,Albany,West Virginia,52188",
+      "destination": "Alexandria",
+      "departureDate": "2019-07-3T05:00:00.000Z",
+      "departureTime": "22:12",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1c70801cd82f6e5e1"
+      },
+      "user": "Anderson Nicholson",
+      "userID": "\"53670963844843570000\"",
+      "notes": "Commodo ipsum sunt proident ex consequat eu eiusmod. Anim veniam nisi et fugiat elit occaecat pariatur ad est cillum irure. Anim sit cupidatat eu duis aute.",
+      "seatsAvailable": 8,
+      "seatsTotal": 10,
+      "origin": "Kent Avenue,Thornport,American Samoa,56499",
+      "destination": "Duluth",
+      "departureDate": "2019-09-23T05:00:00.000Z",
+      "departureTime": "02:31",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c10cfc4afceb25bfe4"
+      },
+      "user": "Lakeisha Ward",
+      "userID": "\"443325448659230400000\"",
+      "notes": "Fugiat id reprehenderit voluptate ut aliquip cupidatat aliqua. Officia ipsum labore nisi nostrud quis mollit. Magna exercitation non proident deserunt enim ex.",
+      "seatsAvailable": 3,
+      "seatsTotal": 10,
+      "origin": "Montana Place,Salvo,Maine,81904",
+      "destination": "Alexandria",
+      "departureDate": "2019-02-16T05:00:00.000Z",
+      "departureTime": "03:29",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c177a6bb73d55db5c9"
+      },
+      "user": "Justine Faulkner",
+      "userID": "\"896726409244840800000\"",
+      "notes": "Esse anim exercitation aliquip sit ut est elit. Laborum culpa Lorem consectetur excepteur adipisicing Lorem ipsum consectetur occaecat. Esse nulla ex veniam nostrud consequat dolore cillum labore.",
+      "seatsAvailable": 9,
+      "seatsTotal": 9,
+      "origin": "Keap Street,Canterwood,Massachusetts,50514",
+      "destination": "Willies",
+      "departureDate": "2019-08-18T05:00:00.000Z",
+      "departureTime": "12:33",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c10daaefceb96641b6"
+      },
+      "user": "Juliette Graves",
+      "userID": "\"507965656045202640000\"",
+      "notes": "Exercitation fugiat eu laborum non adipisicing consequat deserunt ad et commodo eu nisi. Magna mollit aute consectetur minim anim do ullamco occaecat et cupidatat consectetur culpa. Eu labore nulla quis id aute laborum officia consequat sint sint esse.",
+      "seatsAvailable": 2,
+      "seatsTotal": 12,
+      "origin": "Rockaway Avenue,Cecilia,Vermont,31926",
+      "destination": "Willies",
+      "departureDate": "2019-01-20T05:00:00.000Z",
+      "departureTime": "01:44",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1c4f6c48bbc88bca1"
+      },
+      "user": "Liliana Baker",
+      "userID": "\"965762321367291000000\"",
+      "notes": "Sit ut ad aliquip pariatur dolor nulla aute aute elit consequat. Deserunt irure ut fugiat voluptate incididunt officia laboris culpa deserunt aliquip duis. Nulla anim aute nulla ullamco.",
+      "seatsAvailable": 9,
+      "seatsTotal": 11,
+      "origin": "Jodie Court,Kapowsin,Virginia,59507",
+      "destination": "Alexandria",
+      "departureDate": "2019-07-10T05:00:00.000Z",
+      "departureTime": "05:50",
+      "isDriving": true,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c19446f053d4c51baf"
+      },
+      "user": "Kimberley Hays",
+      "userID": "\"17555069186277770000\"",
+      "notes": "Id sunt excepteur consequat fugiat tempor adipisicing. Magna veniam culpa consectetur officia. Culpa laborum in labore proident excepteur magna aute duis nulla elit incididunt.",
+      "seatsAvailable": 1,
+      "seatsTotal": 12,
+      "origin": "Waldane Court,Falmouth,Mississippi,14517",
+      "destination": "Willies",
+      "departureDate": "2019-08-19T05:00:00.000Z",
+      "departureTime": "23:26",
+      "isDriving": true,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c19bd5ea5ad9720a84"
+      },
+      "user": "Desiree Morales",
+      "userID": "\"949398016334828800000\"",
+      "notes": "Ex ex dolore ullamco aliqua cupidatat enim. Cupidatat consectetur nisi proident ea pariatur consequat cupidatat aliqua est et excepteur tempor elit. Labore labore quis pariatur minim commodo amet velit veniam cillum sint enim ex cillum occaecat.",
+      "seatsAvailable": 2,
+      "seatsTotal": 12,
+      "origin": "Frost Street,Stonybrook,Kentucky,68245",
+      "destination": "Alexandria",
+      "departureDate": "2019-03-15T05:00:00.000Z",
+      "departureTime": "24:22",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1fe2dea47b64a757d"
+      },
+      "user": "Tamara Reeves",
+      "userID": "\"132438046065777310000\"",
+      "notes": "Ex deserunt laborum sit sint aute sint ullamco anim commodo ea consequat veniam laboris. Proident cupidatat aute in est consectetur. Occaecat dolore labore minim aliquip ea aliqua nulla quis magna deserunt dolor incididunt laboris occaecat.",
+      "seatsAvailable": 3,
+      "seatsTotal": 9,
+      "origin": "Boardwalk ,Robbins,Marshall Islands,86203",
+      "destination": "Alexandria",
+      "departureDate": "2019-02-21T05:00:00.000Z",
+      "departureTime": "21:59",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1343a0806094569e6"
+      },
+      "user": "Leann Cameron",
+      "userID": "\"558090541088049660000\"",
+      "notes": "Adipisicing qui veniam et esse amet ut laboris ipsum dolor esse dolore consectetur ea nostrud. Culpa velit ut ad velit id. Commodo ad adipisicing elit Lorem esse occaecat do nostrud elit ex proident est labore sunt.",
+      "seatsAvailable": 8,
+      "seatsTotal": 9,
+      "origin": "Navy Walk,Fairacres,Utah,44652",
+      "destination": "Duluth",
+      "departureDate": "2019-09-6T05:00:00.000Z",
+      "departureTime": "12:50",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c13a3c4c274a8bc943"
+      },
+      "user": "Wolf Perkins",
+      "userID": "\"278568599462235340000\"",
+      "notes": "Lorem non excepteur quis voluptate esse. Exercitation laborum sit cupidatat sit excepteur commodo proident magna enim. Aute nostrud ut do proident est non.",
+      "seatsAvailable": 1,
+      "seatsTotal": 12,
+      "origin": "Grove Place,Trinway,Oklahoma,32469",
+      "destination": "Willies",
+      "departureDate": "2019-07-15T05:00:00.000Z",
+      "departureTime": "06:10",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c15d75e41f781f3944"
+      },
+      "user": "Simone Haley",
+      "userID": "\"270614184803195940000\"",
+      "notes": "Magna consectetur laboris ullamco occaecat pariatur nostrud excepteur deserunt reprehenderit elit ea magna velit. Veniam irure magna elit duis. Nostrud dolor elit adipisicing in mollit excepteur anim ullamco enim cupidatat.",
+      "seatsAvailable": 6,
+      "seatsTotal": 11,
+      "origin": "Montauk Avenue,Winchester,Florida,64341",
+      "destination": "Willies",
+      "departureDate": "2019-06-30T05:00:00.000Z",
+      "departureTime": "20:32",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1f98796294ff8ff80"
+      },
+      "user": "Valentine Ryan",
+      "userID": "\"632131512562288800000\"",
+      "notes": "Sunt non sint eu sint ut duis. Magna exercitation enim consectetur aute ullamco magna velit nostrud nulla occaecat dolore sint. Dolor aliquip nostrud veniam laboris ullamco.",
+      "seatsAvailable": 6,
+      "seatsTotal": 11,
+      "origin": "Montague Street,Faxon,Wisconsin,83008",
+      "destination": "St.Paul",
+      "departureDate": "2019-04-25T05:00:00.000Z",
+      "departureTime": "18:27",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1e4e7406c29784617"
+      },
+      "user": "Claudia Kirkland",
+      "userID": "\"516906737261833900000\"",
+      "notes": "Duis elit ipsum id ullamco cillum aliquip pariatur velit cupidatat ipsum elit aliquip. Sit ad commodo minim amet proident cupidatat magna ea Lorem ea duis cillum proident. Culpa incididunt eiusmod nisi elit ut deserunt fugiat anim duis anim eiusmod amet incididunt veniam.",
+      "seatsAvailable": 2,
+      "seatsTotal": 10,
+      "origin": "Gold Street,Loveland,Colorado,24841",
+      "destination": "Alexandria",
+      "departureDate": "2019-09-20T05:00:00.000Z",
+      "departureTime": "14:17",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1a408e3f1c628c2c2"
+      },
+      "user": "Bolton Shelton",
+      "userID": "\"584864748376392660000\"",
+      "notes": "Elit amet officia incididunt veniam eu ut dolore dolor officia. Officia ut ad aliquip commodo aliqua. Ex qui commodo incididunt consectetur magna dolore ea voluptate reprehenderit laboris quis elit.",
+      "seatsAvailable": 9,
+      "seatsTotal": 10,
+      "origin": "Logan Street,Dante,South Carolina,74525",
+      "destination": "Alexandria",
+      "departureDate": "2019-03-11T05:00:00.000Z",
+      "departureTime": "07:40",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c16568a88b49789ba6"
+      },
+      "user": "Mccray Chaney",
+      "userID": "\"180582252950937270000\"",
+      "notes": "Do amet occaecat enim aliquip nisi sint irure. Ipsum ut culpa eiusmod in irure labore dolore ut laborum id ea nulla. Non et eiusmod occaecat non voluptate.",
+      "seatsAvailable": 3,
+      "seatsTotal": 10,
+      "origin": "Farragut Place,Camptown,Nebraska,62777",
+      "destination": "Duluth",
+      "departureDate": "2019-02-9T05:00:00.000Z",
+      "departureTime": "21:30",
+      "isDriving": true,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1584c1f41df1e99df"
+      },
+      "user": "Alba Cotton",
+      "userID": "\"122140276241958170000\"",
+      "notes": "Id minim esse ad occaecat aliquip nostrud. Do et labore commodo id. Dolor ut exercitation nulla non quis officia esse voluptate ullamco enim et irure.",
+      "seatsAvailable": 3,
+      "seatsTotal": 12,
+      "origin": "Burnett Street,Hatteras,Idaho,49391",
+      "destination": "Family Dollar",
+      "departureDate": "2019-06-17T05:00:00.000Z",
+      "departureTime": "23:43",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1e9020e7ca38f576f"
+      },
+      "user": "Rivera Malone",
+      "userID": "\"215092666774982360000\"",
+      "notes": "Voluptate nisi dolor irure nisi anim dolore dolore. Veniam adipisicing nisi do officia nisi Lorem minim. Laboris anim anim eu adipisicing dolore minim eu nisi excepteur nulla veniam commodo magna ea.",
+      "seatsAvailable": 5,
+      "seatsTotal": 11,
+      "origin": "Lefferts Avenue,Dargan,Connecticut,74658",
+      "destination": "Duluth",
+      "departureDate": "2019-02-11T05:00:00.000Z",
+      "departureTime": "23:17",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1838c6b26376d4f5b"
+      },
+      "user": "Mary Wynn",
+      "userID": "\"635761075977015000000\"",
+      "notes": "Qui proident aliqua amet anim sunt eiusmod deserunt anim nulla cupidatat elit in amet excepteur. Aliquip aliqua voluptate ipsum sint duis ad exercitation eu labore ea laborum anim. Ex consequat consequat id culpa ullamco Lorem sint officia minim incididunt consectetur.",
+      "seatsAvailable": 6,
+      "seatsTotal": 9,
+      "origin": "Fiske Place,Topaz,Guam,14613",
+      "destination": "Family Dollar",
+      "departureDate": "2019-09-25T05:00:00.000Z",
+      "departureTime": "13:23",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1e0d3af66029b0983"
+      },
+      "user": "Sophia Ashley",
+      "userID": "\"515394171227319400000\"",
+      "notes": "Officia tempor magna eu velit magna sunt et deserunt. Velit magna aute ipsum eiusmod ipsum sit laboris in mollit anim. Aute qui adipisicing nulla eiusmod amet culpa fugiat non cillum quis.",
+      "seatsAvailable": 2,
+      "seatsTotal": 10,
+      "origin": "Tudor Terrace,Linganore,Georgia,66982",
+      "destination": "Duluth",
+      "departureDate": "2019-01-13T05:00:00.000Z",
+      "departureTime": "21:08",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1efc327a5ae6f1f59"
+      },
+      "user": "Cecelia Potts",
+      "userID": "\"811720504782668600000\"",
+      "notes": "Minim dolor anim ullamco est qui. Magna nostrud dolore quis Lorem laborum tempor laborum et culpa ipsum est proident sint. Nisi Lorem laborum eiusmod tempor dolore non elit occaecat id non incididunt excepteur.",
+      "seatsAvailable": 8,
+      "seatsTotal": 12,
+      "origin": "Linden Boulevard,Witmer,Ohio,95847",
+      "destination": "Duluth",
+      "departureDate": "2019-06-10T05:00:00.000Z",
+      "departureTime": "15:36",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c124367c9f4ca73d73"
+      },
+      "user": "Flora Atkinson",
+      "userID": "\"489935301422858440000\"",
+      "notes": "Exercitation quis irure qui culpa excepteur ex dolore labore qui commodo irure commodo aliquip. Voluptate deserunt culpa consectetur dolore minim labore sint. Anim eu adipisicing duis consectetur.",
+      "seatsAvailable": 7,
+      "seatsTotal": 11,
+      "origin": "Bridgewater Street,Leming,Washington,89459",
+      "destination": "St.Paul",
+      "departureDate": "2019-06-10T05:00:00.000Z",
+      "departureTime": "23:57",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1cf7dfc3232cdcf23"
+      },
+      "user": "Helen Heath",
+      "userID": "\"644089334882854000000\"",
+      "notes": "Duis irure ut officia fugiat. Mollit est in labore labore dolore enim labore ea adipisicing aliqua excepteur ullamco est. Commodo sit pariatur enim dolore ipsum aliqua qui.",
+      "seatsAvailable": 2,
+      "seatsTotal": 11,
+      "origin": "Maple Avenue,Osmond,Northern Mariana Islands,16630",
+      "destination": "St.Paul",
+      "departureDate": "2019-05-26T05:00:00.000Z",
+      "departureTime": "22:30",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1b88313b1f85f6c31"
+      },
+      "user": "Beth Mcknight",
+      "userID": "\"690231150344891700000\"",
+      "notes": "Cillum in labore minim aute. Sunt nostrud sunt ut incididunt ipsum nisi ullamco. Excepteur est magna dolor do consectetur sit ullamco quis labore.",
+      "seatsAvailable": 9,
+      "seatsTotal": 10,
+      "origin": "Nassau Avenue,Boling,Nevada,99351",
+      "destination": "Family Dollar",
+      "departureDate": "2019-02-24T05:00:00.000Z",
+      "departureTime": "07:40",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1d44023baec8bc17e"
+      },
+      "user": "Terrell Peters",
+      "userID": "\"324970008780803000000\"",
+      "notes": "Eu incididunt fugiat deserunt ad occaecat duis veniam. Mollit magna pariatur culpa nulla nulla cillum dolore officia aute mollit laborum amet fugiat. Aliquip ut nulla veniam eiusmod.",
+      "seatsAvailable": 1,
+      "seatsTotal": 9,
+      "origin": "Hanson Place,Glidden,District Of Columbia,78885",
+      "destination": "Maplegrove",
+      "departureDate": "2019-03-27T05:00:00.000Z",
+      "departureTime": "17:33",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": false,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1865a98a1a8f246ae"
+      },
+      "user": "Elnora Mendez",
+      "userID": "\"238525127214393070000\"",
+      "notes": "Ad aliqua labore fugiat ad et. Ex consectetur ullamco fugiat excepteur. Nisi proident minim mollit et exercitation.",
+      "seatsAvailable": 2,
+      "seatsTotal": 9,
+      "origin": "Delevan Street,Fairlee,Missouri,26313",
+      "destination": "Maplegrove",
+      "departureDate": "2019-03-29T05:00:00.000Z",
+      "departureTime": "13:30",
+      "isDriving": false,
+      "roundTrip": true,
+      "nonSmoking": false,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1248dd44e76c85f8a"
+      },
+      "user": "Moody Cox",
+      "userID": "\"65792589214967790000\"",
+      "notes": "Ex velit id velit duis fugiat velit ea labore nulla adipisicing anim labore exercitation. Incididunt nisi anim id quis incididunt veniam. Ad nisi Lorem cillum voluptate cillum ad occaecat sit enim ut laboris.",
+      "seatsAvailable": 9,
+      "seatsTotal": 10,
+      "origin": "Madoc Avenue,Somerset,Wyoming,38501",
+      "destination": "Willies",
+      "departureDate": "2019-09-17T05:00:00.000Z",
+      "departureTime": "21:37",
+      "isDriving": false,
+      "roundTrip": false,
+      "nonSmoking": true,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c181c7559396f292e7"
+      },
+      "user": "Araceli Beasley",
+      "userID": "\"302181490171356250000\"",
+      "notes": "Nulla aute laboris proident consectetur esse aliqua enim duis adipisicing amet nostrud. Anim reprehenderit ad do non et reprehenderit. Adipisicing sit exercitation cupidatat dolore nisi eiusmod.",
+      "seatsAvailable": 7,
+      "seatsTotal": 10,
+      "origin": "Bliss Terrace,Wattsville,Iowa,92420",
+      "destination": "Willies",
+      "departureDate": "2019-07-2T05:00:00.000Z",
+      "departureTime": "22:49",
+      "isDriving": true,
+      "roundTrip": false,
+      "nonSmoking": true,
+      "eco": true,
+      "passengerIds": [],
+      "passengerNames": []
+    },
+    {
+      "_id": {
+        "$oid": "5ccb42c1096060c0e2ee9b76"
+      },
+      "user": "Carney Clemons",
+      "userID": "\"443525529597768240000\"",
+      "notes": "In dolor irure nostrud nulla occaecat ex velit aute tempor. Qui culpa do velit ea ex anim enim esse excepteur esse. Pariatur culpa laboris amet amet laborum.",
+      "seatsAvailable": 6,
+      "seatsTotal": 12,
+      "origin": "Lincoln Terrace,Delwood,Alaska,82088",
+      "destination": "Alexandria",
+      "departureDate": "2019-03-5T05:00:00.000Z",
+      "departureTime": "04:47",
+      "isDriving": true,
+      "roundTrip": true,
+      "nonSmoking": false,
+      "eco": false,
+      "passengerIds": [],
+      "passengerNames": []
+    }
 
 ]

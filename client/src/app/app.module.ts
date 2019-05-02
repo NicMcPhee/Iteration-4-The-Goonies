@@ -33,8 +33,9 @@ import {ProfileComponent} from "./users/profile.component";
 import {RouterLinkDirectiveStub} from "./rides/router-link-directive-stub";
 import {PhoneMaskDirective} from "./users/phone-mask.directive";
 
-import {AgmCoreModule} from "@agm/core";
+import {AgmCoreModule, MapsAPILoader} from "@agm/core";
 import {MapsComponent} from "./maps/maps.component";
+import {MapsAutocomplete} from "./mapsAutocomplete/mapsAutocomplete.component";
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import {MapsComponent} from "./maps/maps.component";
     ProfileComponent,
     RouterLinkDirectiveStub,
     PhoneMaskDirective,
-    MapsComponent
+    MapsComponent,
+    MapsAutocomplete,
   ],
   providers: [
     RideListService, AppService, AppAuthGuard, UserService, ValidatorService,

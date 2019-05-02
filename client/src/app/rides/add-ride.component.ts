@@ -33,6 +33,8 @@ export class AddRideComponent implements OnInit {
   public rideDriving: boolean = true;
   public rideRoundTrip: boolean = false;
   public rideNonSmoking: boolean = false;
+  public rideEco: boolean = false;
+  public ridePetFriendly: boolean = false;
 
 
   // Inject the RideListService into this component.
@@ -55,6 +57,8 @@ export class AddRideComponent implements OnInit {
       roundTrip: this.rideRoundTrip,
       isDriving: this.rideDriving,
       nonSmoking: this.rideNonSmoking,
+      eco: this.rideEco,
+      petFriendly: this.ridePetFriendly
     };
 
     console.log("COMPONENT: The new Ride in addRide() is " + JSON.stringify(newRide));

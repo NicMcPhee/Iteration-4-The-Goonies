@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {AgmMap} from "@agm/core";
-import LatLngBounds = google.maps.LatLngBounds
 import {} from 'googlemaps';
 import {Marker} from "./marker";
 

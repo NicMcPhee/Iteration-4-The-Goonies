@@ -109,6 +109,7 @@
     "isDriving": true,
     "roundTrip": true,
     "nonSmoking": false,
+    "petFriendly": true,
     "passengerIds": ["007"],
     "passengerNames": ["James Bond"]
   },
@@ -147,6 +148,7 @@
     "isDriving": false,
     "roundTrip": true,
     "nonSmoking": true,
+    "eco": true,
     "passengerIds": [],
     "passengerNames": []
   },
@@ -166,6 +168,8 @@
     "isDriving": false,
     "roundTrip": false,
     "nonSmoking": false,
+    "eco": true,
+    "petFriendly": true,
     "passengerIds": ["007"],
     "passengerNames": ["James Bond"]
   }

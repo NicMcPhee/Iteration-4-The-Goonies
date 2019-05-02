@@ -43,7 +43,9 @@ describe('Ride list', () => {
           nonSmoking: true,
           roundTrip: true,
           passengerIds: [],
-          passengerNames: []
+          passengerNames: [],
+          eco: true,
+          petFriendly: true
         },
         {
           _id: 'dennis_id',
@@ -59,7 +61,9 @@ describe('Ride list', () => {
           nonSmoking: true,
           roundTrip: true,
           passengerIds: [],
-          passengerNames: []
+          passengerNames: [],
+          eco: false,
+          petFriendly: true
         },
         {
           _id: 'agatha_id',
@@ -75,7 +79,9 @@ describe('Ride list', () => {
           nonSmoking: false,
           roundTrip: false,
           passengerIds: [],
-          passengerNames: []
+          passengerNames: [],
+          eco: true,
+          petFriendly: false
         }
       ]),
       refreshNeeded$: new Subject<void>()

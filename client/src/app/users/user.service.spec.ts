@@ -32,7 +32,9 @@ describe ('User Service: ',() =>{
       departureTime: "16:19",
       isDriving: true,
       roundTrip: false,
-      nonSmoking: true
+      nonSmoking: true,
+      eco: true,
+      petFriendly: true,
 
     },
   ];

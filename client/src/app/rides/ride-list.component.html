@@ -55,12 +55,17 @@
       <mat-radio-group class="radioGroup" [(ngModel)] = "rideDriving">
         I am looking for...
         <mat-radio-button id="isDrivingButton" [value] = true (click)="rideDriving = $event.target.value">
-          <mat-icon style="color:#007900"> drive_eta</mat-icon> drivers
+          <mat-icon style="color:#007900"> drive_eta</mat-icon> Drivers
         </mat-radio-button>
 
         <mat-radio-button id="isNotDrivingButton" [value] = false (click)="rideDriving = $event.target.value">
-          <mat-icon style="color: blue"> transfer_within_a_station </mat-icon> riders
+          <mat-icon style="color: blue"> transfer_within_a_station </mat-icon> Riders
         </mat-radio-button>
+
+          <mat-radio-button id="bothButton" [value] = null (click)="rideDriving = $event.target.value">
+            Both
+          </mat-radio-button>
+
       </mat-radio-group>
 
       <!--===========================================================================================-->
@@ -82,6 +87,16 @@
       <mat-checkbox id="checkboxRoundTrip"(checked)="rideRoundTrip" (click)="toggleRoundTrip()">
         Round Trip </mat-checkbox>
 
+      <mat-icon aria-hidden="false">battery_charging_full</mat-icon>
+
+      <mat-checkbox id="checkboxEco"(checked)="rideEco" (click)="toggleEco()">
+        Eco Friendly </mat-checkbox>
+
+      <mat-icon aria-hidden="false">pets</mat-icon>
+
+      <mat-checkbox id="checkboxPetFriendly"(checked)="ridePetFriendly" (click)="togglePetFriendly()">
+        Pet Friendly </mat-checkbox>
+
       <br>
 
     </mat-card-content>
@@ -91,7 +106,7 @@
     <div *ngIf="rides; else ridesError">
       <mat-card #elem class="rides"
                 *ngFor="let ride of this.filterRides(rideDestination, rideOrigin, rideDriving,
-                rideNonSmoking, rideRoundTrip)"
+                rideNonSmoking, rideRoundTrip, rideEco, ridePetFriendly)"
                 [id] = "ride.user">
 
         <!--======================================================================================================-->
@@ -277,6 +292,10 @@
             <b *ngIf="ride.nonSmoking">Non-Smoking &nbsp; &nbsp;</b>
             <mat-icon  aria-hidden="false" *ngIf="ride.roundTrip">repeat</mat-icon>
             <b *ngIf="ride.roundTrip">Round Trip</b>
+            <mat-icon aria-hidden="false" *ngIf="ride.eco">battery_charging_full</mat-icon>
+            <b *ngIf="ride.eco">Eco Friendly</b>
+            <mat-icon aria-hidden="false" *ngIf="ride.petFriendly">pets</mat-icon>
+            <b *ngIf="ride.petFriendly">Pet Friendly</b>
           </div>
 
           <mat-divider [inset]="true" *ngIf="ride.notes"></mat-divider>

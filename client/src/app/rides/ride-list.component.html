@@ -160,13 +160,13 @@
               </div>
 
               <div *ngIf="userIsAPassenger(ride)" style="font-weight: bold; color: rgba(255,0,0,0.75)">
-                You are already part of this ride.
+                You have joined this ride.
               </div>
 
-              <div *ngIf="!userIsAPassenger(ride) && ride.seatsAvailable < 1"
-                   style="font-weight: bold; color: rgba(255,0,0,0.75)">
-                This ride is full.
-              </div>
+              <!--<div *ngIf="!userIsAPassenger(ride) && ride.seatsAvailable < 1"-->
+                   <!--style="font-weight: bold; color: rgba(255,0,0,0.75)">-->
+                <!--This ride is full.-->
+              <!--</div>-->
             </div>
 
             <div class="departure-time">

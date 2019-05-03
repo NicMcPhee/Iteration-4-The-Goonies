@@ -52,5 +52,15 @@
     "lastName": "Harry",
     "firstName": "Potter",
     "phone": "(810) 497-2006"
+  },
+
+  {
+    "userId": "8324710868501973599999",
+    "email": "cahl1173@morris.umn.edu",
+    "fullName": "Dolt Cahl",
+    "pictureUrl": "https://picsum.photos/94/94/?random",
+    "lastName": "Cahl",
+    "firstName": "Dolt",
+    "phone": "(110) 692-2526"
   }
 ]

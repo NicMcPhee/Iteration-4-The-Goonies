@@ -10,18 +10,15 @@ import {Marker} from "./marker";
 })
 
 export class MapsComponent implements OnInit{
-  @Input() mapHeight: string = "30";
+  @Input() mapHeightVH: string = "30";
   @Input() lat: number = 45.593614;
   @Input() lng: number = -95.890831;
   @Input() zoom: number = 12;
   @Input() markers: Marker[] = [];
 
   ngOnInit() {
-    document.getElementById("maps").style.height = this.mapHeight + "vh";
+    document.getElementById("map").style.height = this.mapHeightVH + "vh";
   }
 
-  filledMarkers(): Marker[] {
-    return this.markers.filter(x => (x['longitude'] && (x['latitude'])));
-  }
 
 }

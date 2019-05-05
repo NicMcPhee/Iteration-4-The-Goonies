@@ -1,3 +1,3 @@
 var config = {
-  API_KEY: 'wad',
+  API_KEY: 'wad2',
 }

@@ -39,6 +39,8 @@ import {AgmCoreModule, MapsAPILoader} from "@agm/core";
 import {MapsComponent} from "./maps/maps.component";
 import {MapsAutocomplete} from "./mapsAutocomplete/mapsAutocomplete.component";
 
+var api_Key = '';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import {MapsAutocomplete} from "./mapsAutocomplete/mapsAutocomplete.component";
     MatSelectModule,
     MatCheckboxModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyC0iaWrh4KXrN5Y06g0e3aj3QHmgXIaVJg",
+      apiKey: api_Key,
       libraries: ["places"]
     })
   ],

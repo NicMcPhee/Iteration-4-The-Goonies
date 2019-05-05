@@ -78,5 +78,3 @@ gradle-app.setting
 
 # user credentials
 credentials.json
-# api key
-config.js

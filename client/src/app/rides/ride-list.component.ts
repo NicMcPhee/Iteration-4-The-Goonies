@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RideListService} from './ride-list.service';
 import {Ride} from './ride';
 import {Observable} from 'rxjs/Observable';
-import {MatDialog} from "@angular/material";
+import {MatDialog, MatDialogConfig} from "@angular/material";
 import {DeleteRideComponent} from "./delete-ride.component";
 import {joinRideObject} from "./joinRideObject";
 
@@ -47,6 +47,8 @@ export class RideListComponent implements OnInit {
     // this.refreshRides();
     this.loadService();
   }
+
+
 
   // These methods are used in ngIf statements that deal with displaying dates and times. The thing is that
   // rides with unspecified dates and times are stored with values that are unlikely to be real, since the sorting
@@ -256,7 +258,7 @@ export class RideListComponent implements OnInit {
 
   openDeleteDialog(currentId: object): void {
     console.log("openDeleteDialog");
-    const dialogRef = this.dialog.open(DeleteRideComponent, {
+    const dialogRef = this.dialog.open(DeleteRideComponent, <MatDialogConfig>{
       width: '500px',
       data: {id: currentId}
     });
@@ -318,5 +320,4 @@ export class RideListComponent implements OnInit {
       return "Passengers: " + passengerNames;
     }
   }
-
 }

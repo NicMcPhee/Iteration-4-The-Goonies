@@ -8,9 +8,12 @@
   <!-- text entry for the chat is below-->
   <form>
     <div class="chat-entry-div">
-      <label for="name"></label>
-      <input type="text" class="text-entry-box" id="name" required>
-      <button onclick="sendChat" type="submit" class="send-button" >Send</button>
+      <label for="textEntry"></label>
+      <mat-form-field>
+      <textarea matInput #boxName formControlName="messageContent" placeholder="Enter Message" class="textEntryClass" id="textEntry" required></textarea>
+      </mat-form-field>
+      <button (click)="sendChat()" type="button" class="send-button" >Send</button>
+      <p>{{boxName}}</p>
     </div>
   </form>
 </mat-expansion-panel>

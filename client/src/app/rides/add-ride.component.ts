@@ -106,7 +106,7 @@ export class AddRideComponent implements OnInit {
   //   This is so that form validator doesn't get mad for having an invalid 'rideSeats' value.
   //   Before adding the ride to the DB, the value gets set to 0 (by the ride controller).
   //   Also, ride-list component HTML won't display this number unless it is indeed a User that is driving.
-  setRideSeats() {
+  setRideSeats(): void {
     this.rideSeats = 1;
   }
 

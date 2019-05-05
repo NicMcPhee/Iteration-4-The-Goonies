@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-//import {RideListService} from './ride-list.service';
+import {Message} from './message'
+
+import {FormControl, FormGroup} from "@angular/forms";
+
 import {Observable} from 'rxjs/Observable';
 import {MatDialog} from "@angular/material";
 
@@ -12,12 +15,21 @@ import {MatDialog} from "@angular/material";
 
 export class ChatComponent implements OnInit {
 
+  public currUserFullName = localStorage.getItem("userFullName");
+
+  public rideID: string;
+  public author: string;
+  public content: string;
+  public date: string;
+
   constructor() {
 
   }
 
-  sendChat(): void{
-
+  sendChat() {
+    //const tempvar = document.getElementById("textEntry");
+    //console.log(tempvar);
+    console.log(this.currUserFullName);
   }
 
   ngOnInit(){

@@ -24,6 +24,8 @@ import {CustomModule} from './custom.module';
 import {AddRideComponent} from './rides/add-ride.component';
 import {EditRideComponent} from './rides/edit-ride.component';
 import {DeleteRideComponent} from "./rides/delete-ride.component";
+import {ClaimRideComponent} from "./rides/claim-ride.component";
+
 
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -60,6 +62,7 @@ import {MapsAutocomplete} from "./mapsAutocomplete/mapsAutocomplete.component";
     AddRideComponent,
     EditRideComponent,
     DeleteRideComponent,
+    ClaimRideComponent,
     ProfileComponent,
     RouterLinkDirectiveStub,
     PhoneMaskDirective,
@@ -71,7 +74,7 @@ import {MapsAutocomplete} from "./mapsAutocomplete/mapsAutocomplete.component";
     {provide: APP_BASE_HREF, useValue: '/'},
   ],
   entryComponents: [
-    AddRideComponent, EditRideComponent, DeleteRideComponent
+    AddRideComponent, EditRideComponent, DeleteRideComponent, ClaimRideComponent
   ],
   bootstrap: [AppComponent]
 })

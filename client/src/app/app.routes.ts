@@ -6,6 +6,7 @@ import {AddRideComponent} from "./rides/add-ride.component";
 import {HomeComponent} from "./home/home.component";
 import {AppAuthGuard} from "./app.authGuard";
 import {EditRideComponent} from "./rides/edit-ride.component";
+import {ClaimRideComponent} from "./rides/claim-ride.component";
 import {ProfileComponent} from "./users/profile.component";
 
 
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {path: 'rides', component: RideListComponent, canActivate: [AppAuthGuard]},
   {path: 'addride', component: AddRideComponent,canActivate: [AppAuthGuard]},
   {path: 'editride', component: EditRideComponent,canActivate: [AppAuthGuard]},
+  {path: 'claimride', component: ClaimRideComponent,canActivate: [AppAuthGuard]},
   {path: 'profile/:id', component: ProfileComponent, canActivate: [AppAuthGuard]}
 ];
 

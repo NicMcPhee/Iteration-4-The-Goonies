@@ -50,6 +50,7 @@ export class AddRideComponent implements OnInit {
       userId: this.rideUserId,
       notes: this.rideNotes,
       seatsAvailable: this.rideSeats,
+      seatsTotal: this.rideSeats,
       origin: this.rideOrigin,
       destination: this.rideDestination,
       departureDate: this.rideDepartureDate,

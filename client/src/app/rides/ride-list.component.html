@@ -19,7 +19,8 @@
             routerLink="/addride"
             color="primary"
             type="button"
-            style="width: 100%">
+            style="width: 100%"
+    >
 
       <mat-icon>add_circle_outline</mat-icon>
       Create a Ride
@@ -116,13 +117,13 @@
           <div class="menu_spacer"> </div>
 
           <button mat-icon-button [matMenuTriggerFor]="menu" id="settingsDriving" class="card-top-right-button">
-            <mat-icon class="dots">more_vert</mat-icon>
+            <mat-icon class="dots" *ngIf="userOwnsThisRide(ride)" >more_vert</mat-icon>
           </button>
 
           <!--=========================================-->
 
           <mat-menu #menu="matMenu">
-            <div *ngIf="userOwnsThisRide(ride)">
+            <div>
 
               <button mat-menu-item (click) = "giveRideToService(ride)" id="editDialogOpen"
                       routerLink="/editride">
@@ -141,6 +142,7 @@
           <mat-card-title>
 
             <div>
+              <div>
               <button mat-raised-button
                       class="join-ride-button"
                       id="join-ride-button"
@@ -152,6 +154,7 @@
                 <mat-icon>add_circle_outline</mat-icon>
                 Join This Ride
               </button>
+              </div>
 
               <br>
 
@@ -200,13 +203,13 @@
           <div class = "menu_spacer"> </div>
 
           <button mat-icon-button [matMenuTriggerFor]="menu" id="settingsNotDriving" class="card-top-right-button">
-            <mat-icon class="dots">more_vert</mat-icon>
+            <mat-icon class="dots" *ngIf="this.userOwnsThisRide(ride)" >more_vert</mat-icon>
           </button>
 
           <!--=========================================-->
 
           <mat-menu #menu="matMenu">
-            <div *ngIf="this.userOwnsThisRide(ride)">
+            <div>
 
               <button mat-menu-item (click) = "giveRideToService(ride)"
                       routerLink="/editride">
@@ -225,6 +228,30 @@
 
           <mat-card-title>
             <div class="departure-time">
+
+              <button mat-raised-button
+                      class="join-ride-button"
+                      id="claim-ride-button"
+                      color="primary"
+                      [disabled]="userOwnsThisRide(ride)"
+                      type="button"
+                      style="width: 100%"
+                      (click) = "giveRideToService(ride)"
+                      routerLink="/claimride"
+              >
+
+
+
+                <mat-icon>add_circle_outline</mat-icon>
+                Claim This Ride
+              </button>
+
+              <div *ngIf="userOwnsThisRide(ride)" style="font-weight: bold; color: rgba(255,0,0,0.75)">
+                This is your ride posting.
+              </div>
+
+              <br>
+
 
               <mat-icon style="color: blue"> transfer_within_a_station </mat-icon>
 

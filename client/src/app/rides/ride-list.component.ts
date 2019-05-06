@@ -22,6 +22,7 @@ export class RideListComponent implements OnInit {
   public rideDestination: string;
   public rideOrigin: string;
   public rideDriving: boolean;
+  public rideListSort: boolean;
 
   public rideNonSmoking: boolean = false; // this defaults the box to be unchecked
   public rideRoundTrip: boolean = false;
@@ -99,7 +100,7 @@ export class RideListComponent implements OnInit {
 
 
   public filterRides(searchDestination: string, searchOrigin: string,
-                     searchIsDriving: boolean, searchNonSmoking: boolean,
+                     searchIsDriving: boolean, searchSort: boolean, searchNonSmoking: boolean,
                      searchRoundTrip: boolean, searchEco: boolean, searchPetFriendly: boolean): Ride[] {
 
     this.filteredRides = this.rides;
@@ -176,7 +177,7 @@ export class RideListComponent implements OnInit {
     rides.subscribe(
       rides => {
         this.rides = rides;
-        this.filterRides(this.rideDestination, this.rideOrigin, this.rideDriving,
+        this.filterRides(this.rideDestination, this.rideOrigin, this.rideDriving, this.rideListSort,
           this.rideNonSmoking, this.rideRoundTrip, this.rideEco, this.ridePetFriendly);
       },
       err => {

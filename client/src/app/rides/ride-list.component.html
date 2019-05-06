@@ -71,6 +71,20 @@
       <!--===========================================================================================-->
 
       <br/>
+
+      <br>
+      <mat-radio-group class="sortRadioGroup" [(ngModel)] = "rideListSort">
+        Sort by...
+        <mat-radio-button id="Cronological" [value] = true (click)="rideListSort = $event.target.value">
+           Date and Time
+        </mat-radio-button>
+
+        <mat-radio-button id="Newest" [value] = null (click)="rideListSort = $event.target.value">
+           Newest First
+        </mat-radio-button>
+      </mat-radio-group>
+      <br/>
+
       <br>
 
       I would prefer...
@@ -105,7 +119,7 @@
 
     <div class="rideListContainer" *ngIf="rides; else ridesError">
       <mat-card #elem class="rides"
-                *ngFor="let ride of this.filterRides(rideDestination, rideOrigin, rideDriving,
+                *ngFor="let ride of this.filterRides(rideDestination, rideOrigin, rideDriving, rideListSort,
                 rideNonSmoking, rideRoundTrip, rideEco, ridePetFriendly)"
                 [id] = "ride.user">
 

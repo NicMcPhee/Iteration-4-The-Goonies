@@ -103,7 +103,7 @@
 
     <!--=======================================================================================================-->
 
-    <div *ngIf="rides; else ridesError">
+    <div class="rideListContainer" *ngIf="rides; else ridesError">
       <mat-card #elem class="rides"
                 *ngFor="let ride of this.filterRides(rideDestination, rideOrigin, rideDriving,
                 rideNonSmoking, rideRoundTrip, rideEco, ridePetFriendly)"

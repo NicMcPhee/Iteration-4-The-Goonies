@@ -126,3 +126,8 @@
 .morideFulllogo:hover:after{
   opacity: 1;
 }
+
+.rideListContainer{
+  display: flex;
+  flex-direction: column-reverse;
+}

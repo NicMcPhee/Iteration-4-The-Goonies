@@ -100,9 +100,10 @@ public class RideController {
     //Only shows dates that are either (today ^ (today ^ laterThanNow)) or dates after today
     Bson oldRides= or(sameDayPastTime, tomorrowOrLater);
 
-    Bson order = orderBy(sortDate, sortTime);
+//    Bson order = orderBy(sortDate, sortTime);
 
-    FindIterable<Document> matchingRides = rideCollection.find(oldRides).filter(oldRides).sort(order);
+    // default filtering by newest in the list of rides. filtering will be done client side
+    FindIterable<Document> matchingRides = rideCollection.find(filterDoc);
 
     return DatabaseHelper.serializeIterable(matchingRides);
   }

@@ -273,7 +273,7 @@
 
           <mat-divider [inset]="true" *ngIf="ride.notes"></mat-divider>
 
-          <div class = "passengers_div "*ngIf="ride.isDriving">
+          <div class = "passengers_div" *ngIf="ride.isDriving">
             {{this.listRidePassengers(ride.passengerNames)}}
           </div>
 

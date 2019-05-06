@@ -7,6 +7,10 @@ package umm3601.chat;
 
 
 //to get these imports to work you may have to run: "npm install getstream" and "npm install jsonwebtoken" in the intelij command line
+//
+//import
+//
+
 
 import org.bson.Document;
 import spark.Request;
@@ -40,9 +44,14 @@ public class ChatRequestHandler {
       return chat;
     } else {
       res.status(404);
-      res.body("The requested user with userId " + chatID + " was not found");
+      res.body("The requested chat with RideID " + chatID + " was not found");
       return "";
     }
+  }
+
+  public String getChats(Request req, Response res) {
+    res.type("application/json");
+    return chatController.getMessages(req.queryMap().toMap());
   }
 
   public String addNewChat(Request req, Response res) {

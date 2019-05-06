@@ -91,8 +91,8 @@ public class Server {
     post("api/user/saveProfile", userRequestHandler:: saveProfile);
 
     // CHAT ENPOINTS?
-    get("api/chat/:id",chatRequestHandler::getChatJSON);
-    post("api/chat/addnewchat", chatRequestHandler::addNewChat);
+    get("api/chat",chatRequestHandler::getChats);
+    post("api/chat/new", chatRequestHandler::addNewChat);
 
     // An example of throwing an unhandled exception so you can see how the
     // Java Spark debugger displays errors like this.

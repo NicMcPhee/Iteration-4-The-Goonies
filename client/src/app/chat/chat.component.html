@@ -1,19 +1,14 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      This is the expansion title
+      Click To View Chat
     </mat-panel-title>
   </mat-expansion-panel-header>
-  test2
   <!-- text entry for the chat is below-->
-  <form>
-    <div class="chat-entry-div">
-      <label for="textEntry"></label>
+  <form id="chat-message-entry" [formGroup]="chatFormGroup">
       <mat-form-field>
-      <textarea matInput #boxName formControlName="messageContent" placeholder="Enter Message" class="textEntryClass" id="textEntry" required></textarea>
+      <textarea matInput formControlName="enteredMessage" placeholder="Enter Message" class="textEntryClass" id="textEntry" required></textarea>
       </mat-form-field>
       <button (click)="sendChat()" type="button" class="send-button" >Send</button>
-      <p>{{boxName}}</p>
-    </div>
   </form>
 </mat-expansion-panel>

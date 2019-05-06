@@ -15,6 +15,10 @@ import {MatDialog} from "@angular/material";
 
 export class ChatComponent implements OnInit {
 
+  public chatFormGroup = new FormGroup({
+    enteredMessage: new FormControl()
+  });
+
   public currUserFullName = localStorage.getItem("userFullName");
 
   public rideID: string;
@@ -26,9 +30,16 @@ export class ChatComponent implements OnInit {
 
   }
 
+  testMethod(){
+    console.log("test messagee")
+}
+
   sendChat() {
-    //const tempvar = document.getElementById("textEntry");
-    //console.log(tempvar);
+    const tempvar0 = this.chatFormGroup.getRawValue();
+    console.log(tempvar0);
+    // const tempvar = document.getElementById("chat-message-entry");
+    // console.log(tempvar);
+    //this.regForm.get('textEntry3').value
     console.log(this.currUserFullName);
   }
 

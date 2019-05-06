@@ -17,3 +17,7 @@ export interface Ride {
   eco: boolean;
   petFriendly: boolean;
 }
+
+export interface origin {
+
+}

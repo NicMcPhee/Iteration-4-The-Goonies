@@ -15,7 +15,7 @@ export class MapsAutocomplete implements OnInit{
   @Input() longitude: number;
   @Input() zoom: number;
 
-  @Input() autocompletePlaceholder: string;
+  //@Input() autocompletePlaceholder: string;
   formGroup: FormGroup;
 
   @Output() placeResult = new EventEmitter<google.maps.places.PlaceResult>();
@@ -48,7 +48,7 @@ export class MapsAutocomplete implements OnInit{
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
+          console.log(place);
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();

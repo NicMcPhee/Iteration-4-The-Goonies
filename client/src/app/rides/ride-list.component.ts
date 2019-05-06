@@ -109,7 +109,7 @@ export class RideListComponent implements OnInit {
       searchDestination = searchDestination.toLocaleLowerCase();
 
       this.filteredRides = this.filteredRides.filter(ride => {
-        return !searchDestination || ride.destination.toLowerCase().indexOf(searchDestination) !== -1;
+        return !searchDestination || ride.destination.formatted_address.toLowerCase().indexOf(searchDestination) !== -1;
       });
     }
 

@@ -3,14 +3,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 
+import {ValidatorService} from "../validator.service";
+import {MatDialog, MatSnackBar, MatSnackBarConfig} from "@angular/material";
+import {Observable} from 'rxjs/Observable';
+
+import {Ride} from "../rides/ride";
+import {RideListComponent} from "../rides/ride-list.component";
+
 import {Message} from './message'
 import {ChatList} from "./chatList";
 import {ChatListService} from "./chat-list.service";
-
-import {ValidatorService} from "../validator.service";
-import {MatDialog, MatSnackBar, MatSnackBarConfig} from "@angular/material";
-
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'chat-component',
@@ -37,41 +39,54 @@ export class ChatComponent implements OnInit {
   public date: string;
   public chatArray: Message[];
 
+  public newChatList: ChatList;
+
+  public testy = document.getElementsByClassName("chat-class0")[0];
+
+
   constructor(public ChatListService: ChatListService,
               public snackBar: MatSnackBar) {
   }
 
   sendChat() {
-    const tempvar0 = this.chatFormGroup.getRawValue();
-    console.log(tempvar0);
-    this.rideID = "temporary string";
-    // const tempvar = document.getElementById("chat-message-entry");
-    // console.log(tempvar);
-    //this.regForm.get('textEntry3').value
-    console.log(this.currUserFullName);
-    this.addChat();
+    const rawContent = this.chatFormGroup.getRawValue();
+    const messageContent = rawContent.enteredMessage;
+    if (messageContent != null) {
+      //I have a double if statement here because I'm handling some basic form validators here, and I dont want to call "length" on a non-string and get an error
+      if (messageContent.length != 0) {
+        this.rideID = rawContent;
+        console.log(messageContent);
+        console.log(this.currUserFullName);
+        console.log(this.testy);
+        this.addChat();
+      }else {
+        console.log("your message was zero characters long")
+      }
+    }else {
+      console.log("Your message was not alphanumeric")
+    }
   }
 
   addChat(): void {
-    const newChatList: ChatList = {
+    this.newChatList = {
       rideID: this.rideID,
       chatArray: this.chatArray
     };
 
-    console.log("COMPONENT: The new chat in newChatList() is " + JSON.stringify(newChatList));
+    console.log("COMPONENT: The new chat in newChatList() is " + JSON.stringify(this.newChatList));
 
-    if (newChatList != null) {
+    if (this.newChatList != null) {
       console.log("Is the subscribe the problem??");
-      this.ChatListService.addNewChat(newChatList).subscribe(
+      this.ChatListService.addNewChat(this.newChatList).subscribe(
         result => {
           console.log("here it is:" + result);
           this.highlightedID = result;
-          console.log("COMPONENT: The RESULT in addRide() is " + JSON.stringify(result));
+          console.log("COMPONENT: The RESULT in addChat() is " + JSON.stringify(result));
         },
         err => {
           // This should probably be turned into some sort of meaningful response.
-          console.log('There was an error adding the ride.');
-          console.log('The newchat or dialogResult was ' + newChatList);
+          console.log('There was an error adding the chat.');
+          console.log('The newchat or dialogResult was ' + this.newChatList);
           console.log('The error was ' + JSON.stringify(err));
         });
 

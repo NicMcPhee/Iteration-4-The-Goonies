@@ -9,7 +9,6 @@ import {environment} from '../../environments/environment';
 // import {joinRideObject} from "./joinRideObject";
 import {Subject} from "rxjs/Subject";
 import {tap} from "rxjs/operators";
-import {ChatComponent} from "./chat.component";
 
 
 

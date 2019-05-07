@@ -4,6 +4,7 @@ package umm3601.chat;
 // https://github.com/UMM-CSci-3601-S19/iteration-3-newton-s-fig/blob/master/server/src/main/java/umm3601/chat/ChatController.java
 
 
+
 import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -21,7 +22,6 @@ import java.util.Map;
 import java.util.TimeZone;
 
 import static com.mongodb.client.model.Filters.*;
-import static com.mongodb.client.model.Filters.or;
 import static com.mongodb.client.model.Sorts.ascending;
 import static com.mongodb.client.model.Sorts.orderBy;
 
@@ -86,12 +86,16 @@ public class ChatController {
   public String addNewChat(String rideID) {
 
     Document newChat = new Document();
+    System.out.println(rideID);
+    System.out.println(newChat);
     newChat.append("rideID", rideID);
+    System.out.println(newChat);
     //newChat.append("chatArray", arrayofmessage);
 
     try {
       chatCollection.insertOne(newChat);
       ObjectId id = newChat.getObjectId("rideID");
+      System.out.println(id);
       return id.toHexString();
     }
     catch (MongoException me) {

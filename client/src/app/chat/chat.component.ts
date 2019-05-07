@@ -13,6 +13,7 @@ import {RideListComponent} from "../rides/ride-list.component";
 import {Message} from './message'
 import {ChatList} from "./chatList";
 import {ChatListService} from "./chat-list.service";
+import {ArrayType} from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: 'chat-component',
@@ -33,11 +34,11 @@ export class ChatComponent implements OnInit {
 
   public currUserFullName = localStorage.getItem("userFullName");
 
-  public rideID: string;
+  public rideIDcomponent: "test string";
   public author: string;
   public content: string;
   public date: string;
-  public chatArray: Message[];
+  public chatArrayComponent;
 
   public newChatList: ChatList;
 
@@ -51,10 +52,29 @@ export class ChatComponent implements OnInit {
   sendChat() {
     const rawContent = this.chatFormGroup.getRawValue();
     const messageContent = rawContent.enteredMessage;
+
     if (messageContent != null) {
       //I have a double if statement here because I'm handling some basic form validators here, and I dont want to call "length" on a non-string and get an error
       if (messageContent.length != 0) {
-        this.rideID = rawContent;
+        // let length;
+
+        this.chatArrayComponent = [
+        {
+          author: this.currUserFullName,
+            content: messageContent,
+          date: "this is a date",
+        }
+        ];
+        //the following method .push() needs to be used at some point, but for arrays the first data point specifically has to be
+        //initialized with a =, instead of push so this is very complicated
+      //   const tempvar0 =  {
+      //     author: this.currUserFullName,
+      //   content: messageContent,
+      //   date: "this is a date",
+      // };
+      //   length = this.chatArrayComponent.push(tempvar0);
+      //   console.log("length:" + length.toString());
+        console.log("chatarray:"+this.chatArrayComponent);
         console.log(messageContent);
         console.log(this.currUserFullName);
         console.log(this.testy);
@@ -69,14 +89,20 @@ export class ChatComponent implements OnInit {
 
   addChat(): void {
     this.newChatList = {
-      rideID: this.rideID,
-      chatArray: this.chatArray
+      rideID: "fbj3890fyuh",
+      chatArray: [
+        {
+          author: this.currUserFullName,
+          content: "defefeeeeeee",
+          date: "this is a date",
+        }
+      ]
     };
 
     console.log("COMPONENT: The new chat in newChatList() is " + JSON.stringify(this.newChatList));
 
     if (this.newChatList != null) {
-      console.log("Is the subscribe the problem??");
+      console.log("this is right before add new chatlistservice" + this.newChatList.);
       this.ChatListService.addNewChat(this.newChatList).subscribe(
         result => {
           console.log("here it is:" + result);
@@ -92,7 +118,7 @@ export class ChatComponent implements OnInit {
 
       this.snackBar.open("Successfully Added A chat",'' , <MatSnackBarConfig>{duration: 5000,});
 
-      this.refreshChats();
+      // this.refreshChats();
     }
   };
 

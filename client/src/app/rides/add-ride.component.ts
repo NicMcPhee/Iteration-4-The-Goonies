@@ -64,7 +64,6 @@ export class AddRideComponent implements OnInit {
     console.log("COMPONENT: The new Ride in addRide() is " + JSON.stringify(newRide));
 
     if (newRide != null) {
-      console.log("Is the subscribe the problem??");
       this.rideListService.addNewRide(newRide).subscribe(
         result => {
           console.log("here it is:" + result);

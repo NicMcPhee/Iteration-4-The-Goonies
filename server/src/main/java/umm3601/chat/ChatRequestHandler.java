@@ -16,6 +16,8 @@ import org.bson.Document;
 import spark.Request;
 import spark.Response;
 
+
+
 public class ChatRequestHandler {
 
   public final ChatController chatController;
@@ -57,13 +59,14 @@ public class ChatRequestHandler {
   public String addNewChat(Request req, Response res) {
     res.type("application/json");
 
+    System.out.println(req);
     Document newChat = Document.parse(req.body());
 
     String rideID = newChat.getString("RideID");
+    System.out.println(rideID);
     //Array chatArray = newChat.parse("chatArray");
 
     return chatController.addNewChat(rideID);
 
   }
-
 }

@@ -44,6 +44,8 @@ export class ChatListService {
     };
 
     // Send post request to add a new user with the user data as the body with specified headers.
+
+    console.log("this is newchat:" + newChat);
     return this.http.post<string>(this.chatUrl + '/new', newChat, httpOptions)
       .pipe(
         tap(() => {

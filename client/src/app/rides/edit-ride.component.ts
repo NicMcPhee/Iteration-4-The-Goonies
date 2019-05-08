@@ -6,7 +6,7 @@ import {RideListService} from "./ride-list.service";
 import {Observable} from "rxjs/Observable";
 import {ValidatorService} from "../validator.service";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
-
+import {Marker} from "../maps/marker";
 
 @Component({
   selector: 'edit-ride.component',
@@ -25,10 +25,11 @@ export class EditRideComponent implements OnInit {
   public rideNotes: string;
   public rideSeats: number;
   public rideSeatsAvailable: number;
-  public rideOrigin: string;
-  public rideDestination: string;
+  public rideOrigin: any;
+  public rideDestination: any;
   public rideDepartureDate: string;
   public rideDepartureTime: string;
+  public markers: Marker [] = [];
 
   public tempBool: boolean = false;
 
@@ -117,7 +118,8 @@ export class EditRideComponent implements OnInit {
     this.rideRoundTrip = this.rideListService.singleRide.roundTrip;
     this.rideNonSmoking = this.rideListService.singleRide.nonSmoking;
     this.rideEco = this.rideListService.singleRide.eco;
-    this.ridePetFriendly = this.rideListService.singleRide.petFriendly
+    this.ridePetFriendly = this.rideListService.singleRide.petFriendly;
+    console.log(this.rideListService.singleRide);
   }
 
   // IMPORTANT! This function gets called whenever the user selects 'looking for a ride'.
@@ -126,6 +128,29 @@ export class EditRideComponent implements OnInit {
   //   Also, ride-list component HTML won't display this number unless it is indeed a User that is driving.
   setRideSeats() {
     this.rideSeatsAvailable = 1;
+  }
+
+  setRideOrigin(placeResult: google.maps.places.PlaceResult) {
+    console.log(placeResult);
+    this.rideOrigin = placeResult;
+    let m: Marker = {
+      longitude: placeResult.geometry.location.lng(),
+      latitude: placeResult.geometry.location.lat(),
+      label: 'A'
+    };
+    this.markers[0] = m;
+    this.markers = this.markers.slice();
+  }
+
+  setRideDestination(placeResult: google.maps.places.PlaceResult) {
+    this.rideDestination = placeResult;
+    let m: Marker = {
+      longitude: placeResult.geometry.location.lng(),
+      latitude: placeResult.geometry.location.lat(),
+      label: 'B'
+    };
+    this.markers[1] = m;
+    this.markers = this.markers.slice();
   }
 
   ngOnInit() {

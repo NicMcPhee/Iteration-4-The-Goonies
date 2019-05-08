@@ -51,7 +51,9 @@
     "departureTime": "13:01",
     "isDriving": false,
     "roundTrip": false,
-    "nonSmoking": true,
+    "nonSmoking": false,
+    "eco": false,
+    "petFriendly": false,
     "passengerIds": [],
     "passengerNames": []
   },
@@ -89,7 +91,9 @@
     "departureTime": "03:55",
     "isDriving": false,
     "roundTrip": true,
-    "nonSmoking": true,
+    "nonSmoking": false,
+    "eco": true,
+    "petFriendly": true,
     "passengerIds": [],
     "passengerNames": []
   },
@@ -172,6 +176,27 @@
     "petFriendly": true,
     "passengerIds": ["007"],
     "passengerNames": ["James Bond"]
-  }
+  },
 
+
+  {
+    "_id": {
+      "$oid": "5c832bec4f173391643a16f5"
+    },
+    "user": "Dolt Cahl",
+    "userId": "8324710868501973599999",
+    "notes": "Ut rhoncus ipsum mollis rhoncus tincidunt. Maecenas mollis est sit amet nibh semper ultricies. Aliquam.",
+    "seatsAvailable": 2,
+    "origin": "2411  Little Street, Rockaway, NY 11693",
+    "destination": "4th East St, Morris, MN 56267",
+    "departureDate": "2019-08-14T05:00:00.000Z",
+    "departureTime": "03:55",
+    "isDriving": false,
+    "roundTrip": false,
+    "nonSmoking": false,
+    "eco": true,
+    "petFriendly": true,
+    "passengerIds": [],
+    "passengerNames": []
+  }
 ]

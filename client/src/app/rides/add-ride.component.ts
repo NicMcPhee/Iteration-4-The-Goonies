@@ -4,6 +4,7 @@ import {RideListService} from "./ride-list.service";
 import {Observable} from "rxjs/Observable";
 import {ValidatorService} from "../validator.service";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
+import {Marker} from "../maps/marker";
 
 @Component({
   selector: 'add-ride.component',
@@ -23,10 +24,11 @@ export class AddRideComponent implements OnInit {
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
   public rideSeats: number;
-  public rideOrigin: string;
-  public rideDestination: string;
+  public rideOrigin: google.maps.places.PlaceResult;
+  public rideDestination: google.maps.places.PlaceResult;
   public rideDepartureDate: string;
   public rideDepartureTime: string;
+  public markers: Marker [] = [];
 
 
   // Please leave as true for now, it's important.
@@ -63,6 +65,7 @@ export class AddRideComponent implements OnInit {
     };
 
     console.log("COMPONENT: The new Ride in addRide() is " + JSON.stringify(newRide));
+    console.log(newRide);
 
     if (newRide != null) {
       console.log("Is the subscribe the problem??");
@@ -111,9 +114,32 @@ export class AddRideComponent implements OnInit {
     this.rideSeats = 1;
   }
 
+  setRideOrigin(placeResult: google.maps.places.PlaceResult) {
+    console.log(placeResult);
+    this.rideOrigin = placeResult;
+    let m: Marker = {
+      longitude: placeResult.geometry.location.lng(),
+      latitude: placeResult.geometry.location.lat(),
+      label: 'A'
+    };
+    this.markers[0] = m;
+    this.markers = this.markers.slice();
+  }
+
+  setRideDestination(placeResult: google.maps.places.PlaceResult) {
+    this.rideDestination = placeResult;
+    let m: Marker = {
+      longitude: placeResult.geometry.location.lng(),
+      latitude: placeResult.geometry.location.lat(),
+      label: 'B'
+    };
+    this.markers[1] = m;
+    this.markers = this.markers.slice();
+  }
 
   ngOnInit() {
     this.validatorService.createForm();
+    console.log(this.rideDestination);
   }
 
 

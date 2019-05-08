@@ -24,8 +24,8 @@ export class ClaimRideComponent implements OnInit {
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
   public rideSeats: number;
-  public rideOrigin: string;
-  public rideDestination: string;
+  public rideOrigin: google.maps.places.PlaceResult;
+  public rideDestination: google.maps.places.PlaceResult;
   public rideDepartureDate: string;
   public rideDepartureTime: string;
 

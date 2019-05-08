@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog} from "@angular/material";
 import {DeleteRideComponent} from "./delete-ride.component";
 import {joinRideObject} from "./joinRideObject";
+import {Marker} from "../maps/marker";
 
 @Component({
   selector: 'ride-list-component',
@@ -30,6 +31,7 @@ export class RideListComponent implements OnInit {
 
   private highlightedDestination: string = '';
   private highlightedID: string = '';
+  public markers: Marker [] = [];
 
   public currUserId = localStorage.getItem("userId");
   public currUserFullName = localStorage.getItem("userFullName");
@@ -46,6 +48,7 @@ export class RideListComponent implements OnInit {
       });
     // this.refreshRides();
     this.loadService();
+    console.log(this.rideDestination);
   }
 
   // These methods are used in ngIf statements that deal with displaying dates and times. The thing is that
@@ -118,7 +121,7 @@ export class RideListComponent implements OnInit {
       searchOrigin = searchOrigin.toLocaleLowerCase();
 
       this.filteredRides = this.filteredRides.filter(ride => {
-        return !searchOrigin || ride.origin.toLowerCase().indexOf(searchOrigin) !== -1;
+        return !searchOrigin || ride.origin.formatted_address.toLowerCase().indexOf(searchOrigin) !== -1;
       });
     }
 

@@ -149,9 +149,9 @@ public class RideControllerSpec {
   @Test
   public void addRide() {
 
-    String newId = rideController.addNewRide("Dave Roberts", "005", "I talk a lot about math",
-      2, "Shopko", "UMM Science Building Parking Lot", "5/13/19", "5PM",
-      false, true, true, true, true);
+    String newId = rideController.addNewRide("Dave Roberts", "005","I talk a lot about math",
+      2, 4, "Shopko", "UMM Science Building Parking Lot", "5/13/19","5PM",
+      false,true,true, true, true);
 
     // NOTE: While there are 2 seats for this 'requested ride', the controller SHOULD change it to 0
     // if it is working correctly
@@ -180,7 +180,7 @@ public class RideControllerSpec {
     // rides to having 0 sets available.
 
 
-    String newId = rideController.addNewRide("Nate Foss", "006", "Good morning! How are you? ...Good.", 1, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
+    String newId = rideController.addNewRide("Nate Foss", "006", "Good morning! How are you? ...Good.", 1, 2, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
       false, true, true, true, true);
 
     Map<String, String[]> emptyMap = new HashMap<>();
@@ -223,7 +223,7 @@ public class RideControllerSpec {
 
     // Since rideController.editRide() returns true when a ride was modified, we should store the boolean
     // and test it later. First we store it...
-    Boolean someRideWasModified = rideController.editRide(ellisRideIdToString, "", 1,
+    Boolean someRideWasModified = rideController.editRide(ellisRideIdToString, "", 1, 2,
       "Pizza Hut", "Perkin's", "", "", false, false, false, true, true);
 
     // ...and now we test it.
@@ -294,14 +294,14 @@ public class RideControllerSpec {
   public void onlyShowsFutureRides() {
     //these first two are filtered out because they are in the past
     String newIdOne = rideController.addNewRide("Nate Past", "nkp", "Good morning! How are you? ...Good.", 1,
-      "Morris", "232 Alton Drive Miami, FL", "11:03", "2019-02-14T05:00:00.000Z", false, true, true, true, true);
+      10,"Morris", "232 Alton Drive Miami, FL", "11:03", "2019-02-14T05:00:00.000Z", false, true, true, true, true);
     String newIdTwo = rideController.addNewRide("Nate Past", "nkp", "Good morning! How are you? ...Good.", 1,
-      "Morris", "232 Alton Drive Miami, FL", "13:05", "2019-02-14T05:00:00.000Z", false, false, false, false, false);
+      10,"Morris", "232 Alton Drive Miami, FL", "13:05", "2019-02-14T05:00:00.000Z", false, false, false, false, false);
 
     String newIdThree = rideController.addNewRide("Nate Future", "nkf", "Good morning! How are you? ...Good.", 1,
-      "Morris", "232 Alton Drive Miami, FL", "02:04", "2999-08-14T05:00:00.000Z", false, false, false, false, true);
+      9,"Morris", "232 Alton Drive Miami, FL", "02:04", "2999-08-14T05:00:00.000Z", false, false, false, false, true);
     String newIdFour = rideController.addNewRide("Nate Future", "nkf", "Good morning! How are you? ...Good.", 1,
-      "Morris", "232 Alton Drive Miami, FL", "09:00", "2999-08-14T05:00:00.000Z", false, true, true, false, false);
+      9,"Morris", "232 Alton Drive Miami, FL", "09:00", "2999-08-14T05:00:00.000Z", false, true, true, false, false);
 
     Map<String, String[]> argMap = new HashMap<>();
     argMap.put("isDriving", new String[]{"false"});

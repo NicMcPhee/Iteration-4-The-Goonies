@@ -52,8 +52,8 @@ public class RideRequestHandler {
     String userId = newRide.getString("userId");
     String notes = newRide.getString("notes");
     int seatsAvailable = newRide.getInteger("seatsAvailable");
-    String origin = newRide.getString("origin");
-    String destination = newRide.getString("destination");
+    Object origin = newRide.get("origin");
+    Object destination = newRide.get("destination");
     String departureDate = newRide.getString("departureDate");
     String departureTime = newRide.getString("departureTime");
     boolean isDriving = newRide.getBoolean("isDriving");
@@ -92,8 +92,8 @@ public class RideRequestHandler {
 //    String userId = editRide.getString("userId");
     String notes = editRide.getString("notes");
     int seatsAvailable = editRide.getInteger("seatsAvailable");
-    String origin = editRide.getString("origin");
-    String destination = editRide.getString("destination");
+    Object origin = editRide.get("origin");
+    Object destination = editRide.get("destination");
     String departureDate = editRide.getString("departureDate");
     String departureTime = editRide.getString("departureTime");
     Boolean isDriving = editRide.getBoolean("isDriving");

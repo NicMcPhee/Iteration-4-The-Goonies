@@ -5,8 +5,8 @@ export interface Ride {
   notes: string;
   seatsAvailable: number;
   seatsTotal: number;
-  origin: string;
-  destination: string;
+  origin: google.maps.places.PlaceResult;
+  destination: google.maps.places.PlaceResult;
   departureDate: string;
   departureTime: string;
   isDriving: boolean;
@@ -16,8 +16,4 @@ export interface Ride {
   passengerNames?: string[];
   eco: boolean;
   petFriendly: boolean;
-}
-
-export interface origin {
-
 }

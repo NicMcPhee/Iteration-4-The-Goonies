@@ -108,8 +108,8 @@ public class RideControllerSpec {
       .append("isDriving", false)
       .append("roundTrip", true)
       .append("nonSmoking", true)
-      .append("passengerIds", new String[] {"123", "abc"} )
-      .append("passengerNames", new String[] {"Bob Dylan", "Dave Mira"})
+      .append("passengerIds", new String[]{"123", "abc"})
+      .append("passengerNames", new String[]{"Bob Dylan", "Dave Mira"})
       .append("eco", true)
       .append("petFriendly", true);
 
@@ -147,11 +147,11 @@ public class RideControllerSpec {
   }
 
   @Test
-  public void addRide(){
+  public void addRide() {
 
-    String newId = rideController.addNewRide("Dave Roberts", "005","I talk a lot about math",
-      2, "Shopko", "UMM Science Building Parking Lot", "5/13/19","5PM",
-      false,true,true, true, true);
+    String newId = rideController.addNewRide("Dave Roberts", "005", "I talk a lot about math",
+      2, "Shopko", "UMM Science Building Parking Lot", "5/13/19", "5PM",
+      false, true, true, true, true);
 
     // NOTE: While there are 2 seats for this 'requested ride', the controller SHOULD change it to 0
     // if it is working correctly
@@ -174,14 +174,14 @@ public class RideControllerSpec {
   }
 
   @Test
-  public void addRideRequestedHasZeroSeats(){
+  public void addRideRequestedHasZeroSeats() {
 
     // The point of this test is that the rideController changes any requested
     // rides to having 0 sets available.
 
 
-    String newId = rideController.addNewRide("Nate Foss", "006","Good morning! How are you? ...Good.", 1, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
-      false, true,true, true, true);
+    String newId = rideController.addNewRide("Nate Foss", "006", "Good morning! How are you? ...Good.", 1, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
+      false, true, true, true, true);
 
     Map<String, String[]> emptyMap = new HashMap<>();
     String jsonResult = rideController.getRides(emptyMap);
@@ -219,12 +219,12 @@ public class RideControllerSpec {
   }
 
   @Test
-  public void editRide(){
+  public void editRide() {
 
     // Since rideController.editRide() returns true when a ride was modified, we should store the boolean
     // and test it later. First we store it...
     Boolean someRideWasModified = rideController.editRide(ellisRideIdToString, "", 1,
-      "Pizza Hut", "Perkin's", "","", false, false, false, true, true);
+      "Pizza Hut", "Perkin's", "", "", false, false, false, true, true);
 
     // ...and now we test it.
     assertTrue(someRideWasModified);
@@ -270,7 +270,7 @@ public class RideControllerSpec {
   public void testJoinRide() {
 
     // When joinRide is called, a successful update will return true. We check for this first.
-    assertTrue( rideController.joinRide(ellisRideIdToString, "nkf", "Nate Foss") );
+    assertTrue(rideController.joinRide(ellisRideIdToString, "nkf", "Nate Foss"));
 
     // In the entry above, we've joined the ride belonging to Ellis. In theory, the only fields that should
     // be change are seatsAvailable, passengerIds, and passengerNames. Let's convert it to a string and check
@@ -289,31 +289,29 @@ public class RideControllerSpec {
 
   }
 
-}
-
-
   //TODO: See top comment
-//  @Test
-//  public void onlyShowsFutureRides() {
-//    //these first two are filtered out because they are in the past
-//    String newIdOne = rideController.addNewRide("Nate Past", "Good morning! How are you? ...Good.", 1,
-//      "Morris", "232 Alton Drive Miami, FL", "11:03", "2019-02-14T05:00:00.000Z", false, true);
-//    String newIdTwo = rideController.addNewRide("Nate Past", "Good morning! How are you? ...Good.", 1,
-//      "Morris", "232 Alton Drive Miami, FL", "13:05", "2019-02-14T05:00:00.000Z", false, false);
-//
-//    String newIdThree = rideController.addNewRide("Nate Future", "Good morning! How are you? ...Good.", 1,
-//      "Morris", "232 Alton Drive Miami, FL", "02:04", "2999-08-14T05:00:00.000Z", false, false);
-//    String newIdFour = rideController.addNewRide("Nate Future", "Good morning! How are you? ...Good.", 1,
-//      "Morris", "232 Alton Drive Miami, FL", "09:00", "2999-08-14T05:00:00.000Z", false, true);
-//
-//    Map<String, String[]> argMap = new HashMap<>();
-////    argMap.put("isDriving", new String[]{"false"});
-//    String jsonResult = rideController.getRides(argMap);
-//    BsonArray docs = parseJsonArray(jsonResult);
-//
-//    assertEquals("Should be 4 rides", 4, docs.size());
-//  }
-//TODO: See top comment
+  @Test
+  public void onlyShowsFutureRides() {
+    //these first two are filtered out because they are in the past
+    String newIdOne = rideController.addNewRide("Nate Past", "nkp", "Good morning! How are you? ...Good.", 1,
+      "Morris", "232 Alton Drive Miami, FL", "11:03", "2019-02-14T05:00:00.000Z", false, true, true, true, true);
+    String newIdTwo = rideController.addNewRide("Nate Past", "nkp", "Good morning! How are you? ...Good.", 1,
+      "Morris", "232 Alton Drive Miami, FL", "13:05", "2019-02-14T05:00:00.000Z", false, false, false, false, false);
+
+    String newIdThree = rideController.addNewRide("Nate Future", "nkf", "Good morning! How are you? ...Good.", 1,
+      "Morris", "232 Alton Drive Miami, FL", "02:04", "2999-08-14T05:00:00.000Z", false, false, false, false, true);
+    String newIdFour = rideController.addNewRide("Nate Future", "nkf", "Good morning! How are you? ...Good.", 1,
+      "Morris", "232 Alton Drive Miami, FL", "09:00", "2999-08-14T05:00:00.000Z", false, true, true, false, false);
+
+    Map<String, String[]> argMap = new HashMap<>();
+    argMap.put("isDriving", new String[]{"false"});
+    String jsonResult = rideController.getRides(argMap);
+    BsonArray docs = parseJsonArray(jsonResult);
+
+    assertEquals("Should be 4 rides", 4, docs.size());
+  }
+}
+////TODO: See top comment
 //  @Test
 //  public void getAllRidesOffered() {
 //    Map<String, String[]> argMap = new HashMap<>();;

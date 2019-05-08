@@ -253,6 +253,14 @@ describe('Ride list', () => {
     expect(rideList.rides.filter((ride: Ride) => ride.roundTrip === true).length).toBe(2);
   });
 
+  it('has two rides with petFriendly indicated', () => {
+    expect(rideList.rides.filter((ride: Ride) => ride.petFriendly === true).length).toBe(2);
+  });
+
+  it('has two rides with eco indicated', () => {
+    expect(rideList.rides.filter((ride: Ride) => ride.eco === true).length).toBe(2);
+  });
+
   it('has one ride declared one way indicated', () => {
     expect(rideList.rides.filter((ride: Ride) => ride.roundTrip === false).length).toBe(1);
   });
@@ -366,6 +374,28 @@ describe('Ride list', () => {
       expect(rideList.filteredRides.length).toBe(2);
     });
   });
+
+  it('filters by petFriendly tag', () => {
+    // petFriendly is false by default.
+    expect(rideList.filteredRides.length).toBe(3);
+
+    // Now we set petFriendly to true and test.
+    rideList.ridePetFriendly = true;
+    rideList.refreshRides().subscribe(() => {
+      expect(rideList.filteredRides.length).toBe(2);
+    });
+  });
+
+  it('filters by eco tag', () => {
+    // roundTrip is false by default.
+    expect(rideList.filteredRides.length).toBe(3);
+
+    // Now we set eco to true and test.
+    rideList.rideEco = true;
+    rideList.refreshRides().subscribe(() => {
+      expect(rideList.filteredRides.length).toBe(2);
+    });
+  });
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   ////////////////////////////////////////
@@ -408,6 +438,24 @@ describe('Ride list', () => {
     });
   });
 
+  it('filters by petFriendly and eco', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.ridePetFriendly = true;
+    rideList.rideEco = true;
+    rideList.refreshRides().subscribe(() => {
+      expect(rideList.filteredRides.length).toBe(1);
+    });
+  });
+
+  it('filters by petFriendly and roundTrip', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.ridePetFriendly = true;
+    rideList.rideRoundTrip = true;
+    rideList.refreshRides().subscribe(() => {
+      expect(rideList.filteredRides.length).toBe(2);
+    });
+  });
+
   it('filters by origin, destination, isDriving, nonSmoking, and roundTrip', () => {
     expect(rideList.filteredRides.length).toBe(3);
     rideList.rideOrigin = 'UMM';
@@ -415,6 +463,20 @@ describe('Ride list', () => {
     rideList.rideDriving = true;
     rideList.rideNonSmoking = true;
     rideList.rideRoundTrip = true;
+    rideList.refreshRides().subscribe(() => {
+      expect(rideList.filteredRides.length).toBe(1);
+    });
+  });
+
+  it('filters by origin, destination, isDriving, nonSmoking, roundTrip, petFriendly, and eco', () => {
+    expect(rideList.filteredRides.length).toBe(3);
+    rideList.rideOrigin = 'UMM';
+    rideList.rideDestination = 'w';
+    rideList.rideDriving = true;
+    rideList.rideNonSmoking = true;
+    rideList.rideRoundTrip = true;
+    rideList.ridePetFriendly = true;
+    rideList.rideEco = true;
     rideList.refreshRides().subscribe(() => {
       expect(rideList.filteredRides.length).toBe(1);
     });

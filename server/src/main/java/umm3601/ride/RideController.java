@@ -107,7 +107,7 @@ public class RideController {
     return DatabaseHelper.serializeIterable(matchingRides);
   }
 
-  public String addNewRide(String user, String userId, String notes, int seatsAvailable, String origin, String destination,
+  public String addNewRide(String user, String userId, String notes, int seatsAvailable, Object origin, Object destination,
                            String departureDate, String departureTime, boolean isDriving, boolean roundTrip, boolean nonSmoking, boolean eco, boolean petFriendly) {
 
     // See methods at bottom of RideController
@@ -166,7 +166,7 @@ public class RideController {
     }
   }
 
-  boolean editRide(String id, String notes, int seatsAvailable, String origin, String destination,
+  boolean editRide(String id, String notes, int seatsAvailable, Object origin, Object destination,
                    String departureDate, String departureTime, Boolean isDriving, Boolean roundTrip, Boolean nonSmoking, Boolean eco, Boolean petFriendly)
   {
 

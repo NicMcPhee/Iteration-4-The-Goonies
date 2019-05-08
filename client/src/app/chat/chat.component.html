@@ -1,14 +1,41 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Click To View Chat
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+<!--<mat-expansion-panel>-->
+  <!--<mat-expansion-panel-header>-->
+    <!--<mat-panel-title>-->
+      <!--Click To View Chat-->
+    <!--</mat-panel-title>-->
+  <!--</mat-expansion-panel-header>-->
+  <!-- refresh chat button, if I had more time, maybe it's possible to automatically refresh -->
+<button (click)="refreshChats()" type="button" class="refresh-chat">Refresh Chats</button>
+
+  <!-- displaying chats is below-->
+  <!--<div *ngIf="true; else chatListError">-->
+    <!--<mat-card #elem class="chatList"-->
+              <!--*ngFor="let chats of chats"-->
+              <!--[id] = "chats.rideID">-->
+
+    <!--</mat-card>-->
+  <!--</div>-->
+
+<li *ngFor="let chatList of chats">
+  {{ chatList.rideID }}
+    {{ chatList.chatArray}}
+</li>
+
+
   <!-- text entry for the chat is below-->
-  <form id="chat-message-entry" class="chat-class0"[formGroup]="chatFormGroup">
+  <form id="chat-message-entry" class="chat-class0" [formGroup]="chatFormGroup">
       <mat-form-field>
       <textarea matInput formControlName="enteredMessage" placeholder="Enter Message" class="textEntryClass" id="textEntry" required></textarea>
       </mat-form-field>
       <button (click)="sendChat()" type="button" class="send-button" >Send</button>
   </form>
-</mat-expansion-panel>
+<!--</mat-expansion-panel>-->
+
+
+
+<ng-template #chatListError>
+  <mat-error>
+    There was a problem loading chats for this ride. Possibly the server is down or perhaps there are network
+    issues.
+  </mat-error>
+</ng-template>

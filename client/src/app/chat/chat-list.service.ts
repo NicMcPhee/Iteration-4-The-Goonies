@@ -28,6 +28,8 @@ export class ChatListService {
   }
 
   getChats(): Observable<ChatList[]> {
+    console.log("this is the envirpnment api url" + environment.API_URL);
+    console.log(this.chatUrl);
     return this.http.get<ChatList[]>(this.chatUrl);
   }
 
@@ -45,7 +47,7 @@ export class ChatListService {
 
     // Send post request to add a new user with the user data as the body with specified headers.
 
-    console.log("this is newchat:" + newChat);
+    console.log("this is newchat:" + JSON.stringify(newChat));
     return this.http.post<string>(this.chatUrl + '/new', newChat, httpOptions)
       .pipe(
         tap(() => {

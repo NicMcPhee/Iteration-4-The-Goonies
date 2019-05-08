@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {DeleteRideComponent} from "./delete-ride.component";
 import {joinRideObject} from "./joinRideObject";
+import {ChatComponent} from "../chat/chat.component";
 
 @Component({
   selector: 'ride-list-component',
@@ -320,4 +321,15 @@ export class RideListComponent implements OnInit {
       return "Passengers: " + passengerNames;
     }
   }
+
+  openChat(rideId: string): void {
+    const dialogRef = this.dialog.open(ChatComponent, <MatDialogConfig>{
+      width: '1000px',
+      height: '600px',
+      maxWidth: '1200vw',
+      maxHeight: '800vh',
+    });
+    dialogRef.componentInstance.rideIDpassed = rideId;
+  }
+
 }

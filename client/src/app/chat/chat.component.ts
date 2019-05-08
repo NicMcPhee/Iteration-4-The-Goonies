@@ -28,40 +28,50 @@ export class ChatComponent implements OnInit {
     enteredMessage: new FormControl()
   });
 
-  public chats: ChatList[];
-
   private highlightedID: string = '';
 
   public currUserFullName = localStorage.getItem("userFullName");
 
-  public rideIDcomponent: "test string";
+  public rideIDpassed: string;
   public author: string;
   public content: string;
   public date: string;
   public chatArrayComponent;
 
   public newChatList: ChatList;
+  public messageContent: string;
 
-  public testy = document.getElementsByClassName("chat-class0")[0];
+  public chats: ChatList[];
+  public filteredChats;
+
+  public test0 = document.getElementsByClassName("chat-class0")[0];
 
 
   constructor(public ChatListService: ChatListService,
               public snackBar: MatSnackBar) {
   }
 
+  ngOnInit(): void {
+    this.ChatListService.refreshNeeded$
+      .subscribe(() => {
+        this.refreshChats();
+      });
+    this.loadService();
+  }
+
   sendChat() {
     const rawContent = this.chatFormGroup.getRawValue();
-    const messageContent = rawContent.enteredMessage;
+    this.messageContent = rawContent.enteredMessage;
 
-    if (messageContent != null) {
+    if (this.messageContent != null) {
       //I have a double if statement here because I'm handling some basic form validators here, and I dont want to call "length" on a non-string and get an error
-      if (messageContent.length != 0) {
+      if (this.messageContent.length != 0) {
         // let length;
 
         this.chatArrayComponent = [
         {
           author: this.currUserFullName,
-            content: messageContent,
+            content: this.messageContent,
           date: "this is a date",
         }
         ];
@@ -74,10 +84,13 @@ export class ChatComponent implements OnInit {
       // };
       //   length = this.chatArrayComponent.push(tempvar0);
       //   console.log("length:" + length.toString());
+        this.newChatList = {
+          rideID: this.rideIDpassed,
+          chatArray: this.chatArrayComponent
+        };
         console.log("chatarray:"+this.chatArrayComponent);
-        console.log(messageContent);
+        console.log(this.messageContent);
         console.log(this.currUserFullName);
-        console.log(this.testy);
         this.addChat();
       }else {
         console.log("your message was zero characters long")
@@ -88,21 +101,8 @@ export class ChatComponent implements OnInit {
   }
 
   addChat(): void {
-    this.newChatList = {
-      rideID: "fbj3890fyuh",
-      chatArray: [
-        {
-          author: this.currUserFullName,
-          content: "defefeeeeeee",
-          date: "this is a date",
-        }
-      ]
-    };
-
     console.log("COMPONENT: The new chat in newChatList() is " + JSON.stringify(this.newChatList));
-
     if (this.newChatList != null) {
-      console.log("this is right before add new chatlistservice" + this.newChatList.);
       this.ChatListService.addNewChat(this.newChatList).subscribe(
         result => {
           console.log("here it is:" + result);
@@ -118,7 +118,7 @@ export class ChatComponent implements OnInit {
 
       this.snackBar.open("Successfully Added A chat",'' , <MatSnackBarConfig>{duration: 5000,});
 
-      // this.refreshChats();
+      this.refreshChats();
     }
   };
 
@@ -140,8 +140,28 @@ export class ChatComponent implements OnInit {
     return chats;
   }
 
-  ngOnInit(){
-
+  loadService(): void {
+    this.ChatListService.getChats().subscribe(
+      chats0 => {
+        this.chats = chats0;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
+  public filterChat(): ChatList[] {
+    this.filteredChats = this.chats;
+
+    //This may not work correctly, beware of this
+    // Filter by rideID so that the chat for the current ride is only displayed
+    if (this.rideIDpassed != null) {
+      this.filteredChats = this.filteredChats.filter(chatList => {
+        return !this.rideIDpassed || chatList.rideID == this.rideIDpassed;
+      });
+    }
+
+    return this.filteredChats;
+  }
 }

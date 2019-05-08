@@ -284,9 +284,7 @@
             <div>{{ride.notes}}</div>
           </div>
 
-          <div>
-            <chat-component> you should not see this text</chat-component>
-          </div>
+          <button mat-button id="open-chat-button" (click)="openChat(ride._id.$oid)"><mat-icon>chat</mat-icon></button>
 
         </mat-card-content>
 

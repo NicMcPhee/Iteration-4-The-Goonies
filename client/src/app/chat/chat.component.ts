@@ -102,7 +102,7 @@ export class ChatComponent implements OnInit {
     console.log("COMPONENT: The new chat in newChatList() is " + JSON.stringify(this.newChatList));
 
     if (this.newChatList != null) {
-      console.log("this is right before add new chatlistservice" + this.newChatList.);
+      console.log("this is right before add new chatlistservice" + this.newChatList);
       this.ChatListService.addNewChat(this.newChatList).subscribe(
         result => {
           console.log("here it is:" + result);

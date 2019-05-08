@@ -41,7 +41,6 @@ import {MapsAutocomplete} from "./mapsAutocomplete/mapsAutocomplete.component";
 
 import * as Config from "./config.json";
 
-
 var api_Key = Config.API_KEY;
 
 @NgModule({

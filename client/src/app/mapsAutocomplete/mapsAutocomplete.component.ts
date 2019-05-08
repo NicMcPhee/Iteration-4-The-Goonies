@@ -31,8 +31,8 @@ export class MapsAutocomplete implements OnInit{
   ngOnInit(){
 
     //set google maps defaults
-    this.latitude = 45.5919;
-    this.longitude = -95.9189;
+    // this.latitude = 45.5919;
+    // this.longitude = -95.9189;
 
     //create search FormControl
     this.formGroup = this.fb.group({
@@ -47,12 +47,7 @@ export class MapsAutocomplete implements OnInit{
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          console.log(place);
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
+          this.placeResult.emit(autocomplete.getPlace());
         });
       });
     });

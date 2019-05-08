@@ -17,7 +17,7 @@ browser.driver.controlFlow().execute = function () {
   // If you're tired of it taking long you can remove this call or change the delay
   // to something smaller (even 0).
   origFn.call(browser.driver.controlFlow(), () => {
-    return protractor.promise.delayed(100);
+    return protractor.promise.delayed(1);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -159,7 +159,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("rideDestination").sendKeys("IA");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(6);
     });
   });
 
@@ -167,7 +167,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("rideOrigin").sendKeys("IA");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(3);
+      expect(rides.length).toBe(6);
     });
   });
 
@@ -175,7 +175,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.click("isDrivingButton");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(5);
+      expect(rides.length).toBe(13);
     });
   });
 
@@ -183,7 +183,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.click("isNotDrivingButton");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(11);
     });
   });
 
@@ -191,11 +191,11 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(5);
+      expect(rides.length).toBe(17);
     });
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(7);
+      expect(rides.length).toBe(24);
     });
   });
 
@@ -203,11 +203,35 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(3);
+      expect(rides.length).toBe(10);
     });
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(7);
+      expect(rides.length).toBe(24);
+    });
+  });
+
+  it('should toggle petFriendly checkbox to get rides', () => {
+    page.navigateTo();
+    page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly ON...
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(1);
+    });
+    page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly OFF...
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(24);
+    });
+  });
+
+  it('should toggle eco checkbox to get rides', () => {
+    page.navigateTo();
+    page.getElementById("checkboxEco").click(); // toggle eco ON...
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(11);
+    });
+    page.getElementById("checkboxEco").click(); // toggle eco OFF...
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(24);
     });
   });
 
@@ -219,27 +243,27 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
 
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(7);
+      expect(rides.length).toBe(24);
     });
 
     page.getElementById("rideOrigin").sendKeys("u");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(17);
     });
 
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking ON
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(4);
+      expect(rides.length).toBe(11);
     });
 
     page.getElementById("isNotDrivingButton").click();
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(7);
     });
 
     page.getElementById("rideDestination").sendKeys("w");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(3);
     });
 
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip ON
@@ -252,27 +276,27 @@ describe('Using filters on Ride Page', () => {
     page.getElementById("rideOrigin").click();
     page.backspace(1); // erases input in origin field
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(4);
     });
 
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking OFF
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(5);
     });
 
     page.getElementById("isDrivingButton").click();
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(5);
     });
 
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(5);
+      expect(rides.length).toBe(13);
     });
 
     page.getElementById("isNotDrivingButton").click(); // should give us our remaining two rides (requested)
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(11);
     });
   });
 
@@ -510,7 +534,7 @@ describe('Can delete a ride', () => {
     // Now we check to see if our ride still exists, and the ride list is same length of 7
     expect(page.getUniqueRide('Patton Vang')).toMatch('Patton Vang');
     page.getRides().then((rides) => {
-      expect(rides.length).toBe(7);
+      expect(rides.length).toBe(24);
     });
   });
 
@@ -522,7 +546,7 @@ describe('Can delete a ride', () => {
     // Now we make sure our ride no longer exists, and that ride list length has be decremented to 6
     expect(page.elementDoesNotExistWithId('Patton Vang')).toBeFalsy();
     page.getRides().then((rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(24);
     });
   });
 });

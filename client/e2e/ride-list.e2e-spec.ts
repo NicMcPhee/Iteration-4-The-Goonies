@@ -17,7 +17,7 @@ browser.driver.controlFlow().execute = function () {
   // If you're tired of it taking long you can remove this call or change the delay
   // to something smaller (even 0).
   origFn.call(browser.driver.controlFlow(), () => {
-    return protractor.promise.delayed(1);
+    return protractor.promise.delayed(20);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -290,6 +290,26 @@ describe('Using filters on Ride Page', () => {
     });
 
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(13);
+    });
+
+    page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly ON
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(1);
+    });
+
+    page.getElementById("checkboxEco").click(); // toggle eco ON
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(0);
+    });
+
+    page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly OFF
+    page.getRides().then( (rides) => {
+      expect(rides.length).toBe(6);
+    });
+
+    page.getElementById("checkboxEco").click(); // toggle eco OFF
     page.getRides().then( (rides) => {
       expect(rides.length).toBe(13);
     });

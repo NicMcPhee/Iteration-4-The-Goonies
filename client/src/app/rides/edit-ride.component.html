@@ -59,31 +59,39 @@
 
           <!--========================================================================================================-->
 
-          <mat-form-field>
-            <input class="inputRideInfo" matInput #input id="originField" placeholder="Origin"
-                   required [(ngModel)]="rideOrigin" formControlName="origin">
-            <mat-error *ngFor="let validation of this.validatorService.ride_validation_messages.origin">
-              <mat-error class="error-message"
-                         *ngIf="validatorService.rideForm.get('origin').hasError(validation.type) &&
-                       (validatorService.rideForm.get('origin').dirty || validatorService.rideForm.get('origin').touched)">
-                {{validation.message}}
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
+          <!--<mat-form-field>-->
+            <!--<input class="inputRideInfo" matInput #input id="originField" placeholder="Origin"-->
+                   <!--required [(ngModel)]="rideOrigin" formControlName="origin">-->
+            <!--<mat-error *ngFor="let validation of this.validatorService.ride_validation_messages.origin">-->
+              <!--<mat-error class="error-message"-->
+                         <!--*ngIf="validatorService.rideForm.get('origin').hasError(validation.type) &&-->
+                       <!--(validatorService.rideForm.get('origin').dirty || validatorService.rideForm.get('origin').touched)">-->
+                <!--{{validation.message}}-->
+              <!--</mat-error>-->
+            <!--</mat-error>-->
+          <!--</mat-form-field>-->
+
+          <maps-autocomplete class="inputRideInfo" matInput #input
+                             id="originField"
+                             (placeResult)="setRideOrigin($event)"></maps-autocomplete>
+
 
           <!--======================================================================================================-->
 
-          <mat-form-field>
-            <input class="inputRideInfo" matInput #input id="destinationField" placeholder="Destination"
-                   required [(ngModel)]="rideDestination" formControlName="destination">
-            <mat-error *ngFor="let validation of this.validatorService.ride_validation_messages.destination">
-              <mat-error class="error-message"
-                         *ngIf="validatorService.rideForm.get('destination').hasError(validation.type) &&
-                       (validatorService.rideForm.get('destination').dirty || validatorService.rideForm.get('destination').touched)">
-                {{validation.message}}
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
+          <!--<mat-form-field>-->
+            <!--<input class="inputRideInfo" matInput #input id="destinationField" placeholder="Destination"-->
+                   <!--required [(ngModel)]="rideDestination" formControlName="destination">-->
+            <!--<mat-error *ngFor="let validation of this.validatorService.ride_validation_messages.destination">-->
+              <!--<mat-error class="error-message"-->
+                         <!--*ngIf="validatorService.rideForm.get('destination').hasError(validation.type) &&-->
+                       <!--(validatorService.rideForm.get('destination').dirty || validatorService.rideForm.get('destination').touched)">-->
+                <!--{{validation.message}}-->
+              <!--</mat-error>-->
+            <!--</mat-error>-->
+          <!--</mat-form-field>-->
+
+          <maps-autocomplete class="inputRideInfo" matInput #input
+                             id="destinationField" (placeResult)="setRideDestination($event)"></maps-autocomplete>
 
           <br/>
 

@@ -1,25 +1,25 @@
-<!--<mat-expansion-panel>-->
-  <!--<mat-expansion-panel-header>-->
-    <!--<mat-panel-title>-->
-      <!--Click To View Chat-->
-    <!--</mat-panel-title>-->
-  <!--</mat-expansion-panel-header>-->
-  <!-- refresh chat button, if I had more time, maybe it's possible to automatically refresh -->
-<button (click)="refreshChats()" type="button" class="refresh-chat">Refresh Chats</button>
+<button class="exitChatButton" id="exitChat" mat-raised-button [mat-dialog-close]="null" type="button">Exit</button>
+<!-- refresh chat button, if I had more time, maybe it's possible to automatically refresh -->
+<button (click)="refreshChats()" class="refresh-chat" id="refreshChatButton" mat-raised-button type="button">Refresh Chats</button>
 
   <!-- displaying chats is below-->
-  <!--<div *ngIf="true; else chatListError">-->
-    <!--<mat-card #elem class="chatList"-->
-              <!--*ngFor="let chats of chats"-->
-              <!--[id] = "chats.rideID">-->
-
-    <!--</mat-card>-->
-  <!--</div>-->
-
-<li *ngFor="let chatList of chats">
-  {{ chatList.rideID }}
-    {{ chatList.chatArray}}
-</li>
+<div *ngFor="let chatList of chats">
+  <div *ngIf="chatList.rideID == rideIDpassed">
+    <div class="date">{{chatList.chatArray.slice(
+      (chatList.chatArray.indexOf(", date=")+7),
+      (chatList.chatArray.indexOf("&#125;"))
+      )}}</div>
+    <div class="userNameField" id="userNameField">{{chatList.chatArray.slice(
+    (chatList.chatArray.indexOf("author=")+7),
+    chatList.chatArray.indexOf(", content=")
+    )}}</div>
+    <div class="messageField" id="messageField">&#8209; {{ chatList.chatArray.slice(
+    (chatList.chatArray.indexOf("content=")+8),
+    chatList.chatArray.indexOf(", date=")
+      )}}</div>
+    <p></p>
+</div>
+</div>
 
 
   <!-- text entry for the chat is below-->

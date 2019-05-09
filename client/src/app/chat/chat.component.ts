@@ -41,10 +41,10 @@ export class ChatComponent implements OnInit {
   public newChatList: ChatList;
   public messageContent: string;
 
+  public currDate;
+
   public chats: ChatList[];
   public filteredChats;
-
-  public test0 = document.getElementsByClassName("chat-class0")[0];
 
 
   constructor(public ChatListService: ChatListService,
@@ -61,36 +61,35 @@ export class ChatComponent implements OnInit {
 
   sendChat() {
     const rawContent = this.chatFormGroup.getRawValue();
+    this.chatFormGroup.reset();
     this.messageContent = rawContent.enteredMessage;
 
     if (this.messageContent != null) {
-      //I have a double if statement here because I'm handling some basic form validators here, and I dont want to call "length" on a non-string and get an error
+      //I have a double if statement here because I'm handling some basic form validators here, and I don't want to call "length" on a non-string and get an error
       if (this.messageContent.length != 0) {
-        // let length;
+
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
+        this.currDate = dateTime;
+
 
         this.chatArrayComponent = [
         {
           author: this.currUserFullName,
             content: this.messageContent,
-          date: "this is a date",
+          date: this.currDate,
         }
         ];
-        //the following method .push() needs to be used at some point, but for arrays the first data point specifically has to be
-        //initialized with a =, instead of push so this is very complicated
-      //   const tempvar0 =  {
-      //     author: this.currUserFullName,
-      //   content: messageContent,
-      //   date: "this is a date",
-      // };
-      //   length = this.chatArrayComponent.push(tempvar0);
-      //   console.log("length:" + length.toString());
+
         this.newChatList = {
           rideID: this.rideIDpassed,
           chatArray: this.chatArrayComponent
         };
-        console.log("chatarray:"+this.chatArrayComponent);
-        console.log(this.messageContent);
-        console.log(this.currUserFullName);
+        // console.log("chatarray:"+this.chatArrayComponent);
+        // console.log(this.messageContent);
+        // console.log(this.currUserFullName);
         this.addChat();
       }else {
         console.log("your message was zero characters long")
@@ -132,7 +131,7 @@ export class ChatComponent implements OnInit {
     chats.subscribe(
       chats => {
         this.chats = chats;
-        console.log(" These are the chats getChats got back after addChat called Refresh chat " + JSON.stringify(this.chats));
+        //console.log(" These are the chats getChats got back after addChat called Refresh chat " + JSON.stringify(this.chats));
       },
       err => {
         console.log(err);

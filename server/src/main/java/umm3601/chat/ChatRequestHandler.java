@@ -62,12 +62,12 @@ public class ChatRequestHandler {
   public String addNewChat(Request req, Response res) {
     res.type("application/json");
 
-    System.out.println("this is the body in addnewchat in request handler" + req.body());
+    //System.out.println("this is the body in addnewchat in request handler" + req.body());
 
     Document newChat = Document.parse(req.body());
 
     String rideID = newChat.getString("rideID");
-    System.out.println("this is rideID currently" + rideID);
+    //System.out.println("this is rideID currently" + rideID);
     Object chatArray = newChat.get("chatArray");
 
     return chatController.addNewChat(rideID, chatArray);

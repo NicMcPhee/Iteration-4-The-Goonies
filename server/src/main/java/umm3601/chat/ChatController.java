@@ -46,7 +46,7 @@ public class ChatController {
 
     //calling .find() with no parameters in between the parentheses, returns all the data in the collection - helpful tip to anyone wondering what's going on here
     FindIterable<Document> matchingChats = chatCollection.find();
-    //System.out.println(DatabaseHelper.serializeIterable(matchingChats));
+    //System.out.println("databasehelper line" + DatabaseHelper.serializeIterable(matchingChats));
 
     return DatabaseHelper.serializeIterable(matchingChats);
   }
@@ -56,7 +56,7 @@ public class ChatController {
     Document newChat = new Document();
     newChat.append("rideID", rideID);
     newChat.append("chatArray", chatArray.toString());
-    System.out.println("newchat after appends " + newChat.getString("chatArray"));
+    //System.out.println("newchat after appends " + newChat.getString("chatArray"));
 
     try {
       chatCollection.insertOne(newChat);

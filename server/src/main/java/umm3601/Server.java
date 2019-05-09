@@ -1,27 +1,31 @@
 package umm3601;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import org.json.JSONObject;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 import spark.utils.IOUtils;
-import umm3601.user.UserController;
-import umm3601.user.UserRequestHandler;
 import umm3601.ride.RideController;
 import umm3601.ride.RideRequestHandler;
-
-import static spark.Spark.*;
-import static spark.debug.DebugScreen.enableDebugScreen;
+import umm3601.user.UserController;
+import umm3601.user.UserRequestHandler;
+import umm3601.chat.ChatController;
+import umm3601.chat.ChatRequestHandler;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStream;
 
-import com.google.api.client.googleapis.auth.oauth2.*;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import org.json.*;
+import static spark.Spark.*;
+import static spark.debug.DebugScreen.enableDebugScreen;
 
 public class Server {
   private static final String databaseName = "dev";
@@ -35,9 +39,11 @@ public class Server {
 
     UserController userController = new UserController(database);
     RideController rideController = new RideController(database);
+    ChatController chatController = new ChatController(database);
 
     UserRequestHandler userRequestHandler = new UserRequestHandler(userController);
     RideRequestHandler rideRequestHandler = new RideRequestHandler(rideController);
+    ChatRequestHandler chatRequestHandler = new ChatRequestHandler(chatController);
 
     //Configure Spark
     port(serverPort);
@@ -84,6 +90,10 @@ public class Server {
     // USER ENDPOINTS
     get("api/user/:id",userRequestHandler::getUserJSON);
     post("api/user/saveProfile", userRequestHandler:: saveProfile);
+
+    // CHAT ENPOINTS?
+    get("api/chat",chatRequestHandler::getChats);
+    post("api/chat/new", chatRequestHandler::addNewChat);
 
     // An example of throwing an unhandled exception so you can see how the
     // Java Spark debugger displays errors like this.

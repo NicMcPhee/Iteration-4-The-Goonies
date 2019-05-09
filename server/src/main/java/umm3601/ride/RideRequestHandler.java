@@ -4,8 +4,6 @@ import org.bson.Document;
 import spark.Request;
 import spark.Response;
 
-import java.util.List;
-
 public class RideRequestHandler {
 
   private final RideController rideController;
@@ -24,6 +22,7 @@ public class RideRequestHandler {
    */
   public String getRides(Request req, Response res) {
     res.type("application/json");
+    System.out.println("this is riderequest body" + req.body());
     return rideController.getRides(req.queryMap().toMap());
   }
 

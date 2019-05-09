@@ -2,6 +2,8 @@
 <!-- refresh chat button, if I had more time, maybe it's possible to automatically refresh -->
 <button (click)="refreshChats()" class="refresh-chat" id="refreshChatButton" mat-raised-button type="button">Refresh Chats</button>
 
+<p></p>
+
   <!-- displaying chats is below-->
 <div *ngFor="let chatList of chats">
   <div *ngIf="chatList.rideID == rideIDpassed">
@@ -24,10 +26,10 @@
 
   <!-- text entry for the chat is below-->
   <form id="chat-message-entry" class="chat-class0" [formGroup]="chatFormGroup">
-      <mat-form-field>
+      <mat-form-field id="messageSendField">
       <textarea matInput formControlName="enteredMessage" placeholder="Enter Message" class="textEntryClass" id="textEntry" required></textarea>
       </mat-form-field>
-      <button (click)="sendChat()" type="button" class="send-button" >Send</button>
+      <button (click)="sendChat()" type="button" class="send-button" id="send-button">Send</button>
   </form>
 <!--</mat-expansion-panel>-->
 

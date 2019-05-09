@@ -17,7 +17,6 @@ export const routes: Routes = [
   {path: 'addride', component: AddRideComponent,canActivate: [AppAuthGuard]},
   {path: 'editride', component: EditRideComponent,canActivate: [AppAuthGuard]},
   {path: 'claimride', component: ClaimRideComponent,canActivate: [AppAuthGuard]},
-  {path: 'profile/:id', component: ProfileComponent, canActivate: [AppAuthGuard]}
   {path: 'profile/:id', component: ProfileComponent, canActivate: [AppAuthGuard]},
   {path: 'chat', component: ChatComponent, canActivate: [AppAuthGuard]}
 ];

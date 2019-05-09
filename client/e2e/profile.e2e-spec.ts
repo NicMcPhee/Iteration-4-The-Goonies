@@ -45,10 +45,9 @@ describe('create and populate a profile page for user', () => {
       expect(page.getTextFromField("profilePhone")).toEqual("Phone: (981) 461-3498");
     });
 
-    // Way pictures were displayed was changed
-    // it('find the user\'s pic', () =>{
-    //   expect(page.elementExistsWithId("https://picsum.photos/200/300/?random")).toBe(true);
-    // });
+    it('find the user\'s pic', () =>{
+      expect(page.elementExistsWithId("https://picsum.photos/94/94/?random")).toBe(true);
+    });
 
     it('Should find Upcoming Ride Card Title', () =>{
       expect(page.elementExistsWithId("upcomingRidesTitle")).toBe(true);

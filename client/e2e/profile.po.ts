@@ -13,7 +13,7 @@ export class ProfilePage {
       element.setAttribute('style', style);
       setTimeout(() => {
         element.setAttribute('style', previous);
-      }, 200);
+      }, 100);
       return 'highlighted';
     }
 

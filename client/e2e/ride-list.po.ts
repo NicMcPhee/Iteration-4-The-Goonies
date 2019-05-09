@@ -13,7 +13,7 @@ export class RidePage {
       element.setAttribute('style', style);
       setTimeout(() => {
         element.setAttribute('style', previous);
-      }, 200);
+      }, 10);
       return 'highlighted';
     }
 

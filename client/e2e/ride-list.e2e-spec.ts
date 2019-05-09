@@ -260,7 +260,7 @@ describe('Using filters on Ride Page', () => {
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF...
     page.getRides().then( (rides) => {
       expect(rides.length).toBe(22);
-      expect(rides.length).toBe(24);
+      expect(rides.length).toBe(22);
     });
   });
 
@@ -268,11 +268,11 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(10);
     });
     page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(24);
+      expect(rides.length).toBe(22);
     });
   });
 
@@ -284,7 +284,7 @@ describe('Using filters on Ride Page', () => {
     });
     page.getElementById("checkboxEco").click(); // toggle eco OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(24);
+      expect(rides.length).toBe(22);
     });
   });
 
@@ -345,22 +345,21 @@ describe('Using filters on Ride Page', () => {
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF
     page.getRides().then( (rides) => {
       expect(rides.length).toBe(13);
-      expect(rides.length).toBe(13);
     });
 
     page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly ON
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(5);
     });
 
     page.getElementById("checkboxEco").click(); // toggle eco ON
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(0);
+      expect(rides.length).toBe(4);
     });
 
     page.getElementById("checkboxPetFriendly").click(); // toggle petFriendly OFF
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(7);
     });
 
     page.getElementById("checkboxEco").click(); // toggle eco OFF

@@ -7,9 +7,9 @@
   [disableDefaultUI]="true"
   [zoomControl]="false"
   [gestureHandling]="'greedy'">
-  <agm-marker
-    [latitude]="latitude"
-    [longitude]="longitude"
-    [label]="label">
+  <agm-marker *ngFor="let m of filledMarkers()"
+              [latitude]="m.latitude"
+              [longitude]="m.longitude"
+              [label]="m.label">
   </agm-marker>
 </agm-map>

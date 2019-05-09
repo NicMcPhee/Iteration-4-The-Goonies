@@ -14,6 +14,8 @@
     "isDriving": true,
     "roundTrip": true,
     "nonSmoking": false,
+    "eco": false,
+    "petFriendly": true,
     "passengerIds": [],
     "passengerNames": []
   },
@@ -33,6 +35,8 @@
     "isDriving": true,
     "roundTrip": false,
     "nonSmoking": true,
+    "eco": false,
+    "petFriendly": false,
     "passengerIds": [],
     "passengerNames": []
   },
@@ -52,6 +56,8 @@
     "isDriving": false,
     "roundTrip": false,
     "nonSmoking": true,
+    "eco": false,
+    "petFriendly": false,
     "passengerIds": [],
     "passengerNames": []
   },

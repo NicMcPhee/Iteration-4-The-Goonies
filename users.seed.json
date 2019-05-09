@@ -62,5 +62,15 @@
     "lastName": "Cahl",
     "firstName": "Dolt",
     "phone": "(110) 692-2526"
+  },
+  {
+    "userId": "832471086850197300001",
+    "email": "notaCblog@morris.umn.edu",
+    "fullName": "Dennis Ritchie",
+    "pictureUrl": "https://picsum.photos/94/94/?random",
+    "lastName": "Ritchie",
+    "firstName": "Dennis",
+    "phone": "(218) 495-3333"
   }
+
 ]

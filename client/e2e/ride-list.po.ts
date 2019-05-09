@@ -95,6 +95,11 @@ export class RidePage {
     return element(by.id(id)).element(by.id("join-ride-button"))
   }
 
+  getClaimRideButtonFromUser(id: string) {
+    return element(by.id(id)).element(by.id("claim-ride-button"))
+  }
+
+
   getElementsByCss(css: string) {
     return element.all(by.css(css));
   }

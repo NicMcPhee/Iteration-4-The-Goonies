@@ -211,7 +211,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("rideDestination").sendKeys("IA");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(5);
     });
   });
 
@@ -219,7 +219,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("rideOrigin").sendKeys("IA");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(4);
+      expect(rides.length).toBe(8);
     });
   });
 
@@ -227,7 +227,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.click("isDrivingButton");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(13);
     });
   });
 
@@ -235,7 +235,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.click("isNotDrivingButton");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(3);
+      expect(rides.length).toBe(9);
     });
   });
 
@@ -243,11 +243,11 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(12);
     });
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(9);
+      expect(rides.length).toBe(22);
     });
   });
 
@@ -255,11 +255,11 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(3);
+      expect(rides.length).toBe(11);
     });
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(9);
+      expect(rides.length).toBe(22);
     });
   });
 
@@ -271,17 +271,17 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
 
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(9);
+      expect(rides.length).toBe(22);
     });
 
     page.getElementById("rideOrigin").sendKeys("u");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(7);
+      expect(rides.length).toBe(14);
     });
 
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking ON
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(5);
+      expect(rides.length).toBe(8);
     });
 
     page.getElementById("isNotDrivingButton").click();
@@ -304,27 +304,27 @@ describe('Using filters on Ride Page', () => {
     page.getElementById("rideOrigin").click();
     page.backspace(1); // erases input in origin field
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(2);
     });
 
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking OFF
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(1);
+      expect(rides.length).toBe(6);
     });
 
     page.getElementById("isDrivingButton").click();
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(2);
+      expect(rides.length).toBe(5);
     });
 
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(13);
     });
 
     page.getElementById("isNotDrivingButton").click(); // should give us our remaining two rides (requested)
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(3);
+      expect(rides.length).toBe(9);
     });
   });
 
@@ -334,7 +334,7 @@ describe('Ride list', () => {
   let page: RidePage;
 
   beforeEach(() => {
-    page = new RidePage()
+    page = new RidePage();
     browser.executeScript("window.localStorage.setItem('isSignedIn','true')");
   });
 
@@ -393,9 +393,6 @@ describe("Joining rides", () => {
     // Refresh page...
     page.navigateTo();
 
-    // Now the ride should change in a couple ways.
-    // First, there should now be a message on the ride card that indicates the user is currently in the ride.
-    expect(page.getUniqueRide('Shelby Present')).toMatch('You are already part of this ride.');
 
     // Second, there should now be a passengers message with the current user's name
     expect(page.getUniqueRide('Shelby Present')).toMatch('Passengers: Patton Vang');
@@ -420,10 +417,8 @@ describe("Joining rides", () => {
     expect(page.getUniqueRide('Herminia Ross')).toMatch('Passengers: James Bond');
 
     // Make sure it has 0 seats available...
-    expect(page.getUniqueRide('Herminia Ross')).toMatch('0 SEATS LEFT');
+    expect(page.getUniqueRide('Herminia Ross')).toMatch('0 / 8 SEATS LEFT');
 
-    // Finally make sure a message indicates the ride is full...
-    expect(page.getUniqueRide('Herminia Ross')).toMatch('This ride is full.');
 
   })
 });
@@ -547,7 +542,7 @@ describe('Can delete a ride', () => {
     // Now we check to see if our ride still exists, and the ride list is same length of 7
     expect(page.getUniqueRide('Patton Vang')).toMatch('Patton Vang');
     page.getRides().then((rides) => {
-      expect(rides.length).toBe(9);
+      expect(rides.length).toBe(22);
     });
   });
 

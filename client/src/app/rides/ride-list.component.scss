@@ -47,10 +47,33 @@
   display: inline-block;
   padding: 4px 6px;
   margin-top: 8px;
-  border-radius: 2px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
   background-color: #fff;
   color: #000;
   font-weight: bold;
+}
+
+.Above80p {
+  background-color: green;
+}
+
+.Above60p{
+  background-color: yellowgreen;
+}
+
+.Above40p {
+  background-color: yellow;
+}
+
+.Above20p {
+  background-color: orange;
+}
+
+.None {
+  background-color: red;
 }
 
 .departure-time {

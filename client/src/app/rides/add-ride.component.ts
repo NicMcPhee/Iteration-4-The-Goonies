@@ -23,6 +23,7 @@ export class AddRideComponent implements OnInit {
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
   public rideSeats: number;
+  public rideTotalSeats: number;
   public rideOrigin: string;
   public rideDestination: string;
   public rideDepartureDate: string;
@@ -109,6 +110,7 @@ export class AddRideComponent implements OnInit {
   //   Also, ride-list component HTML won't display this number unless it is indeed a User that is driving.
   setRideSeats() {
     this.rideSeats = 1;
+    this.rideTotalSeats = 1;
   }
 
 

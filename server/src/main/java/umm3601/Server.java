@@ -29,7 +29,7 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 
 public class Server {
   private static final String databaseName = "dev";
-  private static final int serverPort = 80;
+  private static final int serverPort = 4567;
 
   public static void main(String[] args) {
 
@@ -91,7 +91,7 @@ public class Server {
     get("api/user/:id",userRequestHandler::getUserJSON);
     post("api/user/saveProfile", userRequestHandler:: saveProfile);
 
-    // CHAT ENPOINTS?
+    // CHAT ENPOINTS
     get("api/chat",chatRequestHandler::getChats);
     post("api/chat/new", chatRequestHandler::addNewChat);
 

@@ -5,7 +5,10 @@
 }
 
 #userNameField {display:inline-block;margin-right:5px;}
-#messageField {display:inline-block;}
+#messageField {
+  display:inline-block;
+  overflow-wrap: normal;
+}
 
 #refreshChatButton {
   padding: 1.2em;
@@ -13,4 +16,13 @@
 
 #exitChat {
   padding: 1.2em;
+}
+
+#send-button {
+  padding: 1.2em
+}
+
+#messageSendField {
+  width: 20em;
+  overflow-wrap: normal;
 }

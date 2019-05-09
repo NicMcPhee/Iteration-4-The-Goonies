@@ -72,8 +72,8 @@
           <!--</mat-form-field>-->
 
           <maps-autocomplete class="inputRideInfo" matInput #input
-                             id="originField"
-                             (placeResult)="setRideOrigin($event)"></maps-autocomplete>
+                             id="originField" (placeResult)="setRideOrigin($event)"
+                             searchPlaceholder="Enter starting location"></maps-autocomplete>
 
 
           <!--======================================================================================================-->
@@ -91,7 +91,10 @@
           <!--</mat-form-field>-->
 
           <maps-autocomplete class="inputRideInfo" matInput #input
-                             id="destinationField" (placeResult)="setRideDestination($event)"></maps-autocomplete>
+                             id="destinationField" (placeResult)="setRideDestination($event)"
+                             searchPlaceholder="Enter destination location"></maps-autocomplete>
+
+          <maps-component [mapHeightVH]="30" [markers]="markers"></maps-component>
 
           <br/>
 

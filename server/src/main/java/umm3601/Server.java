@@ -20,6 +20,7 @@ import umm3601.user.UserRequestHandler;
 import umm3601.chat.ChatController;
 import umm3601.chat.ChatRequestHandler;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.InputStream;
 
@@ -28,7 +29,7 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 
 public class Server {
   private static final String databaseName = "dev";
-  private static final int serverPort = 4567;
+  private static final int serverPort = 80;
 
   public static void main(String[] args) {
 
@@ -105,15 +106,15 @@ public class Server {
       JSONObject obj = new JSONObject(req.body());
       String authCode = obj.getString("code");
 
-      try {
-
-        String CLIENT_SECRET_FILE = "./src/main/java/umm3601/server_files/credentials.json";
-
+ try {
+        File file = new File("./Iteration-4-The-Goonies/server/src/main/java/umm3601/server_files/credentials.json");
+        String path = file.getAbsolutePath();
+        System.out.println("The path: "+ path);
+        String CLIENT_SECRET_FILE = path;
 
         GoogleClientSecrets clientSecrets =
           GoogleClientSecrets.load(
             JacksonFactory.getDefaultInstance(), new FileReader(CLIENT_SECRET_FILE));
-
 
         GoogleTokenResponse tokenResponse =
           new GoogleAuthorizationCodeTokenRequest(
@@ -125,7 +126,7 @@ public class Server {
             // Replace clientSecret with the localhost one if testing
             clientSecrets.getDetails().getClientSecret(),
             authCode,
-            "http://localhost:9000")
+            "https://morider.me")
             //Not sure if we have a redirectUri
 
             // Specify the same redirect URI that you use with your web

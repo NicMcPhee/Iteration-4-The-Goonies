@@ -26,6 +26,7 @@ describe ('User Service: ',() =>{
       userId: "342389477594424000000",
       notes: "Occaecat reprehenderit do exercitation laborum. Dolore culpa ut veniam ipsum fugiat voluptate excepteur labore laborum ad Lorem sint aute.",
       seatsAvailable: 1,
+      seatsTotal: 3,
       origin: "8631 Hudson Avenue, Crayne, IA 98438",
       destination: "1660 Judge Street, Winston, SD 44478",
       departureDate: "2019-05-11T05:00:00.000Z",

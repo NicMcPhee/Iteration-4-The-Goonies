@@ -14,10 +14,13 @@ export class AppService {
 
   initClient() {
     gapi.client.init({
-      'clientId': '121498793046-vuuo0thmp21gmnskaei3330bq50ni6s7.apps.googleusercontent.com',
+      'clientId': '391223619243-0his18u55fhp9pupjgdfg7a1lr9qnckh.apps.googleusercontent.com',
       'scope': 'profile email'
     });
   }
+
+  // 'clientId': '121498793046-vuuo0thmp21gmnskaei3330bq50ni6s7.apps.googleusercontent.com',
+
 
   handleClientLoad() {
     gapi.load('client:auth2', this.initClient);

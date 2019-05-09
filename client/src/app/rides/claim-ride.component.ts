@@ -6,12 +6,11 @@ import {ValidatorService} from "../validator.service";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
 
 @Component({
-  selector: 'add-ride.component',
-  templateUrl: 'add-ride.component.html',
-  styleUrls: ['./add-ride.component.scss'],
+  selector: 'claim-ride.component',
+  templateUrl: 'claim-ride.component.html',
 })
 
-export class AddRideComponent implements OnInit {
+export class ClaimRideComponent implements OnInit {
   minDate = new Date();
 
   public rides: Ride[];
@@ -19,11 +18,12 @@ export class AddRideComponent implements OnInit {
   private highlightedID: string = '';
 
   // public rideUser: string;
+
+
   public rideUser = localStorage.getItem("userFullName");
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
   public rideSeats: number;
-  public rideTotalSeats: number;
   public rideOrigin: string;
   public rideDestination: string;
   public rideDepartureDate: string;
@@ -35,7 +35,7 @@ export class AddRideComponent implements OnInit {
   public rideRoundTrip: boolean = false;
   public rideNonSmoking: boolean = false;
   public rideEco: boolean = false;
-  public ridePetFriendly: boolean = false;
+  public ridePetFriendly = false;
 
 
   // Inject the RideListService into this component.
@@ -44,7 +44,7 @@ export class AddRideComponent implements OnInit {
               public snackBar: MatSnackBar) {
   }
 
-  addRide(): void {
+  claimRide(): void {
     const newRide: Ride = {
       _id: '',
       user: this.rideUser,
@@ -60,12 +60,14 @@ export class AddRideComponent implements OnInit {
       isDriving: this.rideDriving,
       nonSmoking: this.rideNonSmoking,
       eco: this.rideEco,
-      petFriendly: this.ridePetFriendly
+      petFriendly: this.ridePetFriendly,
+
     };
 
     console.log("COMPONENT: The new Ride in addRide() is " + JSON.stringify(newRide));
 
     if (newRide != null) {
+      console.log("Is the subscribe the problem??");
       this.rideListService.addNewRide(newRide).subscribe(
         result => {
           console.log("here it is:" + result);
@@ -107,14 +109,31 @@ export class AddRideComponent implements OnInit {
   //   This is so that form validator doesn't get mad for having an invalid 'rideSeats' value.
   //   Before adding the ride to the DB, the value gets set to 0 (by the ride controller).
   //   Also, ride-list component HTML won't display this number unless it is indeed a User that is driving.
-  setRideSeats(): void {
+  setRideSeats() {
     this.rideSeats = 1;
-    this.rideTotalSeats = 1;
   }
+
+  setRideFields() {
+    this.rideOrigin = this.rideListService.singleRide.origin;
+    this.rideDestination = this.rideListService.singleRide.destination;
+    this.rideDepartureDate = this.rideListService.singleRide.departureDate;
+    this.rideDepartureTime = this.rideListService.singleRide.departureTime;
+    this.rideNonSmoking = this.rideListService.singleRide.nonSmoking;
+    this.rideRoundTrip = this.rideListService.singleRide.roundTrip;
+    this.rideEco = this.rideListService.singleRide.eco;
+    this.ridePetFriendly = this.rideListService.singleRide.petFriendly;
+
+
+    this.rideNotes = "This ride created for " + this.rideListService.singleRide.user + ".";
+  }
+
+
 
 
   ngOnInit() {
     this.validatorService.createForm();
+    this.setRideFields();
+
   }
 
 

@@ -1,0 +1,33 @@
+Website:
+https://next.json-generator.com
+
+Link to User Generator Code:
+https://next.json-generator.com/4J1WRAtKL
+
+
+CODE
+--------------------------------------------------------------------------------------------
+[
+  '{{repeat(30)}}',
+  {
+    _id: {
+      $oid: '{{objectId()}}'
+    },
+    user: '{{firstName()}} {{surname()}}',
+    userID: '"{{integer([1000000000000000000000])}}"',
+    notes: '{{lorem([3])}}',
+    seatsAvailable: '{{integer([1], [9])}}',
+    seatsTotal: '{{integer([9], [12])}}',
+    origin: '{{street()}},{{city()}},{{state()}},{{integer([10000],[99999])}}',
+    destination: "{{random('Willies', 'Alexandria', 'Duluth', 'Maplegrove', 'Family Dollar', 'St.Paul')}}",
+    departureDate: '2019-0{{integer([01],[9])}}-{{integer([01],[30])}}T05:00:00.000Z',
+    departureTime: '{{integer([01],[24])}}:{{integer([01],[59])}}',
+    isDriving: '{{bool()}}',
+    roundTrip: '{{bool()}}',
+    nonSmoking: '{{bool()}}',
+    petFriendly: '{{bool()}}',
+    eco: '{{bool()}}',
+    passengerIds: [],
+    passengerNames: []
+  }
+]

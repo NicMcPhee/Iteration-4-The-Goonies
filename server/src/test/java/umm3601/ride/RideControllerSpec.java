@@ -150,7 +150,7 @@ public class RideControllerSpec {
   public void addRide(){
 
     String newId = rideController.addNewRide("Dave Roberts", "005","I talk a lot about math",
-      2, "Shopko", "UMM Science Building Parking Lot", "5/13/19","5PM",
+      2, 4, "Shopko", "UMM Science Building Parking Lot", "5/13/19","5PM",
       false,true,true, true, true);
 
     // NOTE: While there are 2 seats for this 'requested ride', the controller SHOULD change it to 0
@@ -180,7 +180,7 @@ public class RideControllerSpec {
     // rides to having 0 sets available.
 
 
-    String newId = rideController.addNewRide("Nate Foss", "006","Good morning! How are you? ...Good.", 1, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
+    String newId = rideController.addNewRide("Nate Foss", "006","Good morning! How are you? ...Good.", 1, 2, "Morris", "232 Alton Drive Miami, FL", "5/13/19", "5PM",
       false, true,true, true, true);
 
     Map<String, String[]> emptyMap = new HashMap<>();
@@ -223,7 +223,7 @@ public class RideControllerSpec {
 
     // Since rideController.editRide() returns true when a ride was modified, we should store the boolean
     // and test it later. First we store it...
-    Boolean someRideWasModified = rideController.editRide(ellisRideIdToString, "", 1,
+    Boolean someRideWasModified = rideController.editRide(ellisRideIdToString, "", 1, 2,
       "Pizza Hut", "Perkin's", "","", false, false, false, true, true);
 
     // ...and now we test it.

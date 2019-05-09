@@ -51,6 +51,7 @@ public class RideRequestHandler {
     String userId = newRide.getString("userId");
     String notes = newRide.getString("notes");
     int seatsAvailable = newRide.getInteger("seatsAvailable");
+    int seatsTotal = newRide.getInteger("seatsTotal");
     String origin = newRide.getString("origin");
     String destination = newRide.getString("destination");
     String departureDate = newRide.getString("departureDate");
@@ -61,7 +62,7 @@ public class RideRequestHandler {
     boolean eco = newRide.getBoolean("eco");
     boolean petFriendly = newRide.getBoolean("petFriendly");
 
-    return rideController.addNewRide(user, userId, notes, seatsAvailable, origin, destination,
+    return rideController.addNewRide(user, userId, notes, seatsAvailable, seatsTotal, origin, destination,
       departureDate, departureTime, isDriving, roundTrip, nonSmoking, eco, petFriendly);
 
   }
@@ -91,6 +92,7 @@ public class RideRequestHandler {
 //    String userId = editRide.getString("userId");
     String notes = editRide.getString("notes");
     int seatsAvailable = editRide.getInteger("seatsAvailable");
+    int seatsTotal = editRide.getInteger("seatsTotal");
     String origin = editRide.getString("origin");
     String destination = editRide.getString("destination");
     String departureDate = editRide.getString("departureDate");
@@ -101,7 +103,7 @@ public class RideRequestHandler {
     Boolean eco = editRide.getBoolean("eco");
     Boolean petFriendly = editRide.getBoolean("petFriendly");
 
-    return rideController.editRide(id, notes, seatsAvailable, origin, destination,
+    return rideController.editRide(id, notes, seatsAvailable, seatsTotal, origin, destination,
       departureDate, departureTime, isDriving, roundTrip, nonSmoking, eco, petFriendly);
   }
 

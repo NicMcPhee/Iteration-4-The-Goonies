@@ -198,7 +198,7 @@
 
               }">
               <small *ngIf="ride.seatsAvailable === 1"> {{ride.seatsAvailable}} SEAT LEFT </small>
-              <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} SEATS LEFT </small>
+              <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} / {{ride.seatsTotal}} SEATS LEFT </small>
             </div>
 
 

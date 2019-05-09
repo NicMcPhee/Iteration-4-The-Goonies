@@ -11,6 +11,8 @@ import {MapsAPILoader} from "@agm/core";
 
 export class MapsAutocomplete implements OnInit{
 
+  @Input() searchPlaceholder: string;
+
   @Input() latitude: number;
   @Input() longitude: number;
   @Input() zoom: number;
@@ -48,6 +50,9 @@ export class MapsAutocomplete implements OnInit{
         this.ngZone.run(() => {
           //get the place result
           this.placeResult.emit(autocomplete.getPlace());
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          console.log(place.geometry.location.lng());
+          console.log(place.geometry.location.lat());
         });
       });
     });

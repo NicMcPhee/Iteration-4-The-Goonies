@@ -134,6 +134,11 @@
                 <span>Delete Ride</span>
               </button>
 
+              <button mat-menu-item
+                      routerLink="/seeMap"
+              > See Map
+              </button>
+
             </div>
           </mat-menu>
 
@@ -278,7 +283,6 @@
             <mat-icon>play_arrow</mat-icon>
             <div class="ride-info destination">{{ride.destination.formatted_address}}</div>
           </div>
-          <maps-component [mapHeightVH]="30" [markers]="markers"></maps-component>
 
           <div id="ride-info-driver-id-isDriving" class="ride-info driver" *ngIf="ride.isDriving">
             <a routerLink="/profile/{{ride.userId}}">{{ride.user}}</a> is offering this ride

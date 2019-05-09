@@ -209,6 +209,11 @@ describe('Ride list', () => {
     expect(rideList.rides.filter((ride: Ride) => ride.seatsAvailable === 3).length).toBe(2);
   });
 
+  it('has one ride that has 5 seats total', () => {
+    expect(rideList.rides.filter((ride: Ride) => ride.seatsTotal === 5).length).toBe(1);
+  });
+
+
   it('has two rides that where a ride is being offered', () => {
     expect(rideList.rides.filter((ride: Ride) => ride.isDriving).length).toBe(2);
   });

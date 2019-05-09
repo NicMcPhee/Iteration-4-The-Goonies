@@ -41,7 +41,8 @@ import org.json.*;
 public class Server {
   private static final String databaseName = "dev";
   private static final int serverPort = 4567;
-
+//The port should be 80 for the droplet!!!! and 4567 for localhost
+  
   public static void main(String[] args) {
 
     // DATABASE

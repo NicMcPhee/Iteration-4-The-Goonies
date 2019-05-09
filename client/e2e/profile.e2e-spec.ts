@@ -9,7 +9,7 @@ browser.driver.controlFlow().execute = function () {
 
 
   origFn.call(browser.driver.controlFlow(), () => {
-    return protractor.promise.delayed(0);
+    return protractor.promise.delayed(7);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);

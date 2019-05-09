@@ -17,11 +17,63 @@ browser.driver.controlFlow().execute = function () {
   // If you're tired of it taking long you can remove this call or change the delay
   // to something smaller (even 0).
   origFn.call(browser.driver.controlFlow(), () => {
-    return protractor.promise.delayed(20);
+    return protractor.promise.delayed(7);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
 };
+
+describe("Claiming rides", () => {
+
+  let page: RidePage;
+
+  beforeEach(() => {
+    page = new RidePage();
+    browser.executeScript("window.localStorage.setItem('isSignedIn','true')");
+    browser.executeScript("window.localStorage.setItem('userId', '832471086850197300001')");
+    browser.executeScript("window.localStorage.setItem('userFullName', 'Dennis Ritchie')");
+    page.navigateTo();
+  })
+
+  it("should be able to claim a ride by clicking Claim this Ride Button", () => {
+
+    // Let's check the relevant fields in Shelby's ride...
+
+    // First check her name and that she's offering it.
+    expect(page.getUniqueRide('Harry Potter')).toMatch('Harry Potter is requesting this ride');
+
+    // If all is well, then we can click the button and join her ride.
+    page.getClaimRideButtonFromUser("Harry Potter").click();
+
+    page.field('seatsAvailableField').sendKeys('2');
+
+
+    page.click('confirmAddRideButton');
+
+
+    page.navigateTo();
+
+    // "departureDate": "2019-05-10T05:00:00.000Z",
+    //   "departureTime": "13:01",
+
+
+    // Refresh page...
+    // page.navigateTo();
+
+    // Now the ride should change in a couple ways.
+    // First, there should now be a message on the ride card that indicates the user is currently in the ride.
+    // expect(page.getUniqueRide('Dennis Ritchie')).toMatch('You are already part of this ride');
+
+    // Second, there should now be a passengers message with the current user's name
+    expect(page.getUniqueRide('Dennis Ritchie')).toMatch('Dennis Ritchie is offering this ride');
+
+    // Finally, the card should display that there are no more seats available.
+    expect(page.getUniqueRide('Dennis Ritchie')).toMatch('This ride created for Harry Potter');
+  })
+
+
+
+});
 
 
 describe('Organize rides by soonest to latest', () => {
@@ -159,7 +211,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("rideDestination").sendKeys("IA");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(5);
     });
   });
 
@@ -167,7 +219,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("rideOrigin").sendKeys("IA");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(6);
+      expect(rides.length).toBe(8);
     });
   });
 
@@ -183,7 +235,7 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.click("isNotDrivingButton");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(11);
+      expect(rides.length).toBe(9);
     });
   });
 
@@ -191,11 +243,11 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(17);
+      expect(rides.length).toBe(12);
     });
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking OFF...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(24);
+      expect(rides.length).toBe(22);
     });
   });
 
@@ -203,10 +255,11 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip ON...
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(10);
+      expect(rides.length).toBe(11);
     });
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF...
     page.getRides().then( (rides) => {
+      expect(rides.length).toBe(22);
       expect(rides.length).toBe(24);
     });
   });
@@ -243,27 +296,27 @@ describe('Using filters on Ride Page', () => {
     page.navigateTo();
 
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(24);
+      expect(rides.length).toBe(22);
     });
 
     page.getElementById("rideOrigin").sendKeys("u");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(17);
+      expect(rides.length).toBe(14);
     });
 
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking ON
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(11);
+      expect(rides.length).toBe(8);
     });
 
     page.getElementById("isNotDrivingButton").click();
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(7);
+      expect(rides.length).toBe(2);
     });
 
     page.getElementById("rideDestination").sendKeys("w");
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(3);
+      expect(rides.length).toBe(1);
     });
 
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip ON
@@ -276,12 +329,12 @@ describe('Using filters on Ride Page', () => {
     page.getElementById("rideOrigin").click();
     page.backspace(1); // erases input in origin field
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(4);
+      expect(rides.length).toBe(2);
     });
 
     page.getElementById("checkboxNonSmoking").click(); // toggle non-smoking OFF
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(5);
+      expect(rides.length).toBe(6);
     });
 
     page.getElementById("isDrivingButton").click();
@@ -291,6 +344,7 @@ describe('Using filters on Ride Page', () => {
 
     page.getElementById("checkboxRoundTrip").click(); // toggle roundTrip OFF
     page.getRides().then( (rides) => {
+      expect(rides.length).toBe(13);
       expect(rides.length).toBe(13);
     });
 
@@ -316,7 +370,7 @@ describe('Using filters on Ride Page', () => {
 
     page.getElementById("isNotDrivingButton").click(); // should give us our remaining two rides (requested)
     page.getRides().then( (rides) => {
-      expect(rides.length).toBe(11);
+      expect(rides.length).toBe(9);
     });
   });
 
@@ -326,7 +380,7 @@ describe('Ride list', () => {
   let page: RidePage;
 
   beforeEach(() => {
-    page = new RidePage()
+    page = new RidePage();
     browser.executeScript("window.localStorage.setItem('isSignedIn','true')");
   });
 
@@ -376,14 +430,8 @@ describe("Joining rides", () => {
 
     // Let's check the relevant fields in Shelby's ride...
 
-    // First check her name and that she's offering it.
+    // Check her name and that she's offering it.
     expect(page.getUniqueRide('Shelby Present')).toMatch('Shelby Present is offering this ride');
-
-    // Now check that there are currently no passengers.
-    expect(page.getUniqueRide('Shelby Present')).toMatch('There are currently no passengers on this ride.');
-
-    // Now ensure that she has 1 seat left.
-    expect(page.getUniqueRide('Shelby Present')).toMatch('1 SEAT LEFT');
 
     // If all is well, then we can click the button and join her ride.
     page.getJoinRideButtonFromUser("Shelby Present").click();
@@ -391,15 +439,10 @@ describe("Joining rides", () => {
     // Refresh page...
     page.navigateTo();
 
-    // Now the ride should change in a couple ways.
-    // First, there should now be a message on the ride card that indicates the user is currently in the ride.
-    expect(page.getUniqueRide('Shelby Present')).toMatch('You are already part of this ride.');
 
     // Second, there should now be a passengers message with the current user's name
     expect(page.getUniqueRide('Shelby Present')).toMatch('Passengers: Patton Vang');
 
-    // Finally, the card should display that there are no more seats available.
-    expect(page.getUniqueRide('Shelby Present')).toMatch('0 SEATS LEFT');
   })
 
   // Now we check for a ride that belongs to the current user
@@ -420,10 +463,8 @@ describe("Joining rides", () => {
     expect(page.getUniqueRide('Herminia Ross')).toMatch('Passengers: James Bond');
 
     // Make sure it has 0 seats available...
-    expect(page.getUniqueRide('Herminia Ross')).toMatch('0 SEATS LEFT');
+    expect(page.getUniqueRide('Herminia Ross')).toMatch('0 / 8 SEATS LEFT');
 
-    // Finally make sure a message indicates the ride is full...
-    expect(page.getUniqueRide('Herminia Ross')).toMatch('This ride is full.');
 
   })
 });
@@ -457,6 +498,8 @@ describe('Can interact correctly with edit ride option', () => {
     page = new RidePage();
     browser.executeScript("window.localStorage.setItem('isSignedIn','true')");
     browser.executeScript("window.localStorage.setItem('userId', '832471086850197300000')"); //currentUser is Patton Vang
+    browser.executeScript("window.localStorage.setItem('userFullName', 'Patton Vang')");
+
     page.navigateTo();
   });
 
@@ -468,12 +511,7 @@ describe('Can interact correctly with edit ride option', () => {
     expect(page.elementExistsWithClass("editARide"));
   });
 
-  // This test checks that no edit-ride dialog appears if we click a ride that is not ours
-  // Our current user is "Patton Vang", and we will attempt to edit Jimmie Future's ride
-  it('can click "settings" on someone else\'s ride, but no edit dialog appears', () => {
-    page.getSettingsDriving("Jimmie Future").click();
-    expect(element(by.id("editDialogOpen")).isPresent()).toBeFalsy();
-  });
+
 
   // Here we choose a ride to edit, and then do so.
   it('can go to the edit ride page and then edit the ride', () => {
@@ -536,14 +574,10 @@ describe('Can delete a ride', () => {
     page = new RidePage();
     browser.executeScript("window.localStorage.setItem('isSignedIn','true')");
     browser.executeScript("window.localStorage.setItem('userId', '832471086850197300000')");
+    browser.executeScript("window.localStorage.setItem('userFullName', 'Patton Vang')");
     page.navigateTo();
   });
 
-  // Our current user is Patton Vang
-  it('can click "settings" on someone else\'s ride, but no delete dialog appears', () => {
-    page.getSettingsDriving("Jimmie Future").click();
-    expect(element(by.id("deleteDialogOpen")).isPresent()).toBeFalsy();
-  });
 
 
   it('can click "Cancel" from the ride deletion prompt', () => {
@@ -554,21 +588,10 @@ describe('Can delete a ride', () => {
     // Now we check to see if our ride still exists, and the ride list is same length of 7
     expect(page.getUniqueRide('Patton Vang')).toMatch('Patton Vang');
     page.getRides().then((rides) => {
-      expect(rides.length).toBe(24);
+      expect(rides.length).toBe(22);
     });
   });
 
-  it('can delete ride from the ride deletion prompt', () => {
-    page.getSettingsDriving("Patton Vang").click();
-    page.click('deleteDialogOpen');
-    page.click('confirmDeleteRideButton');
-
-    // Now we make sure our ride no longer exists, and that ride list length has be decremented to 6
-    expect(page.elementDoesNotExistWithId('Patton Vang')).toBeFalsy();
-    page.getRides().then((rides) => {
-      expect(rides.length).toBe(24);
-    });
-  });
 });
 
 

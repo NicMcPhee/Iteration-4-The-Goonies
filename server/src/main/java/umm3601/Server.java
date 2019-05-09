@@ -1,21 +1,37 @@
 package umm3601;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import org.json.JSONObject;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 import spark.utils.IOUtils;
-import umm3601.user.UserController;
-import umm3601.user.UserRequestHandler;
 import umm3601.ride.RideController;
 import umm3601.ride.RideRequestHandler;
+import umm3601.user.UserController;
+import umm3601.user.UserRequestHandler;
+import umm3601.chat.ChatController;
+import umm3601.chat.ChatRequestHandler;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 import java.io.FileReader;
 import java.io.InputStream;
+
+import static spark.Spark.*;
+import static spark.debug.DebugScreen.enableDebugScreen;
 
 import com.google.api.client.googleapis.auth.oauth2.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -25,7 +41,8 @@ import org.json.*;
 public class Server {
   private static final String databaseName = "dev";
   private static final int serverPort = 4567;
-
+//The port should be 80 for the droplet!!!! and 4567 for localhost
+  
   public static void main(String[] args) {
 
     // DATABASE
@@ -34,9 +51,11 @@ public class Server {
 
     UserController userController = new UserController(database);
     RideController rideController = new RideController(database);
+    ChatController chatController = new ChatController(database);
 
     UserRequestHandler userRequestHandler = new UserRequestHandler(userController);
     RideRequestHandler rideRequestHandler = new RideRequestHandler(rideController);
+    ChatRequestHandler chatRequestHandler = new ChatRequestHandler(chatController);
 
     //Configure Spark
     port(serverPort);
@@ -84,6 +103,10 @@ public class Server {
     get("api/user/:id",userRequestHandler::getUserJSON);
     post("api/user/saveProfile", userRequestHandler:: saveProfile);
 
+    // CHAT ENPOINTS
+    get("api/chat",chatRequestHandler::getChats);
+    post("api/chat/new", chatRequestHandler::addNewChat);
+
     // An example of throwing an unhandled exception so you can see how the
     // Java Spark debugger displays errors like this.
     get("api/error", (req, res) -> {
@@ -95,10 +118,11 @@ public class Server {
       JSONObject obj = new JSONObject(req.body());
       String authCode = obj.getString("code");
 
-      try {
-
-        String CLIENT_SECRET_FILE = "./src/main/java/umm3601/server_files/credentials.json";
-
+ try {
+        File file = new File("./Iteration-4-The-Goonies/server/src/main/java/umm3601/server_files/credentials.json");
+        String path = file.getAbsolutePath();
+        System.out.println("The path: "+ path);
+        String CLIENT_SECRET_FILE = path;
 
         GoogleClientSecrets clientSecrets =
           GoogleClientSecrets.load(
@@ -115,7 +139,7 @@ public class Server {
             // Replace clientSecret with the localhost one if testing
             clientSecrets.getDetails().getClientSecret(),
             authCode,
-            "http://localhost:9000")
+            "https://morider.me")
             //Not sure if we have a redirectUri
 
             // Specify the same redirect URI that you use with your web

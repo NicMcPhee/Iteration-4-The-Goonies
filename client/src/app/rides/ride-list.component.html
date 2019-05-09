@@ -198,7 +198,7 @@
 
               }">
               <small *ngIf="ride.seatsAvailable === 1"> {{ride.seatsAvailable}} SEAT LEFT </small>
-              <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} SEATS LEFT </small>
+              <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} / {{ride.seatsTotal}} SEATS LEFT </small>
             </div>
 
 
@@ -239,7 +239,7 @@
             <div class="departure-time">
 
               <button mat-raised-button
-                      class="join-ride-button"
+                      class="claim-ride-button"
                       id="claim-ride-button"
                       color="primary"
                       [disabled]="userOwnsThisRide(ride)"
@@ -309,7 +309,7 @@
 
           <mat-divider [inset]="true" *ngIf="ride.notes"></mat-divider>
 
-          <div class = "passengers_div "*ngIf="ride.isDriving">
+          <div class = "passengers_div" *ngIf="ride.isDriving">
             {{this.listRidePassengers(ride.passengerNames)}}
           </div>
 
@@ -319,6 +319,8 @@
             <small>NOTES:</small>
             <div>{{ride.notes}}</div>
           </div>
+
+          <button mat-button id="open-chat-button" (click)="openChat(ride._id.$oid)"><mat-icon>chat</mat-icon></button>
 
         </mat-card-content>
 

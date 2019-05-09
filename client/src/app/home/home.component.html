@@ -28,9 +28,8 @@
         />
 
 
-      </div>
-      <mat-divider></mat-divider>
-      <mat-card-content>
+      <!--<mat-divider></mat-divider>-->
+
         <div *ngIf="!appService.isSignedIn(); then notSignedIn else SignedIn"> </div>
 
         <ng-template #SignedIn>
@@ -46,7 +45,7 @@
           <div id="signIn" class="g-signin2" (click)="appService.signIn()"></div>
         </ng-template>
 
-      </mat-card-content>
+      </div>
     </mat-card>
 
   </div>

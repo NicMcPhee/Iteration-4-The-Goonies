@@ -34,6 +34,8 @@ import {ProfileComponent} from "./users/profile.component";
 
 import {RouterLinkDirectiveStub} from "./rides/router-link-directive-stub";
 import {PhoneMaskDirective} from "./users/phone-mask.directive";
+import {ChatComponent} from "./chat/chat.component";
+import {ChatListService} from "./chat/chat-list.service";
 
 @NgModule({
   imports: [
@@ -57,10 +59,11 @@ import {PhoneMaskDirective} from "./users/phone-mask.directive";
     ClaimRideComponent,
     ProfileComponent,
     RouterLinkDirectiveStub,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    ChatComponent
   ],
   providers: [
-    RideListService, AppService, AppAuthGuard, UserService, ValidatorService,
+    RideListService, AppService, AppAuthGuard, UserService, ValidatorService, ChatListService,
     {provide: APP_BASE_HREF, useValue: '/'},
   ],
   entryComponents: [

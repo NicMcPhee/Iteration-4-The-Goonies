@@ -107,7 +107,7 @@ public class RideController {
     return DatabaseHelper.serializeIterable(matchingRides);
   }
 
-  public String addNewRide(String user, String userId, String notes, int seatsAvailable, String origin, String destination,
+  public String addNewRide(String user, String userId, String notes, int seatsAvailable, int seatsTotal, String origin, String destination,
                            String departureDate, String departureTime, boolean isDriving, boolean roundTrip, boolean nonSmoking, boolean eco, boolean petFriendly) {
 
     // See methods at bottom of RideController
@@ -125,6 +125,7 @@ public class RideController {
     newRide.append("userId", userId);
     newRide.append("notes", notes);
     newRide.append("seatsAvailable", seatsAvailable);
+    newRide.append("seatsTotal", seatsAvailable);
     newRide.append("origin", origin);
     newRide.append("destination", destination);
     newRide.append("departureDate", departureDate);
@@ -166,7 +167,7 @@ public class RideController {
     }
   }
 
-  boolean editRide(String id, String notes, int seatsAvailable, String origin, String destination,
+  boolean editRide(String id, String notes, int seatsAvailable, int seatsTotal, String origin, String destination,
                    String departureDate, String departureTime, Boolean isDriving, Boolean roundTrip, Boolean nonSmoking, Boolean eco, Boolean petFriendly)
   {
 
@@ -183,6 +184,7 @@ public class RideController {
     Document updateFields = new Document();
     updateFields.append("notes", notes);
     updateFields.append("seatsAvailable", seatsAvailable);
+    updateFields.append("seatsTotal", seatsAvailable);
     updateFields.append("origin", origin);
     updateFields.append("destination", destination);
     updateFields.append("departureDate", departureDate);

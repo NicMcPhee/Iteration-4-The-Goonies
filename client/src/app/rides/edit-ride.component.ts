@@ -23,8 +23,8 @@ export class EditRideComponent implements OnInit {
   public rideUser = localStorage.getItem("userFullName");
   public rideUserId = localStorage.getItem("userId");
   public rideNotes: string;
-  public rideSeats: number;
   public rideSeatsAvailable: number;
+  public rideSeats: number;
   public rideOrigin: string;
   public rideDestination: string;
   public rideDepartureDate: string;
@@ -52,7 +52,7 @@ export class EditRideComponent implements OnInit {
       userId: this.rideUserId,
       notes: this.rideNotes,
       seatsAvailable: this.rideSeatsAvailable,
-      seatsTotal: this.rideSeats,
+      seatsTotal: this.rideSeatsAvailable,
       origin: this.rideOrigin,
       destination: this.rideDestination,
       departureDate: this.rideDepartureDate,
@@ -78,7 +78,6 @@ export class EditRideComponent implements OnInit {
           console.log('The newRide or dialogResult was ' + editedRide);
           console.log('The error was ' + JSON.stringify(err));
         });
-      seatsTotal: this.rideSeats,
 
       this.snackBar.open("Successfully Edited A Ride",'' , <MatSnackBarConfig>{duration: 5000,});
 
@@ -109,6 +108,7 @@ export class EditRideComponent implements OnInit {
     this.rideUserId = this.rideListService.singleRide.userId;
     this.rideNotes = this.rideListService.singleRide.notes;
     this.rideSeatsAvailable = this.rideListService.singleRide.seatsAvailable;
+    this.rideSeats = this.rideListService.singleRide.seatsTotal;
     this.rideOrigin = this.rideListService.singleRide.origin;
     this.rideDestination = this.rideListService.singleRide.destination;
     this.rideDepartureDate = this.rideListService.singleRide.departureDate;
@@ -126,6 +126,7 @@ export class EditRideComponent implements OnInit {
   //   Also, ride-list component HTML won't display this number unless it is indeed a User that is driving.
   setRideSeats() {
     this.rideSeatsAvailable = 1;
+    this.rideSeats = 1;
   }
 
   ngOnInit() {

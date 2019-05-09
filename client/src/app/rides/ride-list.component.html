@@ -163,13 +163,13 @@
               </div>
 
               <div *ngIf="userIsAPassenger(ride)" style="font-weight: bold; color: rgba(255,0,0,0.75)">
-                You are already part of this ride.
+                You have joined this ride.
               </div>
 
-              <div *ngIf="!userIsAPassenger(ride) && ride.seatsAvailable < 1"
-                   style="font-weight: bold; color: rgba(255,0,0,0.75)">
-                This ride is full.
-              </div>
+              <!--<div *ngIf="!userIsAPassenger(ride) && ride.seatsAvailable < 1"-->
+                   <!--style="font-weight: bold; color: rgba(255,0,0,0.75)">-->
+                <!--This ride is full.-->
+              <!--</div>-->
             </div>
 
             <div class="departure-time">
@@ -187,11 +187,20 @@
               <ng-template #impossible_time> unspecified time </ng-template>
 
             </div>
+            <!--'tenToTwelve' : ride.seatsAvailable <= 10, and: ride.seatsAvailable >= 12,-->
+            <div class="seats-left" [ngClass]="{
+              'Above80p' : ride.seatsAvailable/ride.seatsTotal <= 1.0, and: ride.seatsAvailable/ride.seatsTotal >= 0.8,
+              'Above60p' : ride.seatsAvailable/ride.seatsTotal < 0.8, and: ride.seatsAvailable/ride.seatsTotal >= 0.6,
+              'Above40p': ride.seatsAvailable/ride.seatsTotal < 0.6, and: ride.seatsAvailable/ride.seatsTotal >= 0.4,
+              'Above20p' : ride.seatsAvailable/ride.seatsTotal < 0.4, and: ride.seatsAvailable/ride.seatsTotal >= 0.2,
+              'None' : ride.seatsAvailable == 0
 
-            <div class="seats-left">
+
+              }">
               <small *ngIf="ride.seatsAvailable === 1"> {{ride.seatsAvailable}} SEAT LEFT </small>
-              <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} SEATS LEFT </small>
+              <small *ngIf="ride.seatsAvailable !== 1"> {{ride.seatsAvailable}} / {{ride.seatsTotal}} SEATS LEFT </small>
             </div>
+
 
           </mat-card-title>
         </mat-card-header>
@@ -300,7 +309,7 @@
 
           <mat-divider [inset]="true" *ngIf="ride.notes"></mat-divider>
 
-          <div class = "passengers_div "*ngIf="ride.isDriving">
+          <div class = "passengers_div" *ngIf="ride.isDriving">
             {{this.listRidePassengers(ride.passengerNames)}}
           </div>
 
@@ -310,6 +319,8 @@
             <small>NOTES:</small>
             <div>{{ride.notes}}</div>
           </div>
+
+          <button mat-button id="open-chat-button" (click)="openChat(ride._id.$oid)"><mat-icon>chat</mat-icon></button>
 
         </mat-card-content>
 

@@ -63,6 +63,13 @@ they are making the request for and restrict them if it doesn't match. This is t
 Concerning the route guarder, simply adding that api call to the code should protect it. Finally, the print statements need to be found
 and erased before deployment.
 
+### 4) Google Maps Type Issues With Filtering
+
+#### Explanation: 
+The big issue here is that you have to fight a way to filter google maps if you're using a filter by the "formatted_address" ideally. Filtering by a string is usually intuitive, but you can't change the rides field in ride.ts to be the google maps object. It has to stay as an object or else the tests won't work. It's probably because google doesn't want you testing their stuff.
+
+#### Solution: N/A
+
 
 ## Minor Issues:
 

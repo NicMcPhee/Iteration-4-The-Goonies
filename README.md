@@ -2,7 +2,7 @@
 
 ## to anyone who is using this as a code-base, or borrowing code...
 
-### please read the PROBLEMS.md before anything. This document explains potential problems you may run into using Toon-Squad's code.
+### please read the PROBLEMS.md before anything. This document explains potential problems you may run into using The Goonies code.
 
 ### Thanks,
 ### *~The Management*

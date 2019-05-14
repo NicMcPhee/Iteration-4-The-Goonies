@@ -156,8 +156,6 @@ export class EditRideComponent implements OnInit {
   ngOnInit() {
     this.setRideSeats();
     this.setRideFields();
-    this.setRideDestination(this.rideDestination);
-    this.setRideOrigin(this.rideOrigin);
     this.validatorService.createForm();
     if (this.rideIsDriving === false) {
       this.validatorService.rideForm.removeControl("driving");

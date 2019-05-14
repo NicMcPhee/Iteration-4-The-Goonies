@@ -124,3 +124,11 @@ It has something to do with the Angular life-cycle. Putting the values into the 
 
 Read more: https://dzone.com/articles/angular-6-part-3-life-cycle-of-a-component
 
+### 5) Variable config not found for google maps
+
+#### Explanation:
+In our app.module.ts for the maps branch which is where the google maps feature is in, importing the config file that contains the API key does not work. It will say that the file is not found, therefore the build of the project will fail.
+
+#### Solution:
+N/A
+

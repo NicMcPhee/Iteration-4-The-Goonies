@@ -63,30 +63,28 @@ they are making the request for and restrict them if it doesn't match. This is t
 Concerning the route guarder, simply adding that api call to the code should protect it. Finally, the print statements need to be found
 and erased before deployment.
 
-### 4) Google Maps Type Issues With Filtering
+### 5) Google Maps Type Issues With Filtering
 
 #### Explanation: 
 The big issue here is that you have to fight a way to filter google maps if you're using a filter by the "formatted_address" ideally. Filtering by a string is usually intuitive, but you can't change the rides field in ride.ts to be the google maps object. It has to stay as an object or else the tests won't work. It's probably because google doesn't want you testing their stuff.
 
 #### Solution: N/A
 
-
-## Minor Issues:
-
-### 1) Radio buttons cannot be unselected on ride-list
+### 6) Filter by date or position in the database
 
 #### Explanation:
-The radio buttons allow for automatic filtering between offered and requested rides on the ride list. The default setting is that neither
-button is checked, and this means both requested AND offered rides are displayed. Pushing either button will show the rides that
-correspond to that button. However, these buttons cannot be unselected, so the user must refresh the page to see both offered and
-requested rides again.
+We were not able to make a function that would switch between a filter that looks at the date time object and then just goes to filtering in the most basic format
+
+#### Solution: N/A
+
+## Minor Issues:
 
 #### Solution:
 Not sure about this one either, though I suspect it is related to the settings of Angular's radio module. Some digging may be required 
 to figure out the problem. An alternative solution that has used by other groups is to have a third radio button that allows for both
 requested and offered rides to be displayed. A third option would be to implement checkboxes, since these can easily be unchecked.
 
-### 2) Rides on PROFILE page show to opposite for nonSmoking
+### 1) Rides on PROFILE page show to opposite for nonSmoking
 
 #### Explanation:
 For listed rides on the profile page, the description shows the nonSmoking status of the ride. However, it shows the opposite of what it
@@ -95,7 +93,7 @@ should be.
 #### Solution:
 Find out where the boolean is wrong, and switch it. Probably in the profile component HTML.
 
-### 3) Profile only shows rides the user has created, but not rides they've joined
+### 2) Profile only shows rides the user has created, but not rides they've joined
 
 #### Explanation:
 It was suggested that showing ALL rides that the user was associated with would be most helpful.
@@ -104,7 +102,7 @@ It was suggested that showing ALL rides that the user was associated with would 
 Make the profile display those rides. I'm not sure how the profile finds the user's created rides, but I suspect it happens near the
 database. Changing it to check for the joined rides should be analagous to checking for the user's created rides.
 
-### 4) Testing rides on server side has limitations as is
+### 3) Testing rides on server side has limitations as is
 
 #### Explanation:
 Every test in RideControllerSpec.java that is commented out is for one particular reason:
@@ -116,7 +114,7 @@ Every test in RideControllerSpec.java that is commented out is for one particula
 #### Solution:
 We think that this is a matter of us misunderstanding an essential bit from setting up tests more than the method itself. Most likely a side effect of .filter() that calls for a different structure for the tests. To accommodate, we put testing for ride sorting and filtering by time and date into e2e tests.
 
-### 5) "Expression has changed after it was checked" error
+### 4) "Expression has changed after it was checked" error
 
 #### Explanation:
 This has to with edit-ride form validation being done by a service. Ideally, this is the Angular way to handle information. If you open the browser console when opening the edit-ride page, you will see the error. Right now, there is a hacky work around to this error: we simply eliminated the option to switch the ride offered vs ride requested (isDriving boolean) on a ride. Without this workaround in place, opening the edit page for a requested ride will default to having the edit ride button disabled, even if the form inputs are valid.

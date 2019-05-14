@@ -69,6 +69,20 @@ run the `seedMongoDB` task before running the e2e tests!
 
 Turn on your repo in [Travis CI][travis], replace the build status image in this README, and push your changes. That will trigger a build with Travis.
 
+
+## Road Map
+### Things to add in the future 
+- Date Filter: Filter that allows to select two dates and see all items that are within those two dates 
+- Admin functionality
+- Fully Working Google Maps support 
+ability to see the rides that a user owns and is a rider on in the profile tab
+- The ability for a ride owner to accept or decline a ride request to the ride
+- Auto refreshing of the ride chat system 
+- Making ride chats only open to participants of the ride 
+- Notifications to the ride owner for when people join, leave, request ride.
+- Ability to leave a joined ride
+
+
 ## Resources
 ### Angular 5
 - [Angular 5 documentation][angular-5]

@@ -35,24 +35,7 @@ tools.
 - The **build** (or its' alias **buildExecutable**) task will still _build_ the entire project (but not run it)
 - The **runClient** task will build and run the client side of your project (available at ``localhost:9000``)
 
-## Generating credentials for the Authorization Features
-
-To deploy Google Login (sometimes known as OAuth2) to your website, you will need to generate keys from 
-the Google API developers console. 
-- Go to the API Console. [Api Console](https://console.developers.google.com/)
-- From the projects list, create a new one.
-- If the APIs & services page isn't already open, open the console left side menu and select APIs & services.
-- On the left, click Credentials.
-- Click New Credentials, then select OAuth client ID.
-- As Moride is a Web Application, choose "Web Application"
-- Select the appropriate application type for your project and enter any additional information required. Application types are described in more detail in the following sections.
-- Click Create client ID
-This Client ID needs to go into:
-Index.html, in the quotes within "google-signin-client_id" content.
-credentials.json, which is a file that you can download from your new Google API developers project. On the same page that you see your client ID, you should also see "DOWNLOAD JSON"
-Included in this readme's folder is a credentialsEXAMPLE.md file. It shows you what you should replace your credentials.json file fields with.
-Place your credentials file into this directory: server/src/main/java/umm3601
-
+## Running Moride as a developer
 
 For the most part, you will be using a local installation of Mongo as a
 `dev` (development) database. You don't *really* need to worry about how this is set up,

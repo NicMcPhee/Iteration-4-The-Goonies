@@ -33,7 +33,7 @@ like so. Note that the 'config' here refers to the object called 'config', NOT t
 var mykey = config.MY_KEY;
 var secretkey = config.SECRET_KEY;
 
-### Importing api key as a variable
+## Importing api key as a variable
 If you would like to use the key in a file like your app.module.ts, you have to import this file. To do this you import it with the line "import * as 'any variable you'd like to use' from 'file path'". In our example we did "import * as Config from 'file path'". In the maps branch we do this in app.module.ts file, and our config.json file looks like this.
 
 {

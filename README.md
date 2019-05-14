@@ -67,11 +67,20 @@ run the `seedMongoDB` task before running the e2e tests!
 
 Turn on your repo in [Travis CI][travis], replace the build status image in this README, and push your changes. That will trigger a build with Travis.
 
+# Key Features
+
 ## Google Maps
 ### Things to know and add
 - Dependencies are agm core 1.0.0-beta.3 and google maps. To install these dependencies you install through yarn. Go to terminal and type "cd client" to go to your client. Once in the client you install these dependencies through yarn. To do this you type "yarn add @agm/core@1.0.0-beta.3" for agm core. For google maps do "yarn add @types/googlemaps".
 - The main feature from google maps that we use is "autocomplete" which is a feature that allows us to search for an exact location through google maps services. 
 - You need an API key from google maps first in order for these features to work. You can get this by going to google cloud platform. 
+
+## Ride Chat 
+## Add Ride
+## Claim Ride
+## Edit Ride
+## Delete Ride
+## User Profile 
 
 ## Road Map
 ### Things to add in the future 

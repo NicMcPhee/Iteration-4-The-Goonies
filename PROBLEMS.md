@@ -117,5 +117,16 @@ This has to with edit-ride form validation being done by a service. Ideally, thi
 #### Solution: 
 It has something to do with the Angular life-cycle. Putting the values into the input fields (and buttons) and creating the form, or checking the button...one or some of these things need to occur at a certain points of the Angular life-cycle. You might be familiar with the ngOnInit() function. This gets called a certain point after a component or service is cosntructed. There are other methods as well that can be imported that happen at other points in the cycle (sometimes more than once), and all these methods have a particular use
 
+### 6) "Any length of input in driver/rider add/edit/claim" 
+
+#### Explanation:
+You can put 2000-character inputs into the input and they will show up on the rides list, unshortened.
+
+#### Solution: 
+Either shorten any long inputs into a stub or create a validation for maximum length.
+
+
 Read more: https://dzone.com/articles/angular-6-part-3-life-cycle-of-a-component
+
+
 
